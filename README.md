@@ -29,8 +29,8 @@ python setup.py install
 
 ## Project Structure
 
-- *requirements.txt*: make sure to update this file every time you add a new import!
-- *data/*: directory that will contain all data.
-- *runs/*: directory to store training run outputs.
-- *src/*: directory for all source code (e.g. models, trainers, analysis scripts etc.)
-- *src/config.py*: central location for any project structure constants (e.g. paths to data). This is not intended for model parameters.
+- *requirements.txt* - make sure to update this file every time you add a new import!
+- *data/* - directory that will contain all data.
+- *runs/* - directory to store training run outputs.
+- *src/* - directory for all source code (e.g. models, trainers, analysis scripts etc.)
+- *src/config.py* - central location for any project structure constants (e.g. paths to data). This is not intended for model parameters.
