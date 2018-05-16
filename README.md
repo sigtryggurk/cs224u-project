@@ -1,4 +1,4 @@
-#CS224U Final Project - Question Response Time Analysis and Prediction
+# CS224U Final Project - Question Response Time Analysis and Prediction
 
 ## Setup
 1. Create a virtual environment called cs224u:
