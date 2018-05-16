@@ -2,24 +2,28 @@
 
 ## Setup
 1. Create a virtual environment called cs224u:
-
-~~~~conda create -n cs224u python=3.6 anaconda~~~~
-
+```
+conda create -n cs224u python=3.6 anaconda
+```
 To enter the environment run
-
-~~~~source activate cs224u~~~~
-
+```
+source activate cs224u
+```
 To exit the environment run
-
-~~~~source deactivate cs224u~~~~
+```
+source deactivate cs224u
+```
 
 2. Enter the newly created virtual environment
 3. Install package requirements
-
-~~~~pip install -r requirements.txt~~~~
+```
+pip install -r requirements.txt
+```
 
 4. Install package
-~~~~python setup.py install~~~~
+```
+python setup.py install
+```
 
 **Note:** You will have to repeat steps 3. and 4. throughout development as we add new dependencies and modules.
 
