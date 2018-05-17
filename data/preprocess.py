@@ -12,7 +12,6 @@ REMOVED_ROWS_FILE = "removed_rows.csv"
 
 def read_csv(datafile):
     data = pd.read_csv(datafile, sep=',', header=0)
-    data = data.iloc[range(1000)]
     print("\tRead %d rows" % data.shape[0])
     return data
 
