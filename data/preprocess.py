@@ -8,7 +8,7 @@ import spacy
 from pathlib import Path
 
 URL_TAG = "<url>"
-REMOVED_UTTERANCES_FILE = "removed_utterances.csv"
+REMOVED_ROWS_FILE = "removed_rows.csv"
 
 def read_csv(datafile):
     data = pd.read_csv(datafile, sep=',', header=0)
@@ -18,17 +18,16 @@ def read_csv(datafile):
 def utterance_equals(utterance1, utterance2):
     return utterance1.sent_from == utterance2.sent_from and \
             utterance1.sent_to == utterance2.sent_to and \
-            hash(utterance1.text) == hash(utterance2.text) and \
             utterance1.text == utterance2.text
 
 def remove_rows(data, rows):
     header = True
     mode = 'w'
-    if Path(REMOVED_UTTERANCES_FILE).exists():
+    if Path(REMOVED_ROWS_FILE).exists():
         header = False
         mode = 'a'
-    print("\tOutputting %d removed utterances to %s" % (len(rows), REMOVED_UTTERANCES_FILE))
-    data.iloc[rows].to_csv(REMOVED_UTTERANCES_FILE, header=header, mode=mode)
+    print("\tOutputting %d removed rows to %s" % (len(rows), REMOVED_ROWS_FILE))
+    data.iloc[rows].to_csv(REMOVED_ROWS_FILE, header=header, mode=mode)
     data.drop(index=rows, inplace=True)
     data.reset_index(inplace=True, drop=True)
 
@@ -55,6 +54,12 @@ def dedupe_utterances(data):
     return data
 
 def remove_invalid_rows(data):
+    """
+      Removes invalid rows from data.
+
+      A row is invalid if
+          * the text is NaN
+    """
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     invalid_utterances = []
     for i, row in data.iterrows():
@@ -70,8 +75,6 @@ def normalize_url(data):
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     total_num_subs = 0
     for i, row in data.iterrows():
-        if type(row.text) != type(""):
-            print(i, row)
         normalized, num_subs = re.subn('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', URL_TAG, row.text)
         if num_subs > 0:
             data.at[i,'text'] = normalized
@@ -111,9 +114,9 @@ if __name__ == "__main__":
     if args.dest is None:
         args.dest = path.stem + "_preprocessed" + path.suffix
 
-    if Path(REMOVED_UTTERANCES_FILE).exists():
-        print("Deleting %s" % REMOVED_UTTERANCES_FILE)
-        os.remove(REMOVED_UTTERANCES_FILE)
+    if Path(REMOVED_ROWS_FILE).exists():
+        print("Deleting %s" % REMOVED_ROWS_FILE)
+        os.remove(REMOVED_ROWS_FILE)
 
     print("Reading CSV file")
     data = read_csv(args.datafile)
