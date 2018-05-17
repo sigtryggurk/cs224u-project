@@ -12,6 +12,7 @@ REMOVED_ROWS_FILE = "removed_rows.csv"
 
 def read_csv(datafile):
     data = pd.read_csv(datafile, sep=',', header=0)
+    data = data.iloc[range(1000)]
     print("\tRead %d rows" % data.shape[0])
     return data
 
@@ -92,10 +93,12 @@ def parse_timestamps(data):
 
 def tokenize_utterances(data):
     tokenizer = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner", "textcat"])
+    tokenizer.tokenizer.add_special_case(URL_TAG, [{spacy.symbols.ORTH: URL_TAG}])
+
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     def tokenize(text):
         progress.update(progress.value+1)
-        return list(tokenizer(text))
+        return [token.string for token in tokenizer(text)]
 
     data.text = data.text.apply(tokenize)
     progress.finish()
