@@ -4,3 +4,4 @@ class Config:
     base_dir = realpath(join(dirname(realpath(__file__)), '..'))
     data_dir = join(base_dir, "data")
     preprocessed_data_file = join(data_dir, "yup_messages_preprocessed.csv")
+    question_response_time_sec_dataset_file = join(data_dir, "question_response_time_sec_dataset.csv")
