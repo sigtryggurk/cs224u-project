@@ -1,4 +1,5 @@
 import argparse
+import os
 import pandas as pd
 import progressbar
 import re
@@ -7,18 +8,29 @@ import spacy
 from pathlib import Path
 
 URL_TAG = "<url>"
+REMOVED_UTTERANCES_FILE = "removed_utterances.csv"
 
 def read_csv(datafile):
     data = pd.read_csv(datafile, sep=',', header=0)
-
-    nrows, _ = data.shape
-    print("\tRead %d rows" % nrows)
+    print("\tRead %d rows" % data.shape[0])
     return data
 
 def utterance_equals(utterance1, utterance2):
     return utterance1.sent_from == utterance2.sent_from and \
             utterance1.sent_to == utterance2.sent_to and \
+            hash(utterance1.text) == hash(utterance2.text) and \
             utterance1.text == utterance2.text
+
+def remove_rows(data, rows):
+    header = True
+    mode = 'w'
+    if Path(REMOVED_UTTERANCES_FILE).exists():
+        header = False
+        mode = 'a'
+    print("\tOutputting %d removed utterances to %s" % (len(rows), REMOVED_UTTERANCES_FILE))
+    data.iloc[rows].to_csv(REMOVED_UTTERANCES_FILE, header=header, mode=mode)
+    data.drop(index=rows, inplace=True)
+    data.reset_index(inplace=True, drop=True)
 
 def dedupe_utterances(data):
     nrows, _ = data.shape
@@ -38,18 +50,28 @@ def dedupe_utterances(data):
         i += delta
     progress.finish()
 
-    print("\tNumber of Deleted Utterances: %d" % len(rows_to_delete))
-    print("\tOutputting deleted utterances to deleted_utterances.csv")
-    data.iloc[rows_to_delete].to_csv("deleted_utterances.csv")
-    data.drop(index=rows_to_delete, inplace=True)
-    data.reset_index(inplace=True, drop=True)
+    remove_rows(data, rows_to_delete)
 
+    return data
+
+def remove_invalid_rows(data):
+    progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
+    invalid_utterances = []
+    for i, row in data.iterrows():
+        if type(row.text) != str:
+            invalid_utterances.append(i)
+        progress.update(i)
+    progress.finish()
+
+    remove_rows(data, invalid_utterances)
     return data
 
 def normalize_url(data):
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     total_num_subs = 0
     for i, row in data.iterrows():
+        if type(row.text) != type(""):
+            print(i, row)
         normalized, num_subs = re.subn('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', URL_TAG, row.text)
         if num_subs > 0:
             data.at[i,'text'] = normalized
@@ -67,7 +89,13 @@ def parse_timestamps(data):
 
 def tokenize_utterances(data):
     tokenizer = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner", "textcat"])
-    data.text = data.text.apply(lambda text: list(tokenizer(text)))
+    progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
+    def tokenize(text):
+        progress.update(progress.value+1)
+        return list(tokenizer(text))
+
+    data.text = data.text.apply(tokenize)
+    progress.finish()
     return data
 
 if __name__ == "__main__":
@@ -83,11 +111,18 @@ if __name__ == "__main__":
     if args.dest is None:
         args.dest = path.stem + "_preprocessed" + path.suffix
 
+    if Path(REMOVED_UTTERANCES_FILE).exists():
+        print("Deleting %s" % REMOVED_UTTERANCES_FILE)
+        os.remove(REMOVED_UTTERANCES_FILE)
+
     print("Reading CSV file")
     data = read_csv(args.datafile)
 
     print("Deduping utterances")
     data = dedupe_utterances(data)
+
+    print("Removing invalid rows")
+    data = remove_invalid_rows(data)
 
     print("Normalizing urls")
     data = normalize_url(data)
