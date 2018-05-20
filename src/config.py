@@ -1,7 +1,11 @@
 from os.path import dirname, realpath, join
 
 class Config:
-    base_dir = realpath(join(dirname(realpath(__file__)), '..'))
-    data_dir = join(base_dir, "data")
-    preprocessed_data_file = join(data_dir, "yup_messages_preprocessed.csv")
-    question_response_time_sec_dataset_file = join(data_dir, "question_response_time_sec_dataset.csv")
+    BASE_DIR = realpath(join(dirname(realpath(__file__)), '..'))
+    DATA_DIR = join(BASE_DIR, "data")
+    PREPROCESSED_DATA_FILE = join(DATA_DIR, "yup_messages_preprocessed.csv")
+    QUESTION_RESPONSE_TIME_SEC_DATASET_FILE = join(DATA_DIR, "question_response_time_sec_dataset.csv")
+
+    URL_TAG = "<url>"
+    REMOVED_ROWS_FILE = join(DATA_DIR, "removed_rows.csv")
+

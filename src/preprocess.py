@@ -5,13 +5,13 @@ import progressbar
 import re
 import spacy
 
+from config import Config
 from pathlib import Path
 
-URL_TAG = "<url>"
-REMOVED_ROWS_FILE = "removed_rows.csv"
 
 def read_csv(datafile):
     data = pd.read_csv(datafile, sep=',', header=0)
+    data = data.iloc[range(1000)]
     print("\tRead %d rows" % data.shape[0])
     return data
 
@@ -23,11 +23,11 @@ def utterance_equals(utterance1, utterance2):
 def remove_rows(data, rows):
     header = True
     mode = 'w'
-    if Path(REMOVED_ROWS_FILE).exists():
+    if Path(Config.REMOVED_ROWS_FILE).exists():
         header = False
         mode = 'a'
-    print("\tOutputting %d removed rows to %s" % (len(rows), REMOVED_ROWS_FILE))
-    data.iloc[rows].to_csv(REMOVED_ROWS_FILE, header=header, mode=mode)
+    print("\tOutputting %d removed rows to %s" % (len(rows), Config.REMOVED_ROWS_FILE))
+    data.iloc[rows].to_csv(Config.REMOVED_ROWS_FILE, header=header, mode=mode)
     data.drop(index=rows, inplace=True)
     data.reset_index(inplace=True, drop=True)
 
@@ -75,7 +75,7 @@ def normalize_url(data):
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     total_num_subs = 0
     for i, row in data.iterrows():
-        normalized, num_subs = re.subn('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', URL_TAG, row.text)
+        normalized, num_subs = re.subn('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', Config.URL_TAG, row.text)
         if num_subs > 0:
             data.at[i,'text'] = normalized
 
@@ -92,7 +92,7 @@ def parse_timestamps(data):
 
 def tokenize_utterances(data):
     tokenizer = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner", "textcat"])
-    tokenizer.tokenizer.add_special_case(URL_TAG, [{spacy.symbols.ORTH: URL_TAG}])
+    tokenizer.tokenizer.add_special_case(Config.URL_TAG, [{spacy.symbols.ORTH: Config.URL_TAG}])
 
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     def tokenize(text):
@@ -110,15 +110,15 @@ if __name__ == "__main__":
             help="Path to destination file. Defaults to {datafile}_processed.csv")
     args = parser.parse_args()
 
-    path = Path(args.datafile)
+    path = Path(args.datafile).resolve()
     assert path.exists() and path.is_file() and path.suffix == '.csv'
 
     if args.dest is None:
-        args.dest = path.stem + "_preprocessed" + path.suffix
+        args.dest = os.path.join(str(path.parent), path.stem + "_preprocessed" + path.suffix)
 
-    if Path(REMOVED_ROWS_FILE).exists():
-        print("Deleting %s" % REMOVED_ROWS_FILE)
-        os.remove(REMOVED_ROWS_FILE)
+    if Path(Config.REMOVED_ROWS_FILE).exists():
+        print("Deleting %s" % Config.REMOVED_ROWS_FILE)
+        os.remove(Config.REMOVED_ROWS_FILE)
 
     print("Reading CSV file")
     data = read_csv(args.datafile)
