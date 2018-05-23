@@ -69,7 +69,7 @@ def build_question_response_time_sec():
     return dataset
 
 if __name__ == "__main__":
-    assert Path(Config.PREPROCESSED_DATA_FILE).exists(), "%s does not exist" % Config.PREPROCESSED_DATA_FILE
+    assert Path(Config.CORPUS_FILE).exists(), "%s does not exist" % Config.CORPUS_FILE
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--dataset", dest="dataset", type=Dataset, default=Dataset.QUESTION_RESPONSE_TIME_SEC,
             help="Which dataset to build. Defaults to QUESTION_RESPONSE_TIME_SEC")

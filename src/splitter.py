@@ -7,7 +7,7 @@ from config import Config
 from pathlib import Path
 
 def get_dest(split='train'):
-    path = Path(Config.PREPROCESSED_DATA_FILE)
+    path = Path(Config.CORPUS_FILE)
     return os.path.join(Config.DATA_DIR, "{split}_{stem}{ext}".format(split=split, stem=path.stem, ext=path.suffix))
 
 def train_dev_test_split(data, train=0.7, dev=0.15, test=0.15):
