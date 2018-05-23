@@ -3,14 +3,13 @@ import data_readers
 import os
 import pandas as pd
 import progressbar
-import sys
 
 from config import Config
 from enum import Enum
 from pathlib import Path
 
 class Dataset(Enum):
-    QUESTION_RESPONSE_TIME_SEC = 1
+    QUESTION_ONLY = 1
 
 def is_student_text(row):
     return row.sent_from == "student"
@@ -21,11 +20,11 @@ def is_tutor_text(row):
 def is_tutor_question(row):
     return is_tutor_text(row) and '?' in row.text
 
-def build_question_response_time_sec():
+def build_question_only(split="tiny"):
     questions = []
     response_times_sec = []
 
-    data = data_readers.read_preprocessed_data()
+    data = data_readers.read_corpus(split)
     nrows = data.shape[0]
     progress = progressbar.ProgressBar(max_value=nrows).start()
     i = 0
@@ -68,28 +67,27 @@ def build_question_response_time_sec():
     progress.finish()
     return dataset
 
+def get_dest_name(split="tiny"):
+    destname = "%s_%s_dataset.csv" % (split, args.dataset.name.lower())
+    dest = os.path.join(Config.DATA_DIR, destname)
+    return dest
+
 if __name__ == "__main__":
     assert Path(Config.CORPUS_FILE).exists(), "%s does not exist" % Config.CORPUS_FILE
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--dataset", dest="dataset", type=Dataset, default=Dataset.QUESTION_RESPONSE_TIME_SEC,
-            help="Which dataset to build. Defaults to QUESTION_RESPONSE_TIME_SEC")
+    parser.add_argument("-d", "--dataset", dest="dataset", type=Dataset, default=Dataset.QUESTION_ONLY,
+            help="Which dataset to build. Defaults to QUESTION_ONLY")
     args = parser.parse_args()
 
-    destname = "%s_dataset.csv" % args.dataset.name.lower()
-    dest = os.path.join(Config.DATA_DIR, destname)
-    if Path(dest).exists():
-        delete = input("%s already exists. Do you wish to overwrite it? (y/n): " % dest)
-        while delete.lower() not in ['y', 'n']:
-            delete = input("%s is not a valid answer. Please type either 'y' or 'n'" % delete)
-        if delete =='y':
-            os.remove(dest)
-        elif delete == 'n':
-            sys.exit(0)
+    builders = {Dataset.QUESTION_ONLY: build_question_only}
 
-    builders = {Dataset.QUESTION_RESPONSE_TIME_SEC: build_question_response_time_sec}
+    print("Building the %s dataset" % args.dataset.name.lower())
 
-    dataset = builders[args.dataset]()
-    print("Extracted %s samples" % dataset.shape[0])
+    for split in Config.SPLITS:
+        print("\tBuilding %s" % split)
+        dataset = builders[args.dataset](split)
+        print("\tExtracted %s samples" % dataset.shape[0])
 
-    print("Writing dataset to %s" % dest)
-    dataset.to_csv(dest, index=False)
+        dest = get_dest_name(split)
+        print("\tWriting dataset to %s" % dest)
+        dataset.to_csv(dest, index=False)

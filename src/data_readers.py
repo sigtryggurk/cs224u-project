@@ -9,11 +9,13 @@ def read_corpus(split=None):
     converters = {"text":ast.literal_eval}
     if split is None:
         path = Config.CORPUS_FILE
+        split = "entire"
     else:
         path = Config.CORPUS_SPLIT_FILE(split)
 
     data = pd.read_csv(path, sep=",", header=0, dtype=dtypes, parse_dates=["created_at"], converters=converters)
-    print("Read Preprocessed Data with %d rows" % data.shape[0])
+
+    print("Read %s corpus with %d rows" % (split, data.shape[0]))
     return data
 
 def read_question_response_time_sec_data():
