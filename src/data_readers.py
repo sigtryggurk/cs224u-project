@@ -7,7 +7,7 @@ from config import Config
 def read_preprocessed_data():
     dtypes = {'session_id': np.int32, 'created_at': object, 'sent_from': str, 'sent_to': str, 'content_type': str}
     converters = {"text":ast.literal_eval}
-    data = pd.read_csv(Config.PREPROCESSED_DATA_FILE, sep=",", header=0, dtype=dtypes, parse_dates=["created_at"],
+    data = pd.read_csv(Config.CORPUS_FILE, sep=",", header=0, dtype=dtypes, parse_dates=["created_at"],
             converters=converters)
     print("Read Preprocessed Data with %d rows" % data.shape[0])
     return data
