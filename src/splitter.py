@@ -10,12 +10,18 @@ def get_dest(split='train'):
     path = Path(Config.CORPUS_FILE)
     return os.path.join(Config.DATA_DIR, "{split}_{stem}{ext}".format(split=split, stem=path.stem, ext=path.suffix))
 
-def train_dev_test_split(data, train=0.7, dev=0.15, test=0.15):
-    assert abs(train + dev + test - 1.0) * data.shape[0] < 1
-    print("Splitting %d rows" % data.shape[0])
-    train, dev, test = np.split(data.sample(frac=1, random_state=42), [int(train*len(data)), int((train+dev)*len(data))])
-    print("\tTrain: %d\n\tDev: %d\n\tTest: %d" % (train.shape[0], dev.shape[0], test.shape[0]))
-    return train, dev, test
+def split_data(data, tiny_f=0.01, train_f=0.7, dev_f=0.15, test_f=0.15):
+    sessions = data.session_id.unique()
+    assert abs(train_f + dev_f + test_f - 1.0) * len(sessions) < 1
+    assert tiny_f < train_f
+
+    print("Splitting %d sessions" % len(sessions))
+    np.random.seed(seed=42)
+    np.random.shuffle(sessions)
+    train_i, dev_i, test_i = np.split(sessions, [int(train_f*len(sessions)), int((train_f+dev_f)*len(sessions))])
+    tiny_i = train_i[:int(tiny_f * len(sessions))]
+    print("\tTiny: %d\n\tTrain: %d\n\tDev: %d\n\tTest: %d" % (len(tiny_i),len(train_i), len(dev_i), len(test_i)))
+    return data.iloc[tiny_i], data.iloc[train_i], data.iloc[dev_i], data.iloc[test_i]
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -30,13 +36,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     assert args.tiny < args.train
 
-    data = data_readers.read_preprocessed_data()
-    nrows = data.shape[0]
-    assert abs(args.train + args.dev + args.test - 1.0) * nrows < 1
+    data = data_readers.read_corpus()
 
-    train, dev, test = train_dev_test_split(data, train=args.train, dev=args.dev, test=args.test)
-    tiny = train.iloc[:int(args.tiny * nrows)]
-
+    tiny, train, dev, test = split_data(data, tiny_f=args.tiny, train_f=args.train, dev_f=args.dev, test_f=args.test)
     splits = {"tiny": tiny, "train": train, "dev": dev, "test": test}
 
     for name, split in splits.items():
