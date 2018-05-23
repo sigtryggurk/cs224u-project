@@ -21,7 +21,7 @@ def split_data(data, tiny_f=0.01, train_f=0.7, dev_f=0.15, test_f=0.15):
     train_i, dev_i, test_i = np.split(sessions, [int(train_f*len(sessions)), int((train_f+dev_f)*len(sessions))])
     tiny_i = train_i[:int(tiny_f * len(sessions))]
     print("\tTiny: %d\n\tTrain: %d\n\tDev: %d\n\tTest: %d" % (len(tiny_i),len(train_i), len(dev_i), len(test_i)))
-    return data.iloc[tiny_i], data.iloc[train_i], data.iloc[dev_i], data.iloc[test_i]
+    return data[data.session_id.isin(tiny_i)],  data[data.session_id.isin(train_i)],  data[data.session_id.isin(dev_i)],  data[data.session_id.isin(test_i)],
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
