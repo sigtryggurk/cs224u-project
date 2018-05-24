@@ -34,9 +34,9 @@ def read_dataset_splits(splits=Config.SPLITS, reader=read_question_only_data):
 
 
 if __name__ == "__main__":
-    data = read_dataset_splits()
-    print(data.keys())
-    #data = read_question_only_data(split="train")
+    #data = read_dataset_splits()
+    #print(data.keys())
+    data = read_question_only_data(split="tiny")
     #import matplotlib.pyplot as plt
     #plt.figure()
     #data.response_time_sec.plot.hist(bins=1000)
