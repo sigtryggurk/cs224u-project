@@ -19,13 +19,6 @@ def read_corpus(split=None):
     log_info("Read %s corpus with %d rows" % (split, data.shape[0]))
     return data
 
-def read_question_response_time_sec_data():
-    dtypes = {"response_time_sec": np.int32}
-    converters = {"question": ast.literal_eval}
-    data = pd.read_csv(Config.QUESTION_RESPONSE_TIME_SEC_DATASET_FILE, sep=",", header=0, dtype=dtypes, converters=converters)
-    log_info("Read Question-Response Time Data with %d rows" % data.shape[0])
-    return data
-
 def read_question_only_data(split="tiny"):
     dtypes = {"response_time_sec": np.int32}
     converters = {"question": ast.literal_eval}
