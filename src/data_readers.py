@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from config import Config
+from console import log_info
 
 def read_corpus(split=None):
     dtypes = {'session_id': np.int32, 'created_at': object, 'sent_from': str, 'sent_to': str, 'content_type': str}
@@ -15,14 +16,14 @@ def read_corpus(split=None):
 
     data = pd.read_csv(path, sep=",", header=0, dtype=dtypes, parse_dates=["created_at"], converters=converters)
 
-    print("Read %s corpus with %d rows" % (split, data.shape[0]))
+    log_info("Read %s corpus with %d rows" % (split, data.shape[0]))
     return data
 
 def read_question_response_time_sec_data():
     dtypes = {"response_time_sec": np.int32}
     converters = {"question": ast.literal_eval}
     data = pd.read_csv(Config.QUESTION_RESPONSE_TIME_SEC_DATASET_FILE, sep=",", header=0, dtype=dtypes, converters=converters)
-    print("Read Question-Response Time Data with %d rows" % data.shape[0])
+    log_info("Read Question-Response Time Data with %d rows" % data.shape[0])
     return data
 
 if __name__ == "__main__":
