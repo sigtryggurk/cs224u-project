@@ -99,7 +99,7 @@ def tokenize_utterances(data):
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     def tokenize(text):
         progress.update(progress.value+1)
-        return [token.string for token in tokenizer(text)]
+        return [token.string.strip() for token in tokenizer(text)]
 
     data.text = data.text.apply(tokenize)
     progress.finish()
