@@ -26,9 +26,18 @@ def read_question_response_time_sec_data():
     log_info("Read Question-Response Time Data with %d rows" % data.shape[0])
     return data
 
+def read_question_only_data(split="tiny"):
+    dtypes = {"response_time_sec": np.int32}
+    converters = {"question": ast.literal_eval}
+    data = pd.read_csv(Config.QUESTION_ONLY_DATASET_FILE(split), sep=",", header=0, dtype=dtypes, converters=converters)
+    print("Read %s_question_only data with %d rows" %(split, data.shape[0]))
+    return data
+
+
 if __name__ == "__main__":
     #data = read_corpus()
     #data = read_question_response_time_sec_data()
+    #data = read_question_only_data(split="tiny")
     #import matplotlib.pyplot as plt
     #ta.hist(column="response_time_sec", bins=1000)
     #plt.show()
@@ -36,4 +45,3 @@ if __name__ == "__main__":
     data = read_corpus()
     print(len(data.session_id))
     print(len(data.session_id.unique()))
-
