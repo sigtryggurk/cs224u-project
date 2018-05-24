@@ -26,10 +26,19 @@ def read_question_only_data(split="tiny"):
     log_info("Read %s_question_only data with %d rows" % (split, data.shape[0]))
     return data
 
+def read_dataset_splits(splits=Config.SPLITS, reader=read_question_only_data):
+    data = {}
+    for split in splits:
+        data[split] = reader(split)
+    return data
+
+
 if __name__ == "__main__":
-    pass
+    data = read_dataset_splits()
+    print(data.keys())
     #data = read_question_only_data(split="train")
     #import matplotlib.pyplot as plt
     #plt.figure()
     #data.response_time_sec.plot.hist(bins=1000)
     #plt.show()
+
