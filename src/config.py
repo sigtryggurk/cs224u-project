@@ -14,4 +14,13 @@ class Config:
 
     URL_TAG = "<url>"
     REMOVED_ROWS_FILE = join(DATA_DIR, "removed_rows.csv")
+    
+    LABEL_SHORT = "short"
+    LABEL_MEDIUM = "medium"
+    LABEL_LONG = "long"
+    LABELS = [LABEL_SHORT, LABEL_MEDIUM, LABEL_LONG]
+    THRESHOLD_SHORT = 10
+    THRESHOLD_MEDIUM = 30
+    
+    
 
