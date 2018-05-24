@@ -24,8 +24,11 @@ class Config:
     LABEL_MEDIUM = "medium"
     LABEL_LONG = "long"
     LABELS = [LABEL_SHORT, LABEL_MEDIUM, LABEL_LONG]
-    THRESHOLD_SHORT = 10
-    THRESHOLD_MEDIUM = 30
+    THRESHOLD_SHORT = 15
+    THRESHOLD_MEDIUM = 45
+    
+    SEED = 42 #For reproducibility 
+
     
     
 
