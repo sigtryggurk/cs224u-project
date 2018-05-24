@@ -1,4 +1,5 @@
 import argparse
+import numpy as np
 import os
 import pandas as pd
 import progressbar
@@ -6,11 +7,13 @@ import re
 import spacy
 
 from config import Config
+from console import log_info
 from pathlib import Path
 
 
 def read_csv(datafile):
-    data = pd.read_csv(datafile, sep=',', header=0)
+    dtypes = {"session_id": np.int32, "created_at": object, "sent_from": str, "sent_to": str, "content_type": str, "text": str}
+    data = pd.read_csv(datafile, sep=',', header=0, dtype=dtypes)
     print("\tRead %d rows" % data.shape[0])
     return data
 
@@ -116,27 +119,30 @@ if __name__ == "__main__":
         args.dest = os.path.join(str(path.parent), path.stem + "_preprocessed" + path.suffix)
 
     if Path(Config.REMOVED_ROWS_FILE).exists():
-        print("Deleting %s" % Config.REMOVED_ROWS_FILE)
+        log_info("Deleting %s" % Config.REMOVED_ROWS_FILE)
         os.remove(Config.REMOVED_ROWS_FILE)
 
-    print("Reading CSV file")
+    log_info("Reading CSV file")
     data = read_csv(args.datafile)
 
-    print("Deduping utterances")
-    data = dedupe_utterances(data)
-
-    print("Removing invalid rows")
-    data = remove_invalid_rows(data)
-
-    print("Normalizing urls")
-    data = normalize_url(data)
-
-    print("Parsing timestamps")
+    log_info("Parsing timestamps")
     data = parse_timestamps(data)
 
-    print("Tokenizing utterances")
+    log_info("Sorting data")
+    data = data.sort_values(by = ["session_id", "created_at"], ascending = [True, True], axis="index")
+
+    log_info("Deduping utterances")
+    data = dedupe_utterances(data)
+
+    log_info("Removing invalid rows")
+    data = remove_invalid_rows(data)
+
+    log_info("Normalizing urls")
+    data = normalize_url(data)
+
+    log_info("Tokenizing utterances")
     date = tokenize_utterances(data)
 
-    print("Writing to %s" % args.dest)
+    log_info("Writing to %s" % args.dest)
     data.to_csv(args.dest, index=False)
     print("\tWrote %d rows" % data.shape[0])
