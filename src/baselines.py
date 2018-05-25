@@ -1,8 +1,8 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import Ridge, LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split, ParameterGrid
+from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support
 from sklearn.svm import LinearSVC
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.dummy import DummyClassifier
@@ -47,17 +47,17 @@ def run_ridge_regression(data):
     '''
     train, dev, test = data['train'], data['dev'], data['test']
     
-    clf = Pipeline([
+    pipe = Pipeline([
             ('vect', CountVectorizer()),
             ('tfidf', TfidfTransformer()),    
-            ('clf', Ridge(random_state=SEED))            
+            ('pipe', Ridge(random_state=SEED))            
     ])
         
-    clf.fit(train['question_text'], train['response_time_sec'])
-    preds = clf.predict(dev['question_text'])
+    pipe.fit(train['question_text'], train['response_time_sec'])
+    preds = pipe.predict(dev['question_text'])
     plt.plot(dev['response_time_sec'], preds, 'bx')
     print("Regression R2: {}".format(
-            clf.score(dev['question_text'], dev['response_time_sec'])))
+            pipe.score(dev['question_text'], dev['response_time_sec'])))
 
 def plot_cm(cm, title="Confusion Matrix"):
     '''
@@ -79,7 +79,7 @@ def plot_cm(cm, title="Confusion Matrix"):
 
     plt.savefig("cm_baseline_{}.png".format(title), dpi=300)
     plt.close()
-
+    
 def run_baselines(data):
     '''
         Input: Dictionary of data (tiny, train, dev, test)
@@ -91,60 +91,103 @@ def run_baselines(data):
         Prints classification reports and saves confusion matrices as images.
         Note that F1 scores are WEIGHTED MACRO, and will be influenced
         by relative class weights.
+        
+        Grid search is done over regularization constant C, as well as 
+        penalty (logistic regression) and type of loss function (SVM).
     '''
-    train, dev, test = data['train'], data['dev'], data['test']
-    
+    train, dev, test = data['train'], data['dev'], data['test']    
+    models = {}    
+
     #Logistic regression
-    clf = Pipeline([
+    params = dict([
+        ('clf__C', [0.01, 0.1, 1, 10, 100]),
+        ('clf__class_weight', ['balanced']),
+        ('clf__penalty', ['l2', 'l1']),
+        ('clf__random_state', [SEED]),
+    ])
+
+    pipe = Pipeline([
             ('vect', CountVectorizer()),
             ('tfidf', TfidfTransformer()),    
-            ('clf', LogisticRegression(random_state=SEED, class_weight='balanced'))            
+            ('clf', LogisticRegression())            
     ])
     
-    clf.fit(train['question_text'], train['question_class'])
-    preds = clf.predict(dev['question_text'])
+    best_f1 = 0
+    best_grid = {}
+    report = []
+    cm = []
+    for g in ParameterGrid(params): 
+        pipe.set_params(**g)
+        pipe.fit(train['question_text'], train['question_class'])
+        preds = pipe.predict(dev['question_text'])
+        p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')  
+        if f > best_f1:
+            best_f1 = f
+            best_grid = g
+            report = classification_report(dev['question_class'], preds)
+            cm = confusion_matrix(dev['question_class'], preds)
     
     print("Logistic Regression: ")
-    report = classification_report(dev['question_class'], preds)
+    print(best_grid)
     print(report)
-    cm = confusion_matrix(dev['question_class'], preds)
     plot_cm(cm, title="Logistic Regression")
+    models['Logistic Regression'] = best_grid
     
-    #SVM
-    clf = Pipeline([
+    #Linear SVM    
+    params = dict([
+        ('clf__C', [0.01, 0.1, 1, 10, 100]),
+        ('clf__class_weight', ['balanced']),
+        ('clf__loss', ['squared_hinge', 'hinge']),
+        ('clf__random_state', [SEED]),
+    ])
+
+    pipe = Pipeline([
             ('vect', CountVectorizer()),
             ('tfidf', TfidfTransformer()),    
-            ('clf', LinearSVC(random_state=SEED, class_weight='balanced'))            
+            ('clf', LinearSVC())            
     ])
     
-    clf.fit(train['question_text'], train['question_class'])
-    preds = clf.predict(dev['question_text'])
+    best_f1 = 0
+    best_grid = {}
+    report = []
+    cm = []
+    for g in ParameterGrid(params):             
+        pipe.set_params(**g)
+        pipe.fit(train['question_text'], train['question_class'])
+        preds = pipe.predict(dev['question_text'])
+        p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')  
+        if f > best_f1:
+            best_f1 = f
+            best_grid = g
+            report = classification_report(dev['question_class'], preds)
+            cm = confusion_matrix(dev['question_class'], preds)
     
     print("Linear SVM: ")
-    report = classification_report(dev['question_class'], preds)
+    print(best_grid)
     print(report)
-    cm = confusion_matrix(dev['question_class'], preds)
     plot_cm(cm, title="Linear SVM")
-
+    models['Linear SVM'] = best_grid
+    
     #Dummy
-    clf = Pipeline([
+    pipe = Pipeline([
             ('vect', CountVectorizer()),
             ('tfidf', TfidfTransformer()),    
             ('clf', DummyClassifier(random_state=SEED))            
     ])
     
-    clf.fit(train['question_text'], train['question_class'])
-    preds = clf.predict(dev['question_text'])
-    
+    pipe.fit(train['question_text'], train['question_class'])
+    preds = pipe.predict(dev['question_text'])
     print("Dummy Classifier: ")
     report = classification_report(dev['question_class'], preds)
     print(report)
     cm = confusion_matrix(dev['question_class'], preds)
     plot_cm(cm, title="Dummy Classifier")
     
+    return models
+    
     #TODO: Error Analysis on baseline models.
     
 if __name__ == '__main__':
     data = read_dataset_splits(reader=read_question_only_data)
     data = add_classes(data)
-    run_baselines(data)
+    models = run_baselines(data)
