@@ -61,12 +61,14 @@ def remove_invalid_rows(data):
 
       A row is invalid if
           * the text is NaN
+          * session_id is 0
     """
     progress = progressbar.ProgressBar(max_value=data.shape[0]).start()
     invalid_utterances = []
     for i, row in data.iterrows():
-        if type(row.text) != str:
+        if type(row.text) != str or row.session_id == 0:
             invalid_utterances.append(i)
+
         progress.update(i)
     progress.finish()
 
