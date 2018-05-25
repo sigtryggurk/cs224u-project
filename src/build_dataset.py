@@ -27,9 +27,9 @@ def build_question_text_and_response_text(split="tiny"):
     sessions = data_util.get_sessions(data)
     for session in progressbar.progressbar(sessions):
         for question, response in session.iter_question_and_response():
-            questions.append(question.text)
-            responses.append(response.text)
-            response_times_sec.append((response.created_at - question.created_at).seconds)
+            questions.append(question.row.text)
+            responses.append(response.row.text)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
             session_ids.append(session.id)
 
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response": responses, "response_time_sec": response_times_sec})
@@ -45,8 +45,8 @@ def build_question_only(split="tiny"):
     progress = progressbar.ProgressBar(max_value=len(sessions)).start()
     for i, session in enumerate(sessions):
         for question, response in session.iter_question_and_response():
-            questions.append(question.text)
-            response_times_sec.append((response.created_at - question.created_at).seconds)
+            questions.append(question.row.text)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
             session_ids.append(session.id)
         progress.update(i)
 
@@ -54,8 +54,14 @@ def build_question_only(split="tiny"):
     progress.finish()
     return dataset
 
-def build_question_text_with_text_context_window(split="tiny", window_size=0):
-    pass
+def build_question_with_context_window(split="tiny", window_size=0, with_text=True, with_time=False):
+    data = data_readers.read_corpus(split)
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            print(type(question))
+            print(dir(question))
+            assert False
 
 def get_dest_name(split="tiny"):
     destname = "%s_%s_dataset.csv" % (split, args.dataset.name.lower())
@@ -71,6 +77,7 @@ if __name__ == "__main__":
     args.dataset = Dataset[args.dataset]
 
     builders = {Dataset.QUESTION_ONLY: build_question_only,
+                Dataset.QUESTION_TEXT_WITH_TEXT_CONTEXT_WINDOW_1: lambda split: build_question_with_context_window(split, window_size=1, with_text=True, with_time=False),
                 Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
