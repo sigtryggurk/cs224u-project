@@ -47,7 +47,7 @@ def split_data(data, tiny_f=0.01, train_f=0.7, dev_f=0.15, test_f=0.15):
     session_id_to_num_questions = defaultdict(int)
     num_questions_to_session_ids = defaultdict(list)
     for session in sessions:
-        num_questions = len(session.iter_question_and_response())
+        num_questions = len(tuple(session.iter_question_and_response()))
         session_id_to_num_questions[session.id] = num_questions
         num_questions_to_session_ids[num_questions].append(session.id)
 

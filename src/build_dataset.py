@@ -11,7 +11,29 @@ from enum import Enum
 from pathlib import Path
 
 class Dataset(Enum):
-    QUESTION_ONLY = 1
+    QUESTION_ONLY = 1 # TODO(siggi): Renamt to QUESTION_TEXT_ONLY
+    QUESTION_TEXT_WITH_TEXT_CONTEXT_WINDOW_1 = 2
+    QUESTION_TEXT_WTIH_TEXT_CONTEXT_WINDOW_3 = 3
+    QUESTION_TEXT_WITH_TEXT_CONTEXT_WINDOW_5 = 4
+    QUESTION_TEXT_AND_RESPONSE_TEXT = 5
+
+def build_question_text_and_response_text(split="tiny"):
+    data = data_readers.read_corpus(split)
+    questions = []
+    responses = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.text)
+            responses.append(response.text)
+            response_times_sec.append((response.created_at - question.created_at).seconds)
+            session_ids.append(session.id)
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response": responses, "response_time_sec": response_times_sec})
+    return dataset
 
 def build_question_only(split="tiny"):
     data = data_readers.read_corpus(split)
@@ -32,6 +54,9 @@ def build_question_only(split="tiny"):
     progress.finish()
     return dataset
 
+def build_question_text_with_text_context_window(split="tiny", window_size=0):
+    pass
+
 def get_dest_name(split="tiny"):
     destname = "%s_%s_dataset.csv" % (split, args.dataset.name.lower())
     dest = os.path.join(Config.DATA_DIR, destname)
@@ -40,11 +65,13 @@ def get_dest_name(split="tiny"):
 if __name__ == "__main__":
     assert Path(Config.CORPUS_FILE).exists(), "%s does not exist" % Config.CORPUS_FILE
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--dataset", dest="dataset", type=Dataset, default=Dataset.QUESTION_ONLY,
+    parser.add_argument("-d", "--dataset", dest="dataset", type=str, default=Dataset.QUESTION_ONLY.name,
             help="Which dataset to build. Defaults to QUESTION_ONLY")
     args = parser.parse_args()
+    args.dataset = Dataset[args.dataset]
 
-    builders = {Dataset.QUESTION_ONLY: build_question_only}
+    builders = {Dataset.QUESTION_ONLY: build_question_only,
+                Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
 
