@@ -8,6 +8,11 @@ def is_tutor_text(row):
 def is_tutor_question(row):
     return is_tutor_text(row) and '?' in row.text
 
+class IndexedRow:
+    def __init__(self, index, row):
+        self.index = index
+        self.row= row
+
 class Session(object):
     def __init__(self, session_id, rows):
         self.id = session_id
@@ -40,7 +45,7 @@ class Session(object):
             question.text = question_text
 
             prev_i = response_index
-            yield question, response
+            yield IndexedRow(question_index, question), IndexedRow(response_index, response)
         raise StopIteration
 
 def get_sessions(data):
