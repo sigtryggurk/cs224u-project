@@ -55,7 +55,7 @@ def split_data(data, tiny_f=0.01, train_f=0.7, dev_f=0.15, test_f=0.15):
 
     session_id_splits = defaultdict(list)
     for group in groups:
-        np.random.seed(seed=42)
+        np.random.seed(seed=Config.SEED)
         np.random.shuffle(group)
 
         train_split, dev_split, test_split = np.split(group, [int(np.round(train_f * len(group))), int(np.round((train_f + dev_f) * len(group)))])
