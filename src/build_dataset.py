@@ -2,6 +2,8 @@ import argparse
 import data_readers
 import data_util
 import os
+import pandas as pd
+import progressbar
 
 from config import Config
 from console import log_info
@@ -13,7 +15,22 @@ class Dataset(Enum):
 
 def build_question_only(split="tiny"):
     data = data_readers.read_corpus(split)
-    return data_util.get_questions_and_response_times(data)
+    questions = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    progress = progressbar.ProgressBar(max_value=len(sessions)).start()
+    for i, session in enumerate(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.text)
+            response_times_sec.append((response.created_at - question.created_at).seconds)
+            session_ids.append(session.id)
+        progress.update(i)
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response_time_sec": response_times_sec})
+    progress.finish()
+    return dataset
 
 def get_dest_name(split="tiny"):
     destname = "%s_%s_dataset.csv" % (split, args.dataset.name.lower())
