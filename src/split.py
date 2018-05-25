@@ -40,17 +40,16 @@ def split_data(data, tiny_f=0.01, train_f=0.7, dev_f=0.15, test_f=0.15):
     assert tiny_f < train_f
     log_info("Splitting %d session_ids" % len(session_ids))
 
-    log_info("Extracting Questions")
-    questions_and_response_times = data_util.get_questions_and_response_times(data)
-    log_info("Extracted %d Questions from %d sessions" % (questions_and_response_times.shape[0], len(questions_and_response_times.session_id.unique())))
+    log_info("Extracting Sessions")
+    sessions = data_util.get_sessions(data)
+    print("\tExtracted %d sessions" % len(sessions))
 
     session_id_to_num_questions = defaultdict(int)
-    for _, row in questions_and_response_times.iterrows():
-        session_id_to_num_questions[row.session_id] += 1
-
     num_questions_to_session_ids = defaultdict(list)
-    for session_id, num_questions in session_id_to_num_questions.items():
-        num_questions_to_session_ids[num_questions].append(session_id)
+    for session in sessions:
+        num_questions = len(session.iter_question_and_response())
+        session_id_to_num_questions[session.id] = num_questions
+        num_questions_to_session_ids[num_questions].append(session.id)
 
     groups = get_stratified_session_ids(num_questions_to_session_ids,  min([train_f, dev_f, test_f]))
 
@@ -66,7 +65,7 @@ def split_data(data, tiny_f=0.01, train_f=0.7, dev_f=0.15, test_f=0.15):
     # tiny is a subset of train
     session_id_splits["tiny"] = session_id_splits["train"][:int(np.round(tiny_f * len(session_ids)))]
     for split, ids in session_id_splits.items():
-        num_q = sum([session_id_to_num_questions[i] for i in ids])
+        num_q = sum([session_id_to_num_questions[id] for id in ids])
         print("\t%s: %d sessions, %d questions" % (split, len(ids), num_q))
 
     return  data[data.session_id.isin(session_id_splits["tiny"])],\

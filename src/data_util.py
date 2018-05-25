@@ -1,5 +1,3 @@
-import pandas as pd
-import progressbar
 
 def is_student_text(row):
     return row.sent_from == "student"
@@ -10,61 +8,44 @@ def is_tutor_text(row):
 def is_tutor_question(row):
     return is_tutor_text(row) and '?' in row.text
 
-def get_questions_and_response_times(data):
-    questions = []
-    response_times_sec = []
-    session_ids = []
+class Session(object):
+    def __init__(self, session_id, rows):
+        self.id = session_id
+        self.rows = rows
 
-    nrows = data.shape[0]
-    progress = progressbar.ProgressBar(max_value=nrows).start()
+    def iter_question_and_response(self):
+        last_index = max(self.rows.index)
+        questions = filter(lambda indexed_row: is_tutor_question(indexed_row[1]), self.rows.iterrows())
+        prev_i = None
+        for question_index, question in questions:
+            if question_index == last_index:
+                # Skip question if it's the last utterance in the session
+                continue
 
-    i = 0
-    while i < nrows:
-        current_row = data.iloc[i]
-        if is_tutor_question(current_row):
-            question = current_row.text
-            question_time = current_row.created_at
-            response_time = None
+            if prev_i is not None and question_index <= prev_i:
+                # Skip candidate if it was a part of the previous tutor question
+                continue
 
-            # Look back to see if tutor provided previous context
-            j = i - 1
-            while j >= 0 and is_tutor_text(data.iloc[j]):
-                prev_row = data.iloc[j]
-                if prev_row.session_id != current_row.session_id:
-                    break
+            response_index, response = next(filter(lambda indexed_row: is_student_text(indexed_row[1]), self.rows.iloc[question_index+1:].iterrows()), (-1, None))
+            if response is None:
+                # If there are no responses to a question, we can safely exit
+                raise StopIteration
 
-                question = data.iloc[j].text + question
-                j -= 1
+            # Collapse adjacent tutor messages into question text
+            start = next((i + 1 for i in range(question_index,-1,-1) if not is_tutor_text(self.rows.iloc[i])), question_index)
+            end = next((i for i in range(question_index, last_index + 1,1) if not is_tutor_text(self.rows.iloc[i])), response_index + 1)
+            question_text = []
+            for _, row in self.rows.iloc[start:end].iterrows():
+                question_text.extend(row.text)
+            question.text = question_text
 
-            # Look forward for response and potential additional tutor context
-            j = i + 1
-            while j < nrows:
-                next_row = data.iloc[j]
-                if next_row.session_id != current_row.session_id:
-                    break
+            prev_i = response_index
+            yield question, response
+        raise StopIteration
 
-                if is_student_text(next_row):
-                    response_time = next_row.created_at
-                    break
-                elif is_tutor_text(next_row):
-                    question += next_row.text
-                    #question_time = next_row.created_at
-                j += 1
-
-            if len(question) > 1 and question_time is not None and response_time is not None:
-                questions.append(question)
-                response_times_sec.append((response_time - question_time).seconds)
-                session_ids.append(current_row.session_id)
-                i = j
-
-        progress.update(i)
-        i += 1
-
-    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response_time_sec": response_times_sec})
-    progress.finish()
-    return dataset
+def get_sessions(data):
+    session_ids = data.session_id.unique()
+    return [Session(session_id, data.loc[data.session_id == session_id].reset_index()) for session_id in session_ids]
 
 if __name__ == "__main__":
-    import data_readers
-    data = data_readers.read_corpus("tiny")
-    print(len(get_questions_and_response_times(data)))
+    pass
