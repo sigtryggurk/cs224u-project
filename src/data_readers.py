@@ -30,7 +30,7 @@ def read_question_only_data(split="tiny"):
 def read_question_question_text_and_response_text_data(split="tiny"):
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
     converters = {"question": ast.literal_eval, "response": ast.literal_eval}
-    fname = Config.QUESTION_TEXT_AND_RESPONSE_TEXT_FILE(split)
+    fname = Config.QUESTION_TEXT_AND_RESPONSE_TEXT_DATASET_FILE(split)
     data = pd.read_csv(fname, sep=",", header=0, dtype=dtypes, converters=converters)
     log_info("Read %s data with %d rows" % (Path(fname).stem, data.shape[0]))
     return data
@@ -45,7 +45,7 @@ def read_dataset_splits(splits=Config.SPLITS, reader=read_question_only_data):
 if __name__ == "__main__":
     #data = read_dataset_splits()
     #print(data.keys())
-    data = read_question_only_data(split="tiny")
+    data = read_question_question_text_and_response_text_data(split="tiny")
     print(data.shape)
     #import matplotlib.pyplot as plt
     #plt.figure()
