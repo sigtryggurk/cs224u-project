@@ -18,7 +18,7 @@ class Session(object):
         self.id = session_id
         self.rows = rows
 
-    def iter_turns(self, start_row=0, num_turns=None, direction=1):
+    def iter_turns(self, start_row=0, num_turns=0, direction=1):
         assert direction in [1, -1]
         last_row = self.rows.shape[0] - 1
         assert start_row >=0 and start_row <= last_row
@@ -34,7 +34,8 @@ class Session(object):
         # Check if there's additional context and we should move start index forward
         turn_end = next((i for i in range(start_row, last_row+1) if row.sent_from != self.rows.iloc[i].sent_from), start_row)
 
-        while turn_end > 0:
+
+        while turn_end > 0 and num_turns > 0:
             turn_sender = self.rows.iloc[turn_end-1].sent_from
             turn_start = next((i + 1 for i in range(turn_end - 1, -1, -1) if self.rows.iloc[i].sent_from != turn_sender), turn_end - 1)
             turn = self.rows.iloc[turn_start]
@@ -43,6 +44,7 @@ class Session(object):
                 text.extend(row.text)
             turn.at["text"] = text
             turn_end = turn_start
+            num_turns -= 1
             yield turn
 
         raise StopIteration
@@ -81,5 +83,13 @@ def get_sessions(data):
     session_ids = data.session_id.unique()
     return [Session(session_id, data.loc[data.session_id == session_id].reset_index()) for session_id in session_ids]
 
+def test(sessions):
+    for session in sessions:
+        for turn in session.iter_turns(start_row=session.rows.shape[0]-1, num_turns=5, direction=-1):
+            pass
+
 if __name__ == "__main__":
-    pass
+    import cProfile, data_readers
+    data = data_readers.read_corpus("dev")
+    sessions = get_sessions(data)
+    cProfile.run("test(sessions)", filename="profile")

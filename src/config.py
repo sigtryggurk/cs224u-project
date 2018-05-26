@@ -20,9 +20,10 @@ class Config:
         return join(Config.DATA_DIR, "%s_question_text_and_response_text_dataset.csv" % split)
     QUESTION_TEXT_AND_RESPONSE_TEXT_DATASET_FILE = _question_text_and_response_text_dataset_file
 
-    def _question_and_window_size_dataset_file(split, window_size=1):
+    MAX_CONTEXT_WINDOW_SIZE = 10
+    def _question_and_window_size_dataset_file(split):
         assert split in Config.SPLITS
-        return join(Config.DATA_DIR, "%s_question_and_context_window_%d_dataset.csv" % (split, window_size))
+        return join(Config.DATA_DIR, "%s_question_and_context_window_dataset.csv" % split)
     QUESTION_AND_CONTEXT_WINDOW_DATASET_FILE = _question_and_window_size_dataset_file
 
     EMPTY_TAG = "<empty>"
