@@ -35,18 +35,30 @@ def read_question_text_and_response_text_data(split="tiny"):
     log_info("Read %s data with %d rows" % (Path(fname).stem, data.shape[0]))
     return data
 
+def read_question_and_context_data(split="tiny", window_size=1, include_question_text=True, include_context_text=True, include_context_speaker=True, include_context_times=False):
+    if include_context_times == True:
+        raise NotImplementedError
+    dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
+    for i in range(1, window_size+1):
+        dtypes["turn_speaker-%d" % i] = str
+    converters = {"question": ast.literal_eval}
+    for i in range(1, window_size+1):
+        converters["turn_text-%d" % i] = ast.literal_eval
+    fname = Config.QUESTION_AND_CONTEXT_WINDOW_DATASET_FILE(split, window_size)
+    data = pd.read_csv(fname, sep=",", header=0, dtype=dtypes, converters=converters)
+    log_info("Read %s data with %d rows" % (Path(fname).stem, data.shape[0]))
+    return data
+
 def read_dataset_splits(splits=Config.SPLITS, reader=read_question_only_data):
     data = {}
     for split in splits:
         data[split] = reader(split)
     return data
 
-
 if __name__ == "__main__":
     #data = read_dataset_splits()
     #print(data.keys())
-    data = read_question_text_and_response_text_data(split="tiny")
-    print(data.shape)
+    data = read_dataset_splits(reader=read_question_and_context_data)
     #import matplotlib.pyplot as plt
     #plt.figure()
     #data.response_time_sec.plot.hist(bins=1000)
