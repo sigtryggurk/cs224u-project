@@ -14,6 +14,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import itertools
+import copy
 
 SEED = Config.SEED
 random.seed(SEED)
@@ -191,3 +192,22 @@ if __name__ == '__main__':
     data = read_dataset_splits(reader=read_question_only_data)
     data = add_classes(data)
     models = run_baselines(data)
+    
+    train, dev, test = data['train'], data['dev'], data['test']    
+    dev_new = copy.deepcopy(dev)
+    pipe = Pipeline([
+            ('vect', CountVectorizer()),
+            ('tfidf', TfidfTransformer()),    
+            ('clf', LogisticRegression())            
+    ])
+    
+    g = models['Logistic Regression']
+    pipe.set_params(**g)
+    pipe.fit(train['question_text'], train['question_class'])
+    dev_new['predicted_class'] = pipe.predict(dev_new['question_text'])
+    probs = pipe.predict_proba(dev_new['question_text'])
+    dev_new['prob_long'] = probs[:,0]
+    dev_new['prob_medium'] = probs[:,1]
+    dev_new['prob_short'] = probs[:,2]
+    dev_new = dev_new.drop(['question_text'], axis=1)
+    dev_new.to_csv(Config.BASELINE_PREDS_FILE)
