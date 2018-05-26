@@ -54,6 +54,7 @@ def read_question_and_context_data(split="tiny", window_size=1, include_question
     if include_context_text:
         for i in range(1, window_size+1):
             converters["turn_text-%d" % i] = ast.literal_eval
+
     fname = Config.QUESTION_AND_CONTEXT_WINDOW_DATASET_FILE(split)
     data = pd.read_csv(fname, sep=",", header=0, dtype=dtypes, converters=converters)
 
