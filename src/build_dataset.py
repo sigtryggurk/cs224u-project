@@ -111,7 +111,7 @@ if __name__ == "__main__":
     log_info("Building the %s dataset" % args.dataset.name.lower())
 
     for split in Config.SPLITS:
-        print("\tBuilding %s" % split)
+        log_info("Building %s" % split)
         dataset = builders[args.dataset](split)
         print("\tExtracted %s samples" % dataset.shape[0])
 
