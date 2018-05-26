@@ -4,6 +4,7 @@ class Config:
     BASE_DIR = realpath(join(dirname(realpath(__file__)), '..'))
     DATA_DIR = join(BASE_DIR, "data")
     CORPUS_FILE = join(DATA_DIR, "yup_messages_preprocessed.csv")
+    BASELINE_PREDS_FILE = join(DATA_DIR, "dev_baseline_predictions_logreg.csv")
     SPLITS = ["tiny", "train", "dev", "test"]
     def _corpus_split_file(split):
         assert split in Config.SPLITS
