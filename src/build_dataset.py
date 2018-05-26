@@ -13,9 +13,7 @@ from pathlib import Path
 
 class Dataset(Enum):
     QUESTION_ONLY = 1
-    QUESTION_AND_CONTEXT_WINDOW_1 = 2
-    QUESTION_AND_CONTEXT_WINDOW_3 = 3
-    QUESTION_AND_CONTEXT_WINDOW_5 = 4
+    QUESTION_AND_CONTEXT_WINDOW = 2
     QUESTION_TEXT_AND_RESPONSE_TEXT = 5 # TODO(siggi): rename to QUESTION_AND_RESPONSE
 
 def build_question_only(split="tiny"):
@@ -46,6 +44,7 @@ def build_question_with_context_window(split="tiny", window_size=0):
     session_ids = []
     turn_texts = defaultdict(list)
     turn_speakers = defaultdict(list)
+    turn_times = defaultdict(list)
 
     for session in progressbar.progressbar(sessions):
         for question, response in session.iter_question_and_response():
@@ -53,19 +52,23 @@ def build_question_with_context_window(split="tiny", window_size=0):
             response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
             session_ids.append(session.id)
 
+            times = defaultdict(lambda: None)
             texts = defaultdict(lambda: [])
             speakers = defaultdict(lambda: Config.EMPTY_TAG)
             for i, turn in enumerate(session.iter_turns(start_row=question.index, num_turns=window_size+1, direction=-1)):
                 texts[i] = turn.text
                 speakers[i] = turn.sent_from
+                times[i] = int((question.row.created_at - turn.created_at).seconds)
 
             for i in range(1, window_size+1):
                 turn_texts["turn_text-%d" % i].append(texts[i])
                 turn_speakers["turn_speaker-%d" % i].append(speakers[i])
+                turn_times["turn_time-%d" % i].append(times[i])
 
     columns = {"session_id": session_ids, "question": questions, "response_time_sec": response_times_sec}
     columns.update(turn_texts)
     columns.update(turn_speakers)
+    columns.update(turn_times)
     dataset = pd.DataFrame.from_dict(columns)
     return dataset
 
@@ -102,7 +105,7 @@ if __name__ == "__main__":
     args.dataset = Dataset[args.dataset]
 
     builders = {Dataset.QUESTION_ONLY: build_question_only,
-                Dataset.QUESTION_AND_CONTEXT_WINDOW_1: lambda split: build_question_with_context_window(split, window_size=1, with_text=True, with_time=False),
+                Dataset.QUESTION_AND_CONTEXT_WINDOW: lambda split: build_question_with_context_window(split, window_size=Config.MAX_CONTEXT_WINDOW_SIZE),
                 Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
