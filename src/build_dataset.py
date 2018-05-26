@@ -5,35 +5,18 @@ import os
 import pandas as pd
 import progressbar
 
+from collections import defaultdict
 from config import Config
 from console import log_info
 from enum import Enum
 from pathlib import Path
 
 class Dataset(Enum):
-    QUESTION_ONLY = 1 # TODO(siggi): Renamt to QUESTION_TEXT_ONLY
+    QUESTION_ONLY = 1 # TODO(siggi): Rename to QUESTION_TEXT
     QUESTION_TEXT_WITH_TEXT_CONTEXT_WINDOW_1 = 2
     QUESTION_TEXT_WTIH_TEXT_CONTEXT_WINDOW_3 = 3
     QUESTION_TEXT_WITH_TEXT_CONTEXT_WINDOW_5 = 4
     QUESTION_TEXT_AND_RESPONSE_TEXT = 5
-
-def build_question_text_and_response_text(split="tiny"):
-    data = data_readers.read_corpus(split)
-    questions = []
-    responses = []
-    response_times_sec = []
-    session_ids = []
-
-    sessions = data_util.get_sessions(data)
-    for session in progressbar.progressbar(sessions):
-        for question, response in session.iter_question_and_response():
-            questions.append(question.row.text)
-            responses.append(response.row.text)
-            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
-            session_ids.append(session.id)
-
-    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response": responses, "response_time_sec": response_times_sec})
-    return dataset
 
 def build_question_only(split="tiny"):
     data = data_readers.read_corpus(split)
@@ -55,13 +38,57 @@ def build_question_only(split="tiny"):
     return dataset
 
 def build_question_with_context_window(split="tiny", window_size=0, with_text=True, with_time=False):
+    if with_text==False or with_time==True:
+        raise NotImplementedError
     data = data_readers.read_corpus(split)
+    sessions = data_util.get_sessions(data)
+
+    questions = []
+    response_times_sec = []
+    session_ids = []
+    turn_texts = defaultdict(list)
+    turn_speakers = defaultdict(list)
+
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.row.text)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+            session_ids.append(session.id)
+
+            texts = defaultdict(lambda: Config.EMPTY_TAG)
+            speakers = defaultdict(lambda: Config.EMPTY_TAG)
+            for i, turn in enumerate(session.iter_turns(start_row=question.index, num_turns=window_size+1, direction=-1)):
+                texts[i] = turn.text
+                speakers[i] = turn.sent_from
+
+            for i in range(1, window_size+1):
+                turn_texts["turn_text-%d" % i].append(texts[i])
+                turn_speakers["turn_speaker-%d" % i].append(speakers[i])
+
+    columns = {"session_id": session_ids, "question": questions, "response_time_sec": response_times_sec}
+    columns.update(turn_texts)
+    columns.update(turn_speakers)
+    dataset = pd.DataFrame.from_dict(columns)
+    return dataset
+
+
+def build_question_text_and_response_text(split="tiny"):
+    data = data_readers.read_corpus(split)
+    questions = []
+    responses = []
+    response_times_sec = []
+    session_ids = []
+
     sessions = data_util.get_sessions(data)
     for session in progressbar.progressbar(sessions):
         for question, response in session.iter_question_and_response():
-            print(type(question))
-            print(dir(question))
-            assert False
+            questions.append(question.row.text)
+            responses.append(response.row.text)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+            session_ids.append(session.id)
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response": responses, "response_time_sec": response_times_sec})
+    return dataset
 
 def get_dest_name(split="tiny"):
     destname = "%s_%s_dataset.csv" % (split, args.dataset.name.lower())
