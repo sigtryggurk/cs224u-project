@@ -65,11 +65,11 @@ def plot_cm(cm, title="Confusion Matrix"):
     '''
     plt.imshow(cm, cmap=plt.cm.Reds)
     plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
-    plt.xticks(np.arange(len(Config.LABELS)), Config.LABELS)
-    plt.yticks(np.arange(len(Config.LABELS)), Config.LABELS)
-    plt.title(title)
+    plt.ylabel('True label', fontsize=6)
+    plt.xlabel('Predicted label', fontsize=6)
+    plt.xticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
+    plt.yticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
+    plt.title(title, fontsize=8)
     
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
