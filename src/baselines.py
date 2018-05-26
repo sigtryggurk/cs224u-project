@@ -186,8 +186,6 @@ def run_baselines(data):
     
     return models
     
-    #TODO: Error Analysis on baseline models.
-    
 if __name__ == '__main__':
     data = read_dataset_splits(reader=read_question_only_data)
     data = add_classes(data)
@@ -201,6 +199,8 @@ if __name__ == '__main__':
             ('clf', LogisticRegression())            
     ])
     
+    #Generate results for Logistic regression and output to CSV file.
+    #True class, predicted class and class probabilities.
     g = models['Logistic Regression']
     pipe.set_params(**g)
     pipe.fit(train['question_text'], train['question_class'])
