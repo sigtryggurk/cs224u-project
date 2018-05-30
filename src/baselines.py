@@ -101,9 +101,10 @@ def run_baselines(data):
 
     #Logistic regression
     params = dict([
+        ('vect__ngram_range', [(1,1), (1,2), (1,3)]),
         ('clf__C', [0.01, 0.1, 1, 10, 100]),
-        ('clf__class_weight', ['balanced']),
         ('clf__penalty', ['l2', 'l1']),
+        ('clf__class_weight', ['balanced']),
         ('clf__random_state', [SEED]),
     ])
 
@@ -122,6 +123,8 @@ def run_baselines(data):
         pipe.fit(train['question_text'], train['question_class'])
         preds = pipe.predict(dev['question_text'])
         p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')  
+        print(g)
+        print(f)
         if f > best_f1:
             best_f1 = f
             best_grid = g
@@ -131,14 +134,15 @@ def run_baselines(data):
     print("Logistic Regression: ")
     print(best_grid)
     print(report)
-    plot_cm(cm, title="Logistic Regression")
+    plot_cm(cm, title="Logistic Regression Ngrams")
     models['Logistic Regression'] = best_grid
     
     #Linear SVM    
     params = dict([
+        ('vect__ngram_range', [(1,1), (1,2), (1,3)]),
         ('clf__C', [0.01, 0.1, 1, 10, 100]),
-        ('clf__class_weight', ['balanced']),
         ('clf__loss', ['squared_hinge', 'hinge']),
+        ('clf__class_weight', ['balanced']),
         ('clf__random_state', [SEED]),
     ])
 
@@ -157,6 +161,8 @@ def run_baselines(data):
         pipe.fit(train['question_text'], train['question_class'])
         preds = pipe.predict(dev['question_text'])
         p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')  
+        print(g)
+        print(f)
         if f > best_f1:
             best_f1 = f
             best_grid = g
@@ -166,10 +172,10 @@ def run_baselines(data):
     print("Linear SVM: ")
     print(best_grid)
     print(report)
-    plot_cm(cm, title="Linear SVM")
+    plot_cm(cm, title="Linear SVM Ngrams")
     models['Linear SVM'] = best_grid
     
-    #Dummy
+#    #Dummy
     pipe = Pipeline([
             ('vect', CountVectorizer()),
             ('tfidf', TfidfTransformer()),    
