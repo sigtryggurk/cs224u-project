@@ -14,6 +14,7 @@ import re
 
 from unicodedata import normalize
 from config import Config
+from scipy import stats
 
 SEED = Config.SEED
 random.seed(SEED)
@@ -77,3 +78,7 @@ def plot_cm(cm, title="Confusion Matrix"):
     
 def dummy_tokenizer(tokens):
     return tokens    
+
+def get_question_length(X):
+    mylen = np.vectorize(len)
+    return mylen(X).reshape(-1, 1)
