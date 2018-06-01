@@ -37,6 +37,13 @@ def add_classes(data):
         
     return data
 
+def add_question_text(data):
+    '''
+        Add question text by joining tokens with spaces, if necessary.
+    '''
+    for key, value in data.items():
+        value['question_text'] = value.apply(lambda row: 
+            ' '.join(row['question']), axis=1)
 
 _punctuation_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 
