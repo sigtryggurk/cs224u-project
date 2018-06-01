@@ -27,6 +27,13 @@ def read_question_only_data(split="tiny"):
     log_info("Read %s_question_only data with %d rows" % (split, data.shape[0]))
     return data
 
+def read_question_and_newlines_data(split="tiny"):
+    dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
+    converters = {"question": ast.literal_eval}
+    data = pd.read_csv(Config.QUESTION_AND_NEWLINES_DATASET_FILE(split), sep=",", header=0, dtype=dtypes, converters=converters)
+    log_info("Read %s_question_and_newline data with %d rows" % (split, data.shape[0]))
+    return data
+
 def read_question_and_index_data(split="tiny"):
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32, "question_index": np.int32}
     converters = {"question": ast.literal_eval}
@@ -94,6 +101,9 @@ if __name__ == "__main__":
     print(data.columns.values)
     print(data.shape)
     data = read_question_and_duration_data(split="tiny")
+    print(data.columns.values)
+    print(data.shape)
+    data = read_question_and_newlines_data(split="tiny")
     print(data.columns.values)
     print(data.shape)
     #print(data.keys())
