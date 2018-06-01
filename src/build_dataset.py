@@ -17,8 +17,9 @@ class Dataset(Enum):
     QUESTION_TEXT_AND_RESPONSE_TEXT = 5 # TODO(siggi): rename to QUESTION_AND_RESPONSE
     QUESTION_AND_INDEX = 6
     QUESTION_AND_DURATION= 7
+    QUESTION_AND_NEWLINES = 8
 
-def build_question_only(split="tiny"):
+def build_question_only(split="tiny", concatenator=None):
     data = data_readers.read_corpus(split)
     questions = []
     response_times_sec = []
@@ -27,7 +28,7 @@ def build_question_only(split="tiny"):
     sessions = data_util.get_sessions(data)
     progress = progressbar.ProgressBar(max_value=len(sessions)).start()
     for i, session in enumerate(sessions):
-        for question, response in session.iter_question_and_response():
+        for question, response in session.iter_question_and_response(concatenator=concatenator):
             questions.append(question.row.text)
             response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
             session_ids.append(session.id)
@@ -145,6 +146,7 @@ if __name__ == "__main__":
     builders = {Dataset.QUESTION_ONLY: build_question_only,
                 Dataset.QUESTION_AND_INDEX: build_question_and_index,
                 Dataset.QUESTION_AND_DURATION: build_question_and_duration,
+                Dataset.QUESTION_AND_NEWLINES: lambda split: build_question_only(split, concatenator="\n"),
                 Dataset.QUESTION_AND_CONTEXT_WINDOW: lambda split: build_question_with_context_window(split, window_size=Config.MAX_CONTEXT_WINDOW_SIZE),
                 Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
 
