@@ -44,9 +44,6 @@ class Session(object):
             raise NotImplementedError
 
         row = self.rows.iloc[start_row]
-        while start_row >= 0 and row.sent_from == "system info":
-            start_row -= 1
-            row = self.rows.iloc[start_row]
         # Check if there's additional context and we should move start index forward
         turn_speaker = get_speaker(row)
         turn_end = next((i for i in range(start_row, last_row+1) if get_speaker(self.rows.iloc[i]) != turn_speaker), start_row)
@@ -54,7 +51,7 @@ class Session(object):
 
         while turn_end > 0 and num_turns > 0:
             turn_speaker = get_speaker(self.rows.iloc[turn_end-1])
-            turn_start = next((i + 1 for i in range(turn_end - 1, -1, -1) if get_speaker(self.rows.iloc[i]) != turn_speaker), turn_end - 1)
+            turn_start = next((i + 1 for i in range(turn_end - 1, -1, -1) if get_speaker(self.rows.iloc[i]) != turn_speaker), 0)
             turn = self.rows.iloc[turn_start]
 
             text = []
