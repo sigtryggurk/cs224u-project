@@ -15,6 +15,8 @@ class Dataset(Enum):
     QUESTION_ONLY = 1
     QUESTION_AND_CONTEXT_WINDOW = 2
     QUESTION_TEXT_AND_RESPONSE_TEXT = 5 # TODO(siggi): rename to QUESTION_AND_RESPONSE
+    QUESTION_AND_INDEX = 6
+    QUESTION_AND_DURATION= 7
 
 def build_question_only(split="tiny"):
     data = data_readers.read_corpus(split)
@@ -33,6 +35,42 @@ def build_question_only(split="tiny"):
 
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response_time_sec": response_times_sec})
     progress.finish()
+    return dataset
+
+def build_question_and_index(split="tiny"):
+    data = data_readers.read_corpus(split)
+    questions = []
+    question_indices = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for (question_index, (question, response)) in enumerate(session.iter_question_and_response()):
+            questions.append(question.row.text)
+            question_indices.append(question_index)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+            session_ids.append(session.id)
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_index": question_indices, "response_time_sec": response_times_sec})
+    return dataset
+
+def build_question_and_duration(split="tiny"):
+    data = data_readers.read_corpus(split)
+    questions = []
+    question_durations_sec = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.row.text)
+            question_durations_sec.append(question.duration)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+            session_ids.append(session.id)
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_duration_sec": question_durations_sec, "response_time_sec": response_times_sec})
     return dataset
 
 def build_question_with_context_window(split="tiny", window_size=0):
@@ -105,6 +143,8 @@ if __name__ == "__main__":
     args.dataset = Dataset[args.dataset]
 
     builders = {Dataset.QUESTION_ONLY: build_question_only,
+                Dataset.QUESTION_AND_INDEX: build_question_and_index,
+                Dataset.QUESTION_AND_DURATION: build_question_and_duration,
                 Dataset.QUESTION_AND_CONTEXT_WINDOW: lambda split: build_question_with_context_window(split, window_size=Config.MAX_CONTEXT_WINDOW_SIZE),
                 Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
 

@@ -27,6 +27,20 @@ def read_question_only_data(split="tiny"):
     log_info("Read %s_question_only data with %d rows" % (split, data.shape[0]))
     return data
 
+def read_question_and_index_data(split="tiny"):
+    dtypes = {"response_time_sec": np.int32, "session_id": np.int32, "question_index": np.int32}
+    converters = {"question": ast.literal_eval}
+    data = pd.read_csv(Config.QUESTION_AND_INDEX_DATASET_FILE(split), sep=",", header=0, dtype=dtypes, converters=converters)
+    log_info("read %s_question_and_index data with %d rows" % (split, data.shape[0]))
+    return data
+
+def read_question_and_duration_data(split="tiny"):
+    dtypes = {"response_time_sec": np.int32, "session_id": np.int32, "question_duration_sec": np.int32}
+    converters = {"question": ast.literal_eval}
+    data = pd.read_csv(Config.QUESTION_AND_DURATION_DATASET_FILE(split), sep=",", header=0, dtype=dtypes, converters=converters)
+    log_info("read %s_question_and_duration data with %d rows" % (split, data.shape[0]))
+    return data
+
 def read_question_text_and_response_text_data(split="tiny"):
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
     converters = {"question": ast.literal_eval, "response": ast.literal_eval}
@@ -71,8 +85,17 @@ def read_dataset_splits(splits=Config.SPLITS, reader=read_question_only_data):
     return data
 
 if __name__ == "__main__":
-    data = read_corpus()
-    print(data.sent_from.unique())
+    #data = read_corpus()
+    #print(data.sent_from.unique())
+    data = read_question_only_data(split="tiny")
+    print(data.columns.values)
+    print(data.shape)
+    data = read_question_and_index_data(split="tiny")
+    print(data.columns.values)
+    print(data.shape)
+    data = read_question_and_duration_data(split="tiny")
+    print(data.columns.values)
+    print(data.shape)
     #print(data.keys())
     #data = read_dataset_splits(reader=read_question_and_context_data)
     #data = read_dataset_splits(reader = lambda split: read_question_and_context_data(split=split, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=True, include_context_times=True))

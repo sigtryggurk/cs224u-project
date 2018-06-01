@@ -16,6 +16,16 @@ class Config:
         return join(Config.DATA_DIR, "%s_question_only_dataset.csv" % split)
     QUESTION_ONLY_DATASET_FILE = _question_only_dataset_file
 
+    def _question_and_index_dataset_file(split):
+        assert split in Config.SPLITS
+        return join(Config.DATA_DIR, "%s_question_and_index_dataset.csv" % split)
+    QUESTION_AND_INDEX_DATASET_FILE = _question_and_index_dataset_file
+
+    def _question_and_duration_dataset_file(split):
+        assert split in Config.SPLITS
+        return join(Config.DATA_DIR, "%s_question_and_duration_dataset.csv" % split)
+    QUESTION_AND_DURATION_DATASET_FILE = _question_and_duration_dataset_file
+
     def _question_text_and_response_text_dataset_file(split):
         assert split in Config.SPLITS
         return join(Config.DATA_DIR, "%s_question_text_and_response_text_dataset.csv" % split)
