@@ -31,6 +31,11 @@ class Config:
     URL_TAG = "<url>"
     REMOVED_ROWS_FILE = join(DATA_DIR, "removed_rows.csv")
 
+    STUDENT_SPEAKERS = ["student"]
+    TUTOR_SPEAKERS = ["tutor"]
+    SYSTEM_SPEAKERS =  ["system info", "system alert", "system warn", "bot"]
+    PLATFORM_SPEAKERS = TUTOR_SPEAKERS  + SYSTEM_SPEAKERS
+
     LABEL_SHORT = "short"
     LABEL_MEDIUM = "medium"
     LABEL_LONG = "long"

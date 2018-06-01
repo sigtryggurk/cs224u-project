@@ -71,10 +71,11 @@ def read_dataset_splits(splits=Config.SPLITS, reader=read_question_only_data):
     return data
 
 if __name__ == "__main__":
-    #data = read_dataset_splits()
+    data = read_corpus()
+    print(data.sent_from.unique())
     #print(data.keys())
     #data = read_dataset_splits(reader=read_question_and_context_data)
-    data = read_question_and_context_data(split="tiny", window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=True, include_context_times=True)
+    #data = read_dataset_splits(reader = lambda split: read_question_and_context_data(split=split, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=True, include_context_times=True))
     #import matplotlib.pyplot as plt
     #plt.figure()
     #data.response_time_sec.plot.hist(bins=1000)
