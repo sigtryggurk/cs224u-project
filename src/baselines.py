@@ -1,86 +1,21 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import Ridge, LogisticRegression
-from sklearn.model_selection import train_test_split, ParameterGrid
+from sklearn.model_selection import ParameterGrid
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support
+from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
-from sklearn.naive_bayes import MultinomialNB
 from sklearn.dummy import DummyClassifier
 
 from data_readers import read_question_only_data, read_dataset_splits
 from config import Config
+from model_utils import extend_question_class, add_classes, plot_cm, dummy_tokenizer
 
-import numpy as np
-import matplotlib.pyplot as plt
 import random
-import itertools
 import copy
 
 SEED = Config.SEED
 random.seed(SEED)
 
-def extend_question_class(time):
-    if time < Config.THRESHOLD_SHORT:
-        return Config.LABEL_SHORT
-    elif time < Config.THRESHOLD_MEDIUM:
-        return Config.LABEL_MEDIUM
-    else:
-        return Config.LABEL_LONG
-    
-def add_classes(data):
-    '''
-        Add label corresponding to question class.
-        Also create a new column with text to make it easier for sklearn's
-        CountVectorizer/TfidfTransformer API.
-    '''
-    for key, value in data.items():
-        value['question_text'] = value.apply(lambda row: " ".join(row['question']), axis=1)
-        value['question_class'] = value.apply(lambda row: 
-            extend_question_class(row['response_time_sec']), axis=1)
-        
-    return data
-
-def run_ridge_regression(data):
-    ''' 
-        Run ridge regression on raw training data.
-        Probably not going to be used as we decided to make it a 
-        classification problem.
-    '''
-    train, dev, test = data['train'], data['dev'], data['test']
-    
-    pipe = Pipeline([
-            ('vect', CountVectorizer()),
-            ('tfidf', TfidfTransformer()),    
-            ('pipe', Ridge(random_state=SEED))            
-    ])
-        
-    pipe.fit(train['question_text'], train['response_time_sec'])
-    preds = pipe.predict(dev['question_text'])
-    plt.plot(dev['response_time_sec'], preds, 'bx')
-    print("Regression R2: {}".format(
-            pipe.score(dev['question_text'], dev['response_time_sec'])))
-
-def plot_cm(cm, title="Confusion Matrix"):
-    '''
-        Takes in a confusion matrix and saves it as a PNG image.
-    '''
-    plt.imshow(cm, cmap=plt.cm.Reds)
-    plt.tight_layout()
-    plt.ylabel('True label', fontsize=6)
-    plt.xlabel('Predicted label', fontsize=6)
-    plt.xticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
-    plt.yticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
-    plt.title(title, fontsize=8)
-    
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, format(cm[i, j], 'd'),
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-
-    plt.savefig("cm_baseline_{}.png".format(title), dpi=300)
-    plt.close()
-    
 def run_baselines(data):
     '''
         Input: Dictionary of data (tiny, train, dev, test)
@@ -101,16 +36,14 @@ def run_baselines(data):
 
     #Logistic regression
     params = dict([
-        ('clf__C', [0.01, 0.1, 1, 10, 100]),
-        ('clf__class_weight', ['balanced']),
-        ('clf__penalty', ['l2', 'l1']),
-        ('clf__random_state', [SEED]),
+        ('clf__C', [0.1]),
+        #('clf__penalty', ['l2', 'l1']),        
     ])
 
     pipe = Pipeline([
-            ('vect', CountVectorizer()),
+            ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
             ('tfidf', TfidfTransformer()),    
-            ('clf', LogisticRegression())            
+            ('clf', LogisticRegression(class_weight='balanced', random_state=SEED))            
     ])
     
     best_f1 = 0
@@ -119,9 +52,11 @@ def run_baselines(data):
     cm = []
     for g in ParameterGrid(params): 
         pipe.set_params(**g)
-        pipe.fit(train['question_text'], train['question_class'])
-        preds = pipe.predict(dev['question_text'])
+        pipe.fit(train['question'], train['question_class'])
+        preds = pipe.predict(dev['question'])
         p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')  
+        print(g)
+        print(f)
         if f > best_f1:
             best_f1 = f
             best_grid = g
@@ -134,18 +69,16 @@ def run_baselines(data):
     plot_cm(cm, title="Logistic Regression")
     models['Logistic Regression'] = best_grid
     
-    #Linear SVM    
+#    #Linear SVM    
     params = dict([
-        ('clf__C', [0.01, 0.1, 1, 10, 100]),
-        ('clf__class_weight', ['balanced']),
-        ('clf__loss', ['squared_hinge', 'hinge']),
-        ('clf__random_state', [SEED]),
+        ('clf__C', [0.01]),
+        #('clf__loss', ['hinge', 'squared_hinge']),        
     ])
 
     pipe = Pipeline([
-            ('vect', CountVectorizer()),
+            ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
             ('tfidf', TfidfTransformer()),    
-            ('clf', LinearSVC())            
+            ('clf', LinearSVC(class_weight='balanced', random_state=SEED))            
     ])
     
     best_f1 = 0
@@ -154,9 +87,11 @@ def run_baselines(data):
     cm = []
     for g in ParameterGrid(params):             
         pipe.set_params(**g)
-        pipe.fit(train['question_text'], train['question_class'])
-        preds = pipe.predict(dev['question_text'])
+        pipe.fit(train['question'], train['question_class'])
+        preds = pipe.predict(dev['question'])
         p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')  
+        print(g)
+        print(f)
         if f > best_f1:
             best_f1 = f
             best_grid = g
@@ -171,13 +106,13 @@ def run_baselines(data):
     
     #Dummy
     pipe = Pipeline([
-            ('vect', CountVectorizer()),
+            ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
             ('tfidf', TfidfTransformer()),    
             ('clf', DummyClassifier(random_state=SEED))            
     ])
     
-    pipe.fit(train['question_text'], train['question_class'])
-    preds = pipe.predict(dev['question_text'])
+    pipe.fit(train['question'], train['question_class'])
+    preds = pipe.predict(dev['question'])
     print("Dummy Classifier: ")
     report = classification_report(dev['question_class'], preds)
     print(report)
@@ -185,8 +120,6 @@ def run_baselines(data):
     plot_cm(cm, title="Dummy Classifier")
     
     return models
-    
-    #TODO: Error Analysis on baseline models.
     
 if __name__ == '__main__':
     data = read_dataset_splits(reader=read_question_only_data)
@@ -196,18 +129,20 @@ if __name__ == '__main__':
     train, dev, test = data['train'], data['dev'], data['test']    
     dev_new = copy.deepcopy(dev)
     pipe = Pipeline([
-            ('vect', CountVectorizer()),
+            ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
             ('tfidf', TfidfTransformer()),    
-            ('clf', LogisticRegression())            
+            ('clf', LogisticRegression(class_weight='balanced', random_state=SEED))            
     ])
     
-    g = models['Logistic Regression']
-    pipe.set_params(**g)
-    pipe.fit(train['question_text'], train['question_class'])
-    dev_new['predicted_class'] = pipe.predict(dev_new['question_text'])
-    probs = pipe.predict_proba(dev_new['question_text'])
-    dev_new['prob_long'] = probs[:,0]
-    dev_new['prob_medium'] = probs[:,1]
-    dev_new['prob_short'] = probs[:,2]
-    dev_new = dev_new.drop(['question_text'], axis=1)
-    dev_new.to_csv(Config.BASELINE_PREDS_FILE)
+    #Generate results for Logistic regression and output to CSV file.
+    #True class, predicted class and class probabilities.
+#    g = models['Logistic Regression']
+#    pipe.set_params(**g)
+#    pipe.fit(train['question'], train['question_class'])
+#    dev_new['predicted_class'] = pipe.predict(dev_new['question'])
+#    probs = pipe.predict_proba(dev_new['question'])
+#    dev_new['prob_long'] = probs[:,0]
+#    dev_new['prob_medium'] = probs[:,1]
+#    dev_new['prob_short'] = probs[:,2]
+#    dev_new = dev_new.drop(['question'], axis=1)
+#    dev_new.to_csv(Config.BASELINE_PREDS_FILE)
