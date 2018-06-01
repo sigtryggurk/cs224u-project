@@ -24,9 +24,10 @@ def get_speaker(row):
 
 
 class IndexedRow:
-    def __init__(self, index, row):
+    def __init__(self, index, row, duration=None):
         self.index = index
-        self.row= row
+        self.row = row
+        self.duration = duration
 
 class Session(object):
     def __init__(self, session_id, rows):
@@ -102,9 +103,10 @@ class Session(object):
             if concatenator is not None and question_text[-1] == concatenator:
                 question_text = question_text[:-1]
             question.text = question_text
+            duration = (self.rows.iloc[end - 1].created_at - self.rows.iloc[start].created_at).seconds
 
             prev_i = response_index
-            yield IndexedRow(question_index, question), IndexedRow(response_index, response)
+            yield IndexedRow(question_index, question, duration), IndexedRow(response_index, response)
         raise StopIteration
 
 def get_sessions(data):
