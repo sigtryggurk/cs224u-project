@@ -56,6 +56,13 @@ def read_question_text_and_response_text_data(split="tiny"):
     log_info("Read %s data with %d rows" % (Path(fname).stem, data.shape[0]))
     return data
 
+def read_question_and_sentiment_data(split="tiny"):
+    dtypes = {"response_time_sec": np.int32, "session_id": np.int32, "sentiment": np.int32}
+    converters = {"question": ast.literal_eval}
+    data = pd.read_csv(Config.QUESTION_AND_SENTIMENT_DATASET_FILE(split), sep=",", header=0, dtype=dtypes, converters=converters)
+    log_info("read %s_question_and_sentiment data with %d rows" % (split, data.shape[0]))
+    return data
+
 def read_question_and_context_data(split="tiny", window_size=1, include_question_text=True, include_context_text=True, include_context_speaker=True, include_context_times=False):
     assert window_size <= Config.MAX_CONTEXT_WINDOW_SIZE
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
@@ -104,6 +111,9 @@ if __name__ == "__main__":
     print(data.columns.values)
     print(data.shape)
     data = read_question_and_newlines_data(split="tiny")
+    print(data.columns.values)
+    print(data.shape)
+    data = read_question_and_sentiment_data(split="tiny")
     print(data.columns.values)
     print(data.shape)
     #print(data.keys())
