@@ -80,8 +80,13 @@ def run_with_question_length(data):
     ])
 
     pipe = Pipeline([
-            ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
-            ('tfidf', TfidfTransformer()),    
+            ('features', FeatureUnion([
+                ('text', Pipeline([
+                    ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
+                    ('tfidf', TfidfTransformer()),
+                ])),
+                ('length', FunctionTransformer(get_question_length, validate=False)),
+            ])),
             ('clf', LinearSVC(class_weight='balanced', random_state=SEED))            
     ])
     
