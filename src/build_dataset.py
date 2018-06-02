@@ -105,7 +105,7 @@ def build_question_and_sentiment(split="tiny"):
     sessions = data_util.get_sessions(data)
 
     combined_results = defaultdict(list)
-    for session_result in progressbar.progressbar(pool.imap(process_session, sessions)):
+    for session_result in progressbar.progressbar(pool.imap(process_session, sessions), max_value=len(sessions)):
         for k, v in session_result.items():
             combined_results[k].extend(v)
     session_ids = combined_results["session_ids"]
