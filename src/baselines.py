@@ -8,7 +8,7 @@ from sklearn.dummy import DummyClassifier
 
 from data_readers import read_question_only_data, read_dataset_splits
 from config import Config
-from model_utils import extend_question_class, add_classes, plot_cm, dummy_tokenizer
+from model_utils import get_response_time_label, add_classes, plot_cm, dummy_tokenizer
 
 import random
 import copy

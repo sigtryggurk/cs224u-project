@@ -110,11 +110,6 @@ def get_sessions(data):
     session_ids = data.session_id.unique()
     return [Session(session_id, data.loc[data.session_id == session_id].reset_index()) for session_id in session_ids]
 
-def test(sessions):
-    for session in sessions:
-        for turn in session.iter_turns(start_row=session.rows.shape[0]-1, num_turns=5, direction=-1):
-            pass
-
 if __name__ == "__main__":
     import cProfile, data_readers
     data = data_readers.read_corpus("dev")

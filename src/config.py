@@ -2,6 +2,7 @@ from os.path import dirname, realpath, join
 
 class Config:
     BASE_DIR = realpath(join(dirname(realpath(__file__)), '..'))
+    RUNS_DIR = join(BASE_DIR, "runs")
     DATA_DIR = join(BASE_DIR, "data")
     CORPUS_FILE = join(DATA_DIR, "yup_messages_preprocessed.csv")
     CORE_NLP_DIR = join(BASE_DIR, "stanford-corenlp-full-2018-02-27")
