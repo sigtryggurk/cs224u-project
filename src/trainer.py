@@ -7,13 +7,27 @@ from data_readers import read_question_only_data, read_dataset_splits
 from model_utils import dummy_tokenizer
 from pathlib import Path
 from progressbar import progressbar
+from sklearn.base import TransformerMixin
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support, f1_score
 from sklearn.model_selection import ParameterSampler
+from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
 
 random.seed(Config.SEED)
+
+
+class DenseTransformer(TransformerMixin):
+    def transform(self, X, y=None, **fit_params):
+        return X.todense()
+
+    def fit_transform(self, X, y=None, **fit_params):
+        self.fit(X, y, **fit_params)
+        return self.transform(X)
+
+    def fit(self, X, y=None, **fit_params):
+        return self
 
 class SklearnTrainer(object):
     def __init__(self, model, params_range, n_samples, model_name, data_name):
@@ -43,10 +57,10 @@ class SklearnTrainer(object):
         self.eval(X_dev, y_dev, split="dev")
 
     def eval(self, X, y, split="tiny"):
-        preds = self.best_clf.predict(X)
         split_dir = self.directory.joinpath(split)
         split_dir.mkdir(parents=True, exist_ok=True)
 
+        preds = self.best_clf.predict(X)
         precision, recall, f1, support = precision_recall_fscore_support(y, preds, average='weighted')
         with split_dir.joinpath("results").open(mode='w') as results_file:
             print("Precision: %.4f" % (precision if precision is not None else -1), file=results_file)
@@ -60,20 +74,21 @@ class SklearnTrainer(object):
 
         cm = confusion_matrix(y, preds)
         with split_dir.joinpath("confusion_matrix").open(mode='w') as cm_file:
-            print(cm, file=cm_file)
+            np.savetxt(cm_file, cm, fmt="%d")
 
         with split_dir.joinpath("params").open(mode='w') as params_file:
             print(self.best_params, file=params_file)
 
 if __name__ == '__main__':
-    params = {'clf__C': np.logspace(-4, 4, 100), 'clf__penalty': ['l2', 'l1']}
+    params = {}#{'clf__C': np.logspace(-4, 4, 100), 'clf__penalty': ['l2', 'l1']}
 
     model = Pipeline([
             ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
             ('tfidf', TfidfTransformer()),
-            ('clf', LogisticRegression(class_weight='balanced', random_state=Config.SEED))
+            ('to_dense', DenseTransformer()),
+            ('clf', GaussianNB())
     ])
     data = read_dataset_splits(reader=read_question_only_data, prepare=True)
-    trainer = SklearnTrainer(model, params, 5, "logistic_regression", "question_only")
+    trainer = SklearnTrainer(model, params, 1, "nb", "question_only")
 
     trainer.train(data.train, data.dev)

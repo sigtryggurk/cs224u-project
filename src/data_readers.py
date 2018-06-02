@@ -28,8 +28,8 @@ def prepare_data(data, X_cols, X_comb=one, y_col="response_time_sec", y_func=get
     assert type(y_col) == str
 
     X = data[X_cols].reset_index(drop=True).apply(X_comb, axis="columns").values
-    y = data[y_col].apply(y_func).values.ravel()
-    return X, y
+    y = data[y_col].apply(y_func).values
+    return (X, y)
 
 def read_question_only_data(split="tiny", prepare=False):
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
