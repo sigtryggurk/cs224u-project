@@ -8,7 +8,7 @@ import progressbar
 
 from collections import defaultdict
 from config import Config
-from console import log_info
+from console import log_info, log_warning
 from enum import Enum
 from pathlib import Path
 from stanfordcorenlp import StanfordCoreNLP
@@ -77,8 +77,18 @@ def build_question_and_duration(split="tiny"):
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_duration_sec": question_durations_sec, "response_time_sec": response_times_sec})
     return dataset
 
+
+
 def build_question_and_sentiment(split="tiny"):
     nlp = StanfordCoreNLP(Config.CORE_NLP_FILE)
+    def get_mean_sentiment(text):
+        try:
+            annotated = nlp._request(annotators="sentiment", data=text)
+        except:
+            log_warning("Sentiment annotation failed. Defaulting to neutral sentiment")
+            print("\t" + text)
+            return 2
+        return np.mean([int(sentence["sentimentValue"]) for sentence in annotated["sentences"]])
 
     data = data_readers.read_corpus(split)
     questions = []
@@ -92,9 +102,7 @@ def build_question_and_sentiment(split="tiny"):
             questions.append(question.row.text)
             response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
             session_ids.append(session.id)
-
-            annotated = nlp._request(annotators="sentiment", data=" ".join(question.row.text))
-            sentiment = np.mean([int(sentence["sentimentValue"]) for sentence in annotated["sentences"]])
+            sentiment = get_mean_sentiment(" ".join(question.row.text))
             sentiments.append(sentiment)
 
     nlp.close()
@@ -180,7 +188,7 @@ if __name__ == "__main__":
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
 
-    for split in Config.SPLITS:
+    for split in ["dev"]:#Config.SPLITS:
         log_info("Building %s" % split)
         dataset = builders[args.dataset](split)
         print("\tExtracted %s samples" % dataset.shape[0])
