@@ -1,0 +1,679 @@
+session_id,train,sequence,turn_speaker,turn_text,turn_time,response_time_sec,rate_heresml,response_speed,response_time_train,var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,var21,var22,var23,var24,var25,var26,rated_session,max_session
+322582,0,10,platform,"['Cool', 'problem', '!', 'Finding', 'you', 'a', 'tutor', 'right', 'now', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",,,x,,,29,31,18,78,,,,,,,,,,,,,0,1
+322582,0,9,student,"['🙌', 'Nice']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,8,platform,"['Have', 'you', 'done', 'any', 'work', 'on', 'this', 'problem', '?', 'If', 'so', ',', '📷', 'it', '!', 'Sharing', 'even', 'the', 'tiniest', 'bit', 'of', 'work', 'will', 'help', 'your', 'tutor', 'help', 'you', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,7,student,"['No', 'picture']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,6,platform,"['No', 'worries', '😌', 'your', 'tutor', 'can', 'help', 'you', 'from', 'the', 'beginning', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,5,student,"['Alright', '👌']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,4,platform,"['SESSION', 'STARTED', 'AT', '9:43', 'AM']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,3,student,"['Hi', '!']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,2,platform,"['Hi', 'there', ',', 'I', 'm', 'Oliver', 'and', 'Ill', 'be', 'helping', 'you', 'with', 'this', 'problem']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,1,student,"['I', 'have', 'not', 'begun', 'the', 'problem', 'yet', '!']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322582,0,0,tutor,"['OK', 'no', 'problem', 'do', 'you', 'have', 'any', 'ideas', ',', 'or', 'equations', 'that', 'you', 'think', 'you', 'can', 'use', 'to', 'solve', 'this', 'problem', '?']",,77,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+322551,0,10,platform,"['Hi', 'Layla', '!', 'Welcome', 'to', 'Yup', '!', 'I', '’m', 'Ms', '.', 'Vavilakolanu', 'and', 'I', '’ll', 'be', 'helping', 'you', 'out', 'with', 'your', 'graph', '.', 'What', 'was', 'the', 'question', 'asked', 'for', 'this', 'graph', '?']",,,x,,,,,,,,,,,,,,,,,,,0,1
+322551,0,9,student,"['Thank', 'you', '.', 'I', 'believe', 'the', 'answer', 'is', '-3', 'since', 'it', 'is', 'the', 'common', 'x', 'coordinate']",54,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,8,platform,"['Good', 'work', 'there', '!']",38,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,7,student,"['the', 'question', 'asks', 'for', 'the', 'x', 'coordinate', 'of', 'the', 'solution', 'to', 'the', 'system', 'of', 'equation']",28,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,6,platform,"['The', 'solution', 'point', 'is', 'the', 'point', 'at', 'the', 'intersection', 'of', 'both', 'the', 'lines', '.', 'The', 'two', 'lines', 'represent', 'the', 'system', 'of', 'equations', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,5,student,"['It', 'is', 'the', 'intersection', ',', 'right']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,4,platform,"['That', 'is', 'right', '!', 'What', 'do', 'you', 'think', 'would', 'be', 'the', 'y', '-', 'coordinate', '?']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,3,student,"['<url>', 'y', 'is', '1']",42,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,2,platform,"['Excellent', '!', 'Let', 'me', 'look', 'your', 'next', 'question', '.', 'Please', 'give', 'me', 'a', 'minute', '.']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,1,student,"['I', 'am', 'trying', 'out', 'the', 'app', 'for', 'school', '.', 'it', 'is', 'good', 'to', 'talk', 'to', 'a', 'teacher']",38,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322551,0,0,tutor,"['Are', 'you', 'currently', 'working', 'on', 'a', 'test', '?']",,15,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+322518,0,10,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'BTW', ',', 'participation', 'is', 'important', '✅', 'Not', 'only', 'will', 'you', 'get', 'your', 'work', 'done', 'faster', ',', 'but', 'next', 'time', 'you', '’ll', 'be', 'able', 'to', 'solve', 'problems', 'on', 'your', 'own', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+322518,0,9,student,"['Got', 'it', '!']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,8,platform,"['SESSION', 'STARTED', 'AT', '12:54', 'PM']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,7,student,"['Hello', 'I', 'was', 'wondering', 'if', 'you', 'could', 'help', 'me', 'with', 'restricting', 'the', 'range', 'of', 'the', 'function', 'above']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,6,platform,"['Hello', 'Erica', '!', 'Welcome', 'to', 'Yup', '!']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,5,student,"['Thanks', '!']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,4,platform,"['Please', 'give', 'me', 'a', 'moment', 'to', 'review', 'your', 'problem', '.', 'Great', '!', 'Can', 'you', 'tell', 'me', 'how', 'far', 'you', 'have', 'gotten', 'on', 'this', 'question', '?']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,3,student,"['I', 'want', 'to', 'restrict', 'the', 'range', 'so', 'that', '0', 'is', 'less', 'than', 'or', 'equal', 'to', 'y', 'which', 'is', 'less', 'than', 'or', 'equal', 'to', '2', ',', 'but', 'I', 'do', ""n't"", 'know', 'how', 'to', 'do', 'that', 'since', 'the', 'polar', 'equation', 'is', 'not', 'in', 'terms', 'of', 'y.', 'And', 'it', 'has', 'to', 'be', 'in', 'polar', 'form']",119,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,2,platform,"['Here', 'we', 'have', 'to', 'find', 'the', 'range', 'of', '12sec(theta', ')', 'right', '?']",66,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,1,student,"['I', 'know', 'that', 'the', 'range', 'is', 'all', 'real', 'numbers', ',', 'but', 'I', 'want', 'to', 'restrict', 'it']",36,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322518,0,0,tutor,"['Not', 'quite', ',', 'good', 'try', 'though', '.', 'HEADS', 'UP', '!', 'OUT', 'OF', 'MINUTES', 'IN', '5', 'MINS', '.', 'Do', 'you', 'have', 'any', 'idea', 'on', 'what', 'would', 'be', 'the', 'range', 'of', 'sec(theta', ')', 'function', '?']",,18,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+322473,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+322473,0,6,platform,"['Welcome', 'Bobbie', 'Rae', ',', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'The', 'tutor', 'will', 'look', 'over', 'your', 'problem', 'quickly', 'and', 'then', 'you', 'can', 'get', 'going', '.', '🚀', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322473,0,5,student,"['Alright', '👌']",12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322473,0,4,platform,"['SESSION', 'STARTED', 'AT', '2:41', 'PM', 'Hi', 'Bobbie', 'Rae', '!', 'Welcome', 'back', '!', 'I', ""'m"", 'Ms.', 'Herring', ',', 'your', 'tutor', 'for', 'this', 'session', '.']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322473,0,3,student,"['Finally', 'a', 'lady', '!']",19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322473,0,2,platform,"['I', ""'m"", 'afraid', 'your', 'picture', 'is', 'too', 'blurry', 'for', 'me', 'to', 'read', '.', 'Would', 'you', 'please', 'try', 'to', 'retake', 'it', '?']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322473,0,1,student,"['<url>', 'What', 'does', 'that', 'mean']",30,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322473,0,0,tutor,"['It', 'appears', 'to', 'be', 'a', 'drawing', 'of', 'the', 'mathematical', 'constant', 'pi', '.', 'What', 'are', 'you', 'wondering', 'about', '?']",,13,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+322166,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+322166,0,2,platform,"['Hi', 'Casey', ',', 'welcome', 'to', 'Yup', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '3:24', 'PM']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322166,0,1,student,['Hi'],19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322166,0,0,tutor,"['Hello', 'and', 'welcome', '!', 'Is', 'this', 'an', 'integral', '?']",,1,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+322104,0,10,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', '👍', '👍', 'It', '’s', 'sent', '!', 'You', '’ll', 'be', 'done', 'with', 'your', 'homework', 'in', 'no', 'time', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+322104,0,9,student,"['Sounds', 'good', '👍']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,8,platform,"['Want', 'to', 'hear', 'a', 'Pro', 'Yup', 'Tip?', '...', 'Yes', '?', '🎁', ':', 'Yup', 'believes', 'teaching', 'you', 'how', 'to', 'solve', 'problems', 'is', 'better', 'than', 'giving', 'you', 'answers', '.', '💯']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,7,student,"['Any', 'other', 'tips', '?']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,6,platform,"['SESSION', 'STARTED', 'AT', '10:19', 'PM']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,5,student,"['It', ""'s"", 'F']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,4,platform,"['Hi', 'Caroline', '!', 'Welcome', 'to', 'yup', '!']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,3,student,['Thx'],12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,2,platform,"['Would', 'you', 'mind', 'to', 'send', 'me', 'the', 'whole', 'question', '?']",33,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,1,student,['<url>'],36,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+322104,0,0,tutor,"['How', 'much', 'progress', 'you', 'have', 'made', 'for', 'this', 'one', '?']",,28,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+322066,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+322066,0,2,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Thanks', 'for', 'signing', 'up', 'Lizzy', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322066,0,1,student,"['Yo', '😎']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+322066,0,0,tutor,"['The', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'Tutors', 'care', 'just', 'as', 'much', 'about', 'learning', 'as', 'finding', 'the', 'answer', 'so', 'be', 'sure', 'to', 'participate', ',', 'and', 'ask', 'questions', 'if', 'you', 'are', 'n’t', 'following', 'along', '✅', 'SESSION', 'STARTED', 'AT', '8:21', 'PM', 'Hi', 'Lizzy', '!', 'Welcome', 'back', 'to', 'Yup', '!', ':)', '', 'I', '’m', 'Mr.', 'Kushwaha', 'and', 'I', '’ll', 'be', 'your', 'tutor', 'for', 'this', 'session', '.', 'How', 'can', 'I', 'help', 'you', 'today', 'with', 'your', 'math', 'problems', '?', 'Sorry', 'I', 'just', 'got', 'the', 'image', '.']",,31,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321830,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+321830,0,4,platform,"['Hi', 'Ahmad', ',', 'welcome', 'to', 'Yup', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321830,0,3,student,['Hello'],3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321830,0,2,platform,"['BTW', ',', 'participation', 'is', 'important', '✅', 'Not', 'only', 'will', 'you', 'get', 'your', 'work', 'done', 'faster', ',', 'but', 'next', 'time', 'you', '’ll', 'be', 'able', 'to', 'solve', 'problems', 'on', 'your', 'own', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321830,0,1,student,"['🙌', 'Nice']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321830,0,0,tutor,"['Have', 'you', 'started', 'on', 'the', 'problem', 'at', 'all', '?', '📷', 'your', 'work', 'and', 'share', 'with', 'your', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sharing', 'too', 'little', 'work', '😊', 'SESSION', 'STARTED', 'AT', '4:28', 'PM', 'Hi', 'Ahmad', 'I', 'have', 'gone', 'over', 'your', 'problem-', 'it', 'is', 'definitely', 'a', 'tricky', 'one', '!', 'We', 'are', 'going', 'to', 'work', 'together', 'to', 'solve', 'it', ':)', 'Have', 'you', 'made', 'any', 'progress', 'or', 'do', 'know', 'how', 'to', 'start', 'this', 'problem', '?']",,8,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321773,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+321773,0,4,platform,"['Welcome', 'back', '😀', 'Oscar', 'G.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'SESSION', 'STARTED', 'AT', '2:24', 'AM', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Hi', 'Oscar', ',', 'welcome', 'to', 'Yup', '!', 'I', '’m', 'Mr.', 'Mahato', 'and', 'I', '’ll', 'be', 'your', 'tutor', 'for', 'this', 'session', '.', '', ':)', 'Can', 'you', 'please', 'give', 'me', 'a', 'few', 'minutes', 'to', 'go', 'over', 'the', 'problem', '?', 'Are', 'you', 'currently', 'taking', 'an', 'exam', 'or', 'a', 'test', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321773,0,3,student,"['No', 'this', 'is', 'a', 'sample', 'for', 'STUDY', 'purposes']",72,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321773,0,2,platform,"['Okay', '!', 'Which', 'problem', 'should', 'we', 'work', 'on', 'first', '?']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321773,0,1,student,"['It', 'says', 'Sample', 'final', 'on', 'top', '.', 'I', 'already', 'went', 'over', 'this', '.', 'I', 'was', 'actually', 'looking', 'to', 'see', 'if', 'you', 'guys', 'would', 'happen', 'to', 'have', 'or', 'possibly', 'make', 'me', 'another', 'sample', 'to', 'challenge', 'myself', 'further', '?']",47,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321773,0,0,tutor,"['Oh', '!', 'Did', 'you', 'mean', 'that', 'similar', 'question', 'as', 'in', 'the', 'sample', 'exam', '?']",,24,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321483,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+321483,0,6,platform,"['Nice', 'to', 'see', 'you', 'again', '.', '😊', '', 'A', 'tutor', 'will', 'be', 'with', 'you', 'any', 'moment', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321483,0,5,student,"['Alright', '👌']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321483,0,4,platform,"['Tutors', 'need', 'to', 'know', 'how', 'much', 'work', 'you', '’ve', 'done', 'to', 'help', 'you', 'better', '…', 'can', 'you', '📷', '', 'any', 'progress', 'you', '’ve', 'made', '?']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321483,0,3,student,"['Nope', ',', 'not', 'yet', '!']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321483,0,2,platform,"['No', 'worries', '!', 'Just', 'a', 'bit', 'longer', 'until', 'the', 'magic', 'happens', '✨', 'SESSION', 'STARTED', 'AT', '7:18', 'PM', 'Hello', 'and', 'welcome', 'to', 'Yup', '!', 'Have', 'you', 'made', 'any', 'progress', 'on', 'your', 'question', 'so', 'far', '?']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321483,0,1,student,"['No', 'I', 'have', 'not']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321483,0,0,tutor,"['For', 'this', 'question', ',', 'we', ""'re"", 'going', 'to', 'need', 'to', 'identify', 'the', 'z', 'score', 'of', 'the', 'mean', 'Do', 'you', 'know', 'what', 'that', 'would', 'be', '?']",,0,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321478,0,9,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+321478,0,8,platform,"['Hi', 'Peyton', '!', 'Nice', 'to', 'see', 'you', 'again', '😀', 'Cool', 'problem', '!', 'Finding', 'you', 'a', 'tutor', 'right', 'now', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,7,student,"['👍', 'Okay', '!']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,6,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'Take', 'a', '', '📷', 'of', 'any', 'work', 'you', '’ve', 'done', 'so', 'the', 'tutor', 'can', 'review', 'it', 'to', 'better', 'help', 'you', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,5,student,"['Nope', '!']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,4,platform,"['It', '’s', 'all', 'good', ',', 'just', 'hang', 'for', 'a', 'bit', 'longer', '.', 'Your', 'tutor', 'will', 'work', 'with', 'you', 'to', 'get', 'your', 'problem', 'solved', '!', '💯']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,3,student,"['🙌', 'Nice']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,2,platform,"['I', 'have', 'some', 'tips', 'just', 'for', 'you', '!', '🎁', 'Yup', 'tutors', 'do', 'not', 'give', 'away', 'answers', ',', 'they', 'make', 'sure', 'you', 'know', 'how', 'to', 'solve', 'the', 'problem', 'yourself', '.', '🙌', 'SESSION', 'STARTED', 'AT', '7:55', 'PM', 'Hi', 'Peyton', '!', 'Welcome', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,1,student,['Thanks'],27,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321478,0,0,tutor,"['Ib', 'which', 'problem', 'do', 'you', 'need', 'help', 'with', '?', 'In', '*']",,13,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321287,0,10,platform,"['Thanks', 'Will', '.', 'That', 'should', 'speed', 'things', 'up', '!', '🏃']",,,x,,,,,,,,,,,,,,,,,,,0,1
+321287,0,9,student,"['Alright', '👌']",59,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,8,platform,"['All', 'Yup', 'tutors', 'are', 'real', 'people', ',', 'so', 'please', 'treat', 'them', 'with', 'respect', '.', '💙', 'Want', 'to', 'hear', 'a', 'Pro', 'Yup', 'Tip?', '...', 'Yes', '?', '🎁', ':', 'SESSION', 'STARTED', 'AT', '2:29', 'AM', 'Hello', 'Will', '!', 'Welcome', 'to', 'Yup', '!']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,7,student,['Hi'],22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,6,platform,"['I', ""'m"", 'Mr.', 'Candaza', ',', 'your', 'tutor', 'for', 'today', '!', 'How', 'may', 'I', 'help', 'you', 'with', 'this', 'problem', '?', ':)']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,5,student,"['I', 'need', 'help', 'I', 'understand', 'this']",48,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,4,platform,"['Okay', ',', 'can', 'you', 'specify', 'in', 'this', 'problem', 'where', 'you', 'got', 'stuck', '?']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,3,student,"['I', 'just', 'do', ""n't"", 'understand']",52,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,2,platform,"['Okay', ',', 'that', ""'s"", 'fine', ',', 'we', ""'ll"", 'work', 'together', 'to', 'solve', 'it', '!', ':)']",34,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,1,student,"['Ca', '.', 'You', 'give', 'me', 'a', 'problem', '', 'similar', 'to', 'this', 'Ok']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321287,0,0,tutor,"['Okay', 'sure', '!', 'As', 'you', 'can', 'see', ',', 'this', 'is', 'a', 'graph', 'of', 'a', 'sine', 'function', '.', 'Do', 'you', 'know', 'what', 'a', 'sine', 'function', 'is', '?']",,51,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321175,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+321175,0,2,platform,"['Ijemma', ',', 'I', '’m', 'so', 'excited', 'you', '’re', 'back', '!', 'I', '’ll', 'move', 'you', 'up', 'to', 'the', 'front', 'of', 'the', 'line', '😉', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '5:04', 'PM', 'Hey', 'Ijemma', ',', 'how', ""'s"", 'it', 'going', 'today', '?', 'Welcome', 'back', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321175,0,1,student,"['Hello', '.', 'Its', 'going', 'well', '.', 'And', 'you', '?']",53,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321175,0,0,tutor,"['Great', '!', 'So', 'how', 'much', 'progress', 'have', 'you', 'made', 'on', 'this', 'problem', ',', 'and', 'where', 'are', 'we', 'starting', '?']",,87,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321160,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+321160,0,4,platform,"['SESSION', 'STARTED', 'AT', '3:27', 'PM', 'Hi', 'Mike', '!', 'Thanks', 'for', 'using', 'Yup', 'today', '!', 'I', 'see', 'the', 'problem', 'you', ""'ve"", 'uploaded', '...', 'Have', 'you', 'been', 'able', 'to', 'get', 'started', 'on', 'it', 'yet', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321160,0,3,student,"['No', 'I', ""'m"", 'confused']",102,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+321160,0,2,platform,"['Okay', ',', 'we', 'can', 'go', 'over', 'it', 'from', 'the', 'beginning', 'then', '!']",20,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321160,0,1,student,['Ok'],10,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321160,0,0,tutor,"['Would', 'you', 'like', 'me', 'to', 'explain', 'exponents', 'quickly', ',', 'or', 'would', 'you', 'like', 'to', 'dive', 'into', 'the', 'problem', 'now', '?']",,67,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+321002,0,10,platform,"['BTW', ',', 'participation', 'is', 'important', '✅', 'Not', 'only', 'will', 'you', 'get', 'your', 'work', 'done', 'faster', ',', 'but', 'next', 'time', 'you', '’ll', 'be', 'able', 'to', 'solve', 'problems', 'on', 'your', 'own', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+321002,0,9,student,"['👍', 'Okay', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,8,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', '?', '📷', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'Sending', 'even', 'the', 'tiniest', 'bit', 'of', 'progress', 'will', 'help', 'you', 'reach', 'a', 'solution', 'faster', '💪']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,7,student,"['Nope', '!']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,6,platform,"['No', 'worries', '😌', 'your', 'tutor', 'can', 'help', 'you', 'from', 'the', 'beginning', '!']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,5,student,"['Sounds', 'good', '👍']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,4,platform,"['It', '’s', 'tip', 'time', '!', '🎊', 'SESSION', 'STARTED', 'AT', '10:01', 'P.M.', 'Hi', 'Pili', '!']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,3,student,['Hola'],21,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,2,platform,"['Welcome', 'to', 'Yup', ':', ')']",12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,1,student,['Thanks'],12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+321002,0,0,tutor,"['Kindly', 'clarify', 'what', 'the', 'question', 'is', 'asking', 'us', 'to', 'do', '?']",,23,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320865,0,10,platform,"['Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'and', 'I', '’ll', 'send', 'it', 'over', 'to', 'the', 'tutor', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '10:19', 'AM', 'Hi', 'Dora', '!', 'I', '’m', 'Mr.', 'Kamireddy', 'and', 'I', '’ll', 'be', 'your', 'tutor', 'for', 'this', 'session', '.', 'How', 'are', 'you', 'doing', 'today', '?']",,,x,,,,,,,,,,,,,,,,,,,0,1
+320865,0,9,student,"['', 'Hi', 'can', 'you', 'please', 'check', 'if', 'my', 'answer', 'Is', 'right', '?']",52,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,8,platform,"['Sure', '!', 'First', 'one', 'is', 'correct', '!', 'Good', 'job', '!']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,7,student,"['Ok', 'what', 'about', 'the', '', 'number', '2', 'to', '9', '?']",95,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,6,platform,"['2nd', 'is', 'also', 'correct', '!', 'Let', 'me', 'check', 'them', 'quickly', '.']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,5,student,"['', 'Thankyou']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,4,platform,"['Last', 'one', 'is', '1800', 'or', '1808', '?']",166,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,3,student,['1800'],15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,2,platform,"['That', 'was', 'hard', '!', 'Nice', 'work', ':)', 'All', 'of', 'them', 'are', 'correct', '!', 'Great', 'job', '!', ':)']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,1,student,"['Thankyou', 'so', 'much']",16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320865,0,0,tutor,"['You', ""'re"", 'welcome', '!', ':)', 'Are', 'there', 'any', 'more', 'questions', '?']",,62,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320737,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320737,0,2,platform,"['Hi', 'Christian', ',', 'welcome', 'to', 'Yup', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇', 'SESSION', 'STARTED', 'AT', '5:19', 'PM', 'Hey', 'Christian', ',', 'how', ""'s"", 'it', 'going', 'today', '?', 'Welcome', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320737,0,1,student,"['Hi', '!', 'I', ""'m"", 'not', 'sure', 'how', 'to', 'show', 'my', 'work', 'I', 'got', 'the', 'right', 'answer', 'though']",53,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320737,0,0,tutor,"['Ok', 'great', '.', 'Have', 'you', 'done', 'any', 'work', 'at', 'all', 'just', 'yet', '?', 'And', 'what', 'is', 'the', 'answer', 'that', 'you', 'came', 'up', 'with', '?']",,24,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320714,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320714,0,4,platform,"['SESSION', 'STARTED', 'AT', '11:11', 'AM', 'Hi', 'Karina', ',', 'welcome', 'to', 'Yup', '!', 'I', '’m', 'Mr.', 'Mahato', 'and', 'I', '’ll', 'be', 'your', 'tutor', 'for', 'this', 'session', '.', '', ':)', 'HEADS', 'UP', '!', 'OUT', 'OF', 'MINUTES', 'IN', '5', 'MINS', '.', 'Can', 'you', 'please', 'give', 'me', 'a', 'few', 'minutes', 'to', 'go', 'over', 'the', 'problem', '?']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320714,0,3,student,"['Yes', 'of', 'course']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320714,0,2,platform,"['Thank', 'you', '!']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320714,0,1,student,"['Actually', 'the', 'question', 'is', ""n't"", 'on', 'there', '.', 'I', 'basically', 'have', 'to', 'sketch', 'my', 'project', 'on', 'a', 'coordinate', 'plane', '(', 'the', 'project', 'is', 'the', 'photo', 'radio', 'telescope', ')', 'and', 'include', 'the', 'measurements', '.', 'Which', 'I', ""'m"", 'having', 'troubles', 'with', '.']",82,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320714,0,0,tutor,"['Oh', '!', 'Do', ""n't"", 'worry', '!', 'Do', 'you', 'have', 'any', 'idea', 'or', 'guess', 'what', 'should', 'we', 'do', 'to', 'get', 'started', 'with', 'the', 'problem', '?']",,23,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320706,0,10,platform,"['', '👋', 'Carol', '!', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'now', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+320706,0,9,student,"['Alright', '👌']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,8,platform,"['Have', 'you', 'done', 'any', 'work', 'on', 'this', 'problem', '?', 'If', 'so', ',', '📷', 'it', '!', 'Sharing', 'even', 'the', 'tiniest', 'bit', 'of', 'work', 'will', 'help', 'your', 'tutor', 'help', 'you', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,7,student,['Naw'],6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,6,platform,"['It', '’s', 'all', 'good', ',', 'just', 'hang', 'for', 'a', 'bit', 'longer', '.', 'Your', 'tutor', 'will', 'work', 'with', 'you', 'to', 'get', 'your', 'problem', 'solved', '!', '💯']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,5,student,"['Got', 'it', '!']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,4,platform,"['Well', '…', '.', 'while', 'we', 'wait', ',', 'here', '’s', 'a', 'tip', 'to', 'make', 'your', 'Yup', 'experience', 'even', 'better', '🏆', 'Yup', 'believes', 'teaching', 'you', 'how', 'to', 'solve', 'problems', 'is', 'better', 'than', 'giving', 'you', 'answers', '.', '💯']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,3,student,"['More', 'tips', 'please', '!', '👍']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,2,platform,"['SESSION', 'STARTED', 'AT', '12:17', 'PM', 'Hi', 'Carol', ',', 'welcome', 'back', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,1,student,"['Hi', 'Mr.', 'Bateman']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320706,0,0,tutor,"['I', ""'m"", 'Mr.', 'Bathman', ',', 'and', 'I', ""'ll"", 'be', 'your', 'tutor', 'today', 'Hello', ':)', 'So', 'are', 'you', 'supposed', 'to', 'graph', 'this', 'system', 'of', 'inequalities', '?']",,3,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320637,0,10,platform,"['Hi', '-30', '', 'TEACHING', 'TIPS', '', 'Give', 'a', 'cheerful', 'welcome', 'back', '', 'SESSION', 'TIME', ':', '', ',', 'welcome', 'to', 'Yup', '!', 'I', 'am', 'Mr.', 'Alexander', 'and', 'I', 'will', 'be', 'your', 'instructor', 'for', 'this', 'session', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+320637,0,9,student,['Ok'],15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,8,platform,"['Hi', 'Robin', ',', 'welcome', 'to', 'Yup', '!', 'I', 'am', 'Mr.', 'Alexander', 'and', 'I', 'will', 'be', 'your', 'instructor', 'for', 'this', 'session', '.']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,7,student,"['Hi', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,6,platform,"['Sorry', 'for', 'that', 'typo', '.', 'I', 'tried', 'to', 'copy', 'your', 'name', ',', 'but', 'ended', 'up', 'copying', 'other', 'text', '.']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,5,student,"['This', 'problem', 'we', '', 'Are', 'using', 'the', 'counting', 'principle', 'but', 'I', 'ca', ""n't"", 'brake', 'it', 'down', 'on', 'my', 'own']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,4,platform,"['I', '’ll', 'need', 'another', 'moment', 'to', 'finish', 'looking', 'over', 'your', 'problem', 'and', 'then', 'we', '’ll', 'get', 'started', '.', 'Thanks', 'for', 'your', 'patience', '!']",10,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,3,student,"['Ok', '!']",23,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,2,platform,"['Sorry', 'for', 'the', 'delay', '.', 'I', 'am', 'trying', 'to', 'verify', 'the', 'answer', '.']",332,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,1,student,"['No', 'problem']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320637,0,0,tutor,"['Does', 'your', 'book', 'give', 'answers', ',', 'so', 'I', 'can', 'verify', '?']",,34,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320611,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320611,0,4,platform,"['Piper', ',', 'I', '’m', 'so', 'excited', 'you', '’re', 'back', '!', 'I', '’ll', 'move', 'you', 'up', 'to', 'the', 'front', 'of', 'the', 'line', '😉', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320611,0,3,student,"['🙌', 'Nice']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320611,0,2,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sending', 'too', 'little', 'work', '😊', 'SESSION', 'STARTED', 'AT', '5:56', 'PM', 'Hello', 'Piper', '!', 'Welcome', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320611,0,1,student,"['Thanks', '!', 'I', 'need', 'help', 'on', '', 'number', '20']",45,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320611,0,0,tutor,"['This', 'is', 'an', 'interesting', 'problem', '!', 'In', 'no', 'time', ',', 'you', ""'ll"", 'be', 'able', 'to', 'solve', 'problems', 'like', 'these', 'all', 'by', 'yourself', '.', 'Are', 'you', 'ready', '?']",,7,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320610,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320610,0,2,platform,"['Welcome', 'back', '😀', 'Sydney', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'SESSION', 'STARTED', 'AT', '4:53', 'PM', 'Hello', 'and', 'welcome', 'to', 'Yup', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320610,0,1,student,"['Hello', ',']",31,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320610,0,0,tutor,"['Have', 'you', 'made', 'any', 'progress', 'on', 'your', 'question', 'so', 'far', '?']",,12,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320504,0,1,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320504,0,0,tutor,"['Hi', 'Aaron', '!', 'I', ""'ll"", 'be', 'your', 'tutor', 'for', 'this', 'session', ':-)', 'So', 'how', 'far', 'have', 'you', 'gotten', 'in', 'solving', 'this', 'problem', '?']",,62,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320413,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320413,0,6,platform,"['Nice', 'to', 'see', 'you', 'again', '.', '😊', '', 'A', 'tutor', 'will', 'be', 'with', 'you', 'any', 'moment', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320413,0,5,student,"['Alright', '👌']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320413,0,4,platform,"['Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'Take', 'a', '', '📷', 'of', 'any', 'work', 'you', '’ve', 'done', 'so', 'the', 'tutor', 'can', 'review', 'it', 'to', 'better', 'help', 'you', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320413,0,3,student,"['No', 'picture']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320413,0,2,platform,"['SESSION', 'STARTED', 'AT', '12:40', 'AM', 'Hello', 'and', 'welcome', 'to', 'Yup', 'How', 'can', 'I', 'help', 'you', 'with', 'this', 'topic', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320413,0,1,student,"['Hi', 'please', 'let', 'me', 'know', 'how', 'I', 'would', 'compute', 'this', 'in', 'a', 'scientific', 'calculator']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320413,0,0,tutor,"['Okay', ',', 'what', 'model', 'calculator', 'do', 'you', 'have', '?']",,13,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320310,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320310,0,6,platform,"['Hello', 'Shelby', '!', 'Thanks', 'for', 'using', 'Yup', 'today', '!', 'What', 'can', 'I', 'help', 'you', 'with', '?']",19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320310,0,5,student,"['hello', 'I', 'have', 'to', 'find', 'the', 'greatest', 'common', 'factor', 'of', 'these', 'two', 'numbers', '321', 'and', '740', '.']",43,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320310,0,4,platform,"['Okay', 'sounds', 'good', '!']",41,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320310,0,3,student,"['help', 'me', 'please']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320310,0,2,platform,"['So', 'our', 'first', 'step', 'is', 'going', 'to', 'be', 'listing', 'out', 'the', 'factors', 'of', 'these', 'numbers', '.', 'Would', 'you', 'like', 'to', 'start', 'with', '321', '?']",37,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320310,0,1,student,['sure'],55,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320310,0,0,tutor,"['Okay', '!', 'So', 'it', ""'s"", 'helpful', 'to', 'list', 'them', 'in', 'pairs', 'that', 'multiply', 'to', 'our', 'number', '.', '', 'For', 'example', ',', 'if', 'we', 'were', 'looking', 'at', '6', ',', 'we', 'could', 'say', '""', '3', 'and', '2', '""', 'and', '""', '6', 'and', '1', '""', '.', 'Does', 'that', 'make', 'sense', '?']",,18,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320196,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320196,0,6,platform,"['Welcome', 'back', '😀', 'barnry', 'C.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320196,0,5,student,"['👍', 'Okay', '!']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320196,0,4,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Have', 'you', 'done', 'any', 'work', 'on', 'this', 'problem', '?', 'If', 'so', ',', '📷', 'it', '!', 'Sharing', 'even', 'the', 'tiniest', 'bit', 'of', 'work', 'will', 'help', 'your', 'tutor', 'help', 'you', '.', 'SESSION', 'STARTED', 'AT', '2:45', 'PM', 'Hello', 'Barnry', '!', 'Welcome', 'to', 'Yup', '!', ':)', 'In', 'which', 'problem', 'do', 'you', 'need', 'help', 'with', '?']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320196,0,3,student,['10'],108,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320196,0,2,platform,"['What', 'do', 'we', 'need', 'to', 'do', 'for', 'this', 'one', '?']",20,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320196,0,1,student,"['I', ""'m"", 'not', 'sure']",53,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320196,0,0,tutor,"['What', 'is', 'the', 'given', 'instruction', 'for', 'this', 'one', '?']",,33,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+320085,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+320085,0,4,platform,"['Krystal', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '9:52', 'PM', 'Hello', 'and', 'welcome', 'to', 'Yup', 'How', 'can', 'I', 'help', 'you', 'with', 'this', 'problem', '?']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+320085,0,3,student,"['Hi', '.', 'Ca', ""n't"", 'see', 'if', 'I', 'did', 'number', '27', 'correctly', 'Can', 'you', '*', '<url>']",27,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320085,0,2,platform,"['Okay', ',', 'just', 'a', 'moment', ':)', 'Yes', ',', 'that', ""'s"", 'completely', 'correct', ':)', 'great', 'job', 'Do', 'you', 'have', 'any', 'clarification', 'questions', 'about', 'the', 'problem', '?']",30,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+320085,0,1,student,"['YAY', '!', '', 'Thank', 'you', '.', 'Just', 'wanted', 'to', 'make', 'sure', 'I', 'was', 'following', 'the', 'process', 'correctly', '.', 'No', 'I', 'do', ""n't"", ':)']",78,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+320085,0,0,tutor,"['Okay', ',', 'awesome', ':)', 'Do', 'you', 'have', 'any', 'other', 'questions', 'I', 'can', 'help', 'you', 'with', '?']",,15,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319929,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+319929,0,6,platform,"['Luid', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319929,0,5,student,"['👍', 'Okay', '!']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319929,0,4,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Have', 'you', 'started', 'on', 'the', 'problem', 'at', 'all', '?', '📷', 'your', 'work', 'and', 'share', 'with', 'your', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sharing', 'too', 'little', 'work', '😊']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319929,0,3,student,"['No', 'picture']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319929,0,2,platform,"['That', '’s', 'fine', '!', '😌', 'Your', 'tutor', 'will', 'be', 'ready', 'soon', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319929,0,1,student,"['👍', 'Okay', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319929,0,0,tutor,"['SESSION', 'STARTED', 'AT', '1:32', 'PM', 'Hey', 'Luid', ',', 'how', ""'s"", 'it', 'going', 'today', '?', 'Welcome', 'back', 'to', 'Yup', '!']",,6,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319768,0,10,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'SESSION', 'STARTED', 'AT', '6:47', 'PM', 'Hi', ',', 'Yeabie', '!', 'How', 'can', 'I', 'help', 'you', 'today', '?']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319768,0,9,student,"['hi', 'I', 'had', 'a', 'quick', 'question']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,8,platform,"['Sure', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,7,student,"['if', 'something', 'has', 'a', 'high', 'acceleration', 'will', 'it', 'take', 'longer', 'to', 'stop', 'like', 'would', 'the', 'braking', 'distance', 'be', 'longer']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,6,platform,"['It', 'depends', 'more', 'on', 'the', 'velocity', 'than', 'on', 'the', 'acceleration', '.', 'HEADS', 'UP', '!', 'OUT', 'OF', 'MINUTES', 'IN', '5', 'MINS', '.']",35,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,5,student,['okay'],13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,4,platform,"['In', 'fact', ',', 'if', 'we', 'have', 'acceleration', '(', 'increase', 'of', 'velocity', ')', ',', 'it', 'would', 'not', 'stop', 'at', 'all', '!', 'It', 'ould', 'stop', 'only', 'if', 'we', 'have', 'deceleeration', '(', 'decrease', 'of', 'velocity', ')']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,3,student,"['okay', 'how', 'can', 'I', 'prove', 'that', 'a', 'car', 'on', 'ice', 'will', 'take', 'longer', 'to', 'stop', 'than', 'a', 'car', 'on', 'asphat', 'asphalt', '*']",40,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,2,platform,"['Oh', ',', 'I', 'got', 'it', '!', 'So', ',', 'in', 'this', 'case', 'you', 'have', 'to', 'think', 'of', 'the', 'so', '-', 'called', 'coefficient', 'of', 'friction', 'Have', 'you', 'heard', 'about', 'it?\\']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,1,student,"['I', 'did', 'that', 'then', 'I', 'found', 'the', 'kinetic', 'force']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319768,0,0,tutor,"['Force', 'of', 'kinetic', 'friction', ',', 'yes', '.', 'What', 'formula', 'did', 'you', 'get', 'for', 'it', '?']",,11,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319734,0,10,platform,"['Okay', '.', '', ':)', '', 'So', 'when', 'we', 'are', 'working', 'on', 'a', 'calculator', 'like', 'this', ',', 'it', ""'s"", 'easiest', 'for', 'us', 'to', 'go', 'step', 'by', 'step', ',', 'working', 'from', 'the', 'inside', 'to', 'the', 'outside', 'So', 'we', 'want', 'to', 'start', 'by', 'doing', '.03/4']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319734,0,9,student,"['Okay', 'sure', '0.03/4', '?']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,8,platform,['<url>'],24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,7,student,"['I', 'get', '7.5x10', '^', '3']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,6,platform,"['10', '^', '3', 'or', '10', '^', '-3', '?']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,5,student,"['Sorry', 'negative']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,4,platform,"['Okay', '.', '', 'That', ""'s"", 'correct', 'then', '.', '', ':)', '', 'Now', 'we', 'can', 'add', 'our', '1', '.']",12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,3,student,['1.0075'],16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,2,platform,"['Good', '.', '', ':)', '', 'Now', 'we', 'can', 'do', 'our', 'exponent']",12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,1,student,"['How', '?', 'X', '16', 'or', '^16', 'Okay', 'I', 'got', 'it']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319734,0,0,tutor,"['<url>', 'Does', 'that', 'say', 'x^y', '?', '<url>']",,4,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319679,0,10,platform,"['Scott', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319679,0,9,student,"['👍', 'Okay', '!']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,8,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'Take', 'a', '', '📷', 'of', 'any', 'work', 'you', '’ve', 'done', 'so', 'the', 'tutor', 'can', 'review', 'it', 'to', 'better', 'help', 'you', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,7,student,"['Okay', '!', '📷', '<url>']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,6,platform,"['SESSION', 'STARTED', 'AT', '10:00', 'AM', 'Hello', 'Scot', ',', 'welcome', 'to', 'Yup', '!', 'I', 'will', 'be', 'your', 'instructor', 'for', 'this', 'session', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,5,student,['Hello'],19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,4,platform,"['Can', 'you', 'please', 'give', 'me', 'a', 'minute', 'to', 'go', 'through', 'the', 'problem', '?']",55,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,3,student,['Sure'],15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,2,platform,"['Thank', 'you', ':)', 'Okay', '.', 'Let', ""'s"", 'solve', 'this', 'together', '.', 'How', 'far', 'have', 'you', 'gotten', 'in', 'solving', 'the', 'problem', '?']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,1,student,['<url>'],126,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319679,0,0,tutor,"['I', 'am', 'checking', 'your', 'work', '.', 'Good', 'try', ',', 'but', 'you', 'made', 'a', 'little', 'mistake', '.', 'Can', 'you', 'try', 'once', 'more', '?', 'Unfortunately', ',', 'you', ""'ve"", 'been', 'away', 'from', 'the', 'app', 'for', 'more', 'than', '5', 'minutes', '.', 'I', 'need', 'to', 'end', 'the', 'session', 'now', 'to', 'help', 'other', 'students', '.', 'Feel', 'free', 'to', 'submit', 'another', 'request', 'whenever', 'you', ""'re"", 'ready', '!']",,205,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319676,0,9,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+319676,0,8,platform,"['Thanks', 'for', 'signing', 'up', 'Dustin', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,7,student,['Hello'],6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,6,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'The', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'SESSION', 'STARTED', 'AT', '9:05', 'AM', 'Hi', 'Dustin', ',', 'welcome', 'to', 'Yup', '!', 'I', '’m', 'Mr.', 'Mahato', 'and', 'I', '’ll', 'be', 'your', 'tutor', 'for', 'this', 'session', '.', '', ':)', 'How', 'much', 'progress', 'have', 'you', 'made', 'on', 'that', 'problem', '?']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,5,student,"['I', 'am', 'confused', 'on', 'how', 'to', 'start', 'it']",38,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,4,platform,"['Do', ""n't"", 'worry', '!']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,3,student,['Ok'],32,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,2,platform,"['Area', 'you', 'familiar', 'with', 'solving', 'linear', '', 'equations', ',', 'like', '4=2x+', '2', '?', '*', 'Are']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,1,student,['Yeah'],18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319676,0,0,tutor,"['Great', '!', 'Then', ',', 'can', 'you', 'tell', 'me', 'what', 'will', 'be', 'out', '1st', 'step', 'for', 'the', 'equation', '', '4=2x+2', '?', '*', 'our']",,48,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319641,0,10,platform,"['Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'and', 'I', '’ll', 'send', 'it', 'over', 'to', 'the', 'tutor', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319641,0,9,student,"['No', 'thanks', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,8,platform,"['It', '’s', 'all', 'good', ',', 'your', 'tutor', 'can', 'start', 'at', 'the', 'beginning', '😄', 'SESSION', 'STARTED', 'AT', '10:51', 'PM', 'Hi', 'Anna', ',', 'welcome', 'to', 'Yup', '!', 'I', 'am', 'Mr.', 'Alexander', 'and', 'I', 'will', 'be', 'your', 'instructor', 'for', 'this', 'session', '.', 'I', '’ll', 'need', 'another', 'moment', 'to', 'finish', 'looking', 'over', 'your', 'problem', 'and', 'then', 'we', '’ll', 'get', 'started', '.', 'Thanks', 'for', 'your', 'patience', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,7,student,"['Okay', '!', 'I', 'get', 'wrong', 'answer', 'B^11', 'is', 'correct']",35,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,6,platform,"['I', 'have', 'gone', 'over', 'your', 'problem-', 'it', 'is', 'definitely', 'a', 'tricky', 'one', '!', 'We', 'are', 'going', 'to', 'work', 'together', 'to', 'solve', 'it', ':)']",253,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,5,student,['Ok'],7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,4,platform,"['You', 'have', 'done', 'it', 'correctly', 'till', 'the', 'last', 'step', '.', 'Good', 'job', 'so', 'far', ':', ')', 'However', ',', 'there', 'is', 'one', 'step', 'missing', '.', '<url>']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,3,student,['Ohhh'],52,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,2,platform,"['Then', 'we', 'need', 'to', 'find', 'out', 'what', 'that', 'entire', 'thing', 'stands', 'for', '.', 'Please', 'attempt', 'it', 'and', 'once', 'complete', ',', 'upload', 'it', '.']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,1,student,['<url>'],24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319641,0,0,tutor,"['Could', 'you', 'explain', 'the', 'last', 'step', 'please', '?']",,16,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319528,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+319528,0,2,platform,"['Hi', 'Marielisa', '!', 'Nice', 'to', 'see', 'you', 'again', '😀', 'Cool', 'problem', '!', 'Finding', 'you', 'a', 'tutor', 'right', 'now', '.']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319528,0,1,student,"['Alright', '👌']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319528,0,0,tutor,"['Have', 'you', 'started', 'on', 'the', 'problem', 'at', 'all', '?', '📷', 'your', 'work', 'and', 'share', 'with', 'your', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sharing', 'too', 'little', 'work', '😊', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '12:25', 'AM', 'Hi', 'Marielisa', ',', 'welcome', 'to', 'Yup', '!', 'I', ""'m"", 'Mr', 'Sharma', 'and', 'I', ""'ll"", 'be', 'helping', '', 'you', 'out', '.', 'How', 'are', 'you', 'doing', 'today', '?']",,1,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319482,0,10,platform,"['Hi', 'Barnry', '!', 'Thanks', 'for', 'the', 'clarification', '.', 'I', 'am', 'reviewing', 'your', 'problem']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319482,0,9,student,['Ok'],54,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,8,platform,"['So', 'what', 'do', 'you', 'think', 'is', 'the', 'first', 'step', 'in', 'solving', 'this', 'problem', '?']",77,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,7,student,"['I', 'have', 'done', 'something', 'but', 'I', ""'m"", 'stuck', '<url>']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,6,platform,"['Let', 'me', 'review', 'your', 'work', ':-)']",39,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,5,student,['Ok'],6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,4,platform,"['So', 'it', 'seems', 'that', 'you', 'the', 'right', 'idea', '!']",192,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,3,student,"['Yeah', 'but', 'I', ""'m"", 'stuck', 'what', 'to', 'do', 'next']",19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,2,platform,"['So', 'after', 'you', 'found', 'that', '2', 'was', 'a', 'zero', 'via', 'synthetic', 'division', ',', 'the', 'coefficients', 'of', 'the', 'new', 'polynomial', 'are', ':', '1', ',', '-5', 'and', '-5', 'correct', '?']",68,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,1,student,"['Yeah', 'But', '-1', 'is', 'also', 'a', 'zero', 'do', 'I', 'pick', 'one', 'Or', 'do', 'both']",49,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319482,0,0,tutor,"['Good', '!', 'So', 'you', 'choose', '2', 'first', 'and', 'then', 'once', 'you', 'get', 'the', 'new', 'set', 'of', 'coefficients', ',', 'then', 'you', 'use', 'synthetic', 'dividion', 'using', '-1', 'division', '*', 'Do', 'you', 'see', 'what', 'I', 'mean', '?']",,38,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319481,0,10,platform,"['yes', '.', 'For', 'your', 'problem', ',', 'we', 'need', 'to', 'find', 'the', 'value', 'of', 'b', 'that', 'would', 'make', 'it', 'factor', 'like', '(', 'x+____)^2', 'Let', ""'s"", 'look', 'at', 'the', 'example', 'I', 'did', ',', 'and', 'see', 'what', 'the', 'pattern', 'is', '.', '<url>', 'for', 'this', 'example', ',', 'the', 'number', 'in', 'the', 'parentheses', 'was', '3', '.', 'It', 'is', 'the', 'square', 'root', 'of', 'the', '9', ',', 'and', 'half', 'of', 'the', '6', '.', 'If', 'you', 'would', 'like', ',', 'let', ""'s"", 'look', 'at', 'another', 'example', 'that', 'is', 'similar', 'to', 'your', 'problem', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319481,0,9,student,"['Oh', 'so', 'I', ""'m"", 'supposed', 'to', 'find', 'the', 'square', 'root', 'of', '64', 'which', 'is', '8']",199,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,8,platform,"['Yes', ',', 'and', 'then', 'double', 'that', '.', '<url>', '<url>', 'Let', ""'s"", 'say', 'we', 'had', 'this', 'equation', 'and', 'need', 'to', 'find', 'b.']",40,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,7,student,"['So', 'essentially', ',', 'find', 'the', 'square', 'root', 'of', 'C', 'then', 'multiply', 'it', 'by2']",76,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,6,platform,"['exactly', '.', '', ':)']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,5,student,"['Ahh', 'ok', 'Ok', 'so', 'on', 'the', 'answer', 'on', 'this', 'one', 'is', '16,-16']",32,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,4,platform,"['Correct', '!', '!']",61,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,3,student,"['Ok', 'I', ""'m"", 'stuck', 'on', 'another', 'problem']",60,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,2,platform,['sure'],4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,1,student,['<url>'],27,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319481,0,0,tutor,"['When', 'we', 'have', 'a', 'perfect', 'square', 'trinomial', ',', 'which', 'is', 'one', 'that', 'has', 'the', '(', 'x+___)^2', 'factor', ',', 'the', 'form', 'that', 'your', 'trinomial', 'has', 'to', 'be', 'in', 'is', ':', 'ax^2', '+', '2abx+b^2', 'Does', 'that', 'make', 'since', '?', 'Sense', '...', 'sorry']",,45,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319338,0,10,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'No', 'worries', '😌', 'your', 'tutor', 'can', 'help', 'you', 'from', 'the', 'beginning', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319338,0,9,student,"['🙌', 'Nice']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,8,platform,"['I', 'have', 'some', 'tips', 'just', 'for', 'you', '!', '🎁', 'SESSION', 'STARTED', 'AT', '2:32', 'PM', 'Hi', 'Tamara', ',', 'welcome', 'back', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,7,student,['Hello'],38,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,6,platform,"['Your', 'work', 'so', 'far', 'looks', 'good', '.', '', 'Is', 'your', 'only', 'remaining', 'task', 'to', 'find', 'z', '?']",35,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,5,student,"['Yes', ',', 'my', 'teacher', 'gave', 'us', 'an', 'answer', 'key', 'so', 'we', 'can', 'check', 'our', 'answers', 'and', 'he', 'got', 'z=15', 'but', 'I', ""'m"", 'not', 'getting', 'that', 'answer']",46,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,4,platform,"['Can', 'you', 'show', 'me', 'how', 'you', 'got', 'z', '?']",31,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,3,student,['<url>'],63,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,2,platform,"['To', 'find', 'your', 'solution', 'you', 'said', 'the', 'following', 'angles', 'were', 'congruent', ':', '<url>', '<url>', 'You', 'have', 'to', 'be', 'careful', ',', 'because', 'the', 'angle', 'with', 'degree', 'measure', 'z', 'is', 'not', 'made', 'by', 'the', 'parallel', 'line']",74,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,1,student,['Okay'],84,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319338,0,0,tutor,"['Thus', 'you', 'ca', ""n't"", 'use', 'parallel', 'lines', 'to', 'find', 'the', 'value', 'of', 'z', 'Can', 'you', 'see', 'another', 'way', 'to', 'possible', 'find', 'z', '?', '*', 'possibly']",,48,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+319106,0,10,platform,"['We', 'are', 'asked', 'to', 'simplify', 'the', 'equation', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+319106,0,9,student,"['Did', 'you', 'seee', 'the', 'picture']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,8,platform,"['What', 'have', 'you', 'done', 'so', 'far', '?', ':)']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,7,student,['Yes'],1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,6,platform,"['Yes', 'I', 'see', 'the', 'picture', '.', ':)']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,5,student,"['Nothing', 'because', '1', 'I', 'do', ""n't"", 'understand', 'it']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,4,platform,"['How', 'do', 'you', 'think', 'will', 'we', 'be', 'able', 'to', 'solve', 'this', '?']",123,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,3,student,"['That', 'bottom', 'part', 'kind', 'of', 'reminded', 'me', 'of', 'quadratic', 'formula', 'but', 'I', 'do', ""n't"", 'think', 'that', ""'s"", 'right', 'and', 'I', 'think', 'I', 'should', 'cross', 'out', 'the', 'bottom', 's', '......', 'WAITTT', 'SOMETHING', 'CLICKED', 'PICTURES', 'COMING', 'SOON', '😂']",59,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,2,platform,"['Sure', '!', 'Any', 'idea', 'would', 'be', 'great', '!']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,1,student,"['<url>', '?', '?']",86,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+319106,0,0,tutor,"['I', '’m', 'sorry', ',', 'your', 'image', 'is', 'unclear', '.', 'Could', 'you', 'please', 'try', 'uploading', 'it', 'again', 'or', 'clarifying', 'what', 'it', 'says', '?']",,57,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+318851,0,10,platform,"['Welcome', 'Brooke', ',', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+318851,0,9,student,"['👍', 'Okay', '!']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,8,platform,"['The', 'tutor', 'will', 'look', 'over', 'your', 'problem', 'quickly', 'and', 'then', 'you', 'can', 'get', 'going', '.', '🚀', 'Have', 'you', 'started', 'on', 'the', 'problem', 'at', 'all', '?', '📷', 'your', 'work', 'and', 'share', 'with', 'your', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sharing', 'too', 'little', 'work', '😊', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,7,student,"['Nope', ',', 'not', 'yet', '!']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,6,platform,"['No', 'worries', '!', 'Just', 'a', 'bit', 'longer', 'until', 'the', 'magic', 'happens', '✨', 'SESSION', 'STARTED', 'AT', '9:09', 'PM', 'Hi', 'Brooke', '!', 'Welcome', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,5,student,['Hello'],15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,4,platform,"['Do', 'you', 'have', 'any', 'physics', 'problems', 'you', ""'d"", 'like', 'to', 'work', 'on', '?']",17,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,3,student,"['Can', 'you', 'please', 'explain', 'Physics', 'and', 'what', 'the', 'class', 'is', 'about']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,2,platform,"['We', 'actually', 'help', 'you', 'with', 'any', 'problems', 'you', ""'re"", 'stuck', 'on', 'any', 'Theoretical', 'concepts', 'you', ""'re"", 'confused', 'about']",51,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,1,student,"['Yeah', 'idk']",27,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+318851,0,0,tutor,"['So', 'is', 'there', 'anything', 'you', ""'re"", 'confused', 'about', 'in', 'Physics', '?']",,17,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+318621,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+318621,0,2,platform,"['Thanks', 'for', 'signing', 'up', 'BarbAra', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '9:53', 'PM', 'Hi', 'Barbara', '.', 'It', ""'s"", 'good', 'to', 'have', 'you', 'back', '!', 'What', 'do', 'you', 'think', 'is', 'the', 'solution', 'for', 'this', 'problem', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318621,0,1,student,['Z'],116,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+318621,0,0,tutor,"['<url>', 'Is', 'this', 'the', 'problem', '?']",,32,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+318364,0,10,platform,"['Makenzie', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎']",,,x,,,,,,,,,,,,,,,,,,,0,1
+318364,0,9,student,"['Got', 'it', '!']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,8,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sending', 'too', 'little', 'work', '😊']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,7,student,"['No', 'picture']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,6,platform,"['That', '’s', 'fine', '!', '😌', 'Your', 'tutor', 'will', 'be', 'ready', 'soon', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,5,student,"['Alright', '👌']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,4,platform,"['Well', '…', '.', 'while', 'we', 'wait', ',', 'here', '’s', 'a', 'tip', 'to', 'make', 'your', 'Yup', 'experience', 'even', 'better', '🏆', 'If', 'you', 'have', '📄', 'and', '✏', '️', 'on', 'hand', ',', 'you', ""'ll"", 'be', 'ready', 'to', 'work', 'out', 'a', 'solution', 'with', 'your', 'tutor', '.', 'SESSION', 'STARTED', 'AT', '9:26', 'AM', 'Hello', 'Makenzie', ':)', 'Welcome', 'to', 'Yup', '!', '!', 'How', 'are', 'we', 'doing', 'today', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,3,student,"['Hi', ',', 'I', 'do', ""n't"", 'know', 'if', 'you', 'could', 'help', 'me', 'with', 'all', '3', 'questions', ',', 'if', 'not', 'it', ""'s"", 'fine', '.', 'I', 'just', 'do', ""n't"", 'get', 'how', 'to', 'do', 'this', 'assignment', 'Or', 'where', 'to', 'start', 'with', 'it']",36,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,2,platform,"['Let', ""'s"", 'work', 'through', 'the', 'problem', 'together', '.', ':)']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,1,student,['Okay'],4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318364,0,0,tutor,"['What', 'is', 'the', 'shape', 'of', 'the', 'patio', '?']",,22,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+318207,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+318207,0,4,platform,"['Hi', 'Divahar', '!', 'Nice', 'to', 'see', 'you', 'again', '😀', 'Cool', 'problem', '!', 'Finding', 'you', 'a', 'tutor', 'right', 'now', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318207,0,3,student,"['👍', 'Okay', '!']",54,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+318207,0,2,platform,"['SESSION', 'STARTED', 'AT', '5:41', 'PM']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318207,0,1,student,"['Hey', 'How', ""'s"", 'it', 'going', 'Mr.', 'Wear']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+318207,0,0,tutor,"['Hi', 'Divahar', ',', 'my', 'name', 'is', 'Mr.', 'Wear', ',', 'and', 'I', ""'m"", 'going', 'to', 'be', 'your', 'tutor', 'tonight', '!', 'I', ""'m"", 'doing', 'well', ',', 'how', 'are', 'you', '?']",,2,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+317661,0,10,platform,"['', '👋', 'Harris', '!', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'now', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",,,x,,,,,,,,,,,,,,,,,,,0,1
+317661,0,9,student,"['👍', 'Okay', '!']",37,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,8,platform,"['SESSION', 'STARTED', 'AT', '8:44', 'PM', 'Hi', 'Harris', ',', 'welcome', 'back', 'to', 'Yup', '!', 'I', ""'m"", 'sorry', ',', 'we', 'do', ""n't"", 'cover', 'that', 'level', 'of', 'math']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,7,student,"['Hello', ':(']",16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,6,platform,"['Yeah', ',', 'I', 'know', 'That', 'one', 'looks', 'kind', 'of', 'tough', 'Is', 'there', 'another', 'problem', 'you', 'want', 'to', 'work', 'on', '?']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,5,student,"['No', 'look', 'at', 'it', '!', 'It', ""'s"", 'easy', 'until', 'he', 'last', 'step', 'I', 'just', 'do', ""n't"", 'see', 'the', 'jump', 'to', 'the', 'last', 'step']",28,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,4,platform,"['I', ""'m"", 'sorry', ',', 'I', 'would', 'be', 'happy', 'to', 'help', 'you', ',', 'but', 'it', ""'s"", 'against', 'our', 'policy', 'to', 'help', 'with', 'subjects', 'outside', 'of', 'what', 'we', 'cover', '.']",42,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,3,student,['<url>'],22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,2,platform,"['Is', 'there', 'another', 'problem', 'you', ""'d"", 'like', 'to', 'work', 'on', '?']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,1,student,"['What', 'about', 'this', 'Year', '9', 'math', 'pretty', 'much']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317661,0,0,tutor,"['You', ""'re"", 'in', 'year', '9', 'math', '?']",,15,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+317579,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+317579,0,4,platform,"['Hello', 'Taylor', '!']",44,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317579,0,3,student,['hi'],3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317579,0,2,platform,"['Welcome', 'back', 'to', 'Yup', ':)']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317579,0,1,student,['thanks'],8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317579,0,0,tutor,"['I', ""'ve"", 'reviewed', 'your', 'problem', '.', 'Can', 'you', 'tell', 'me', 'more', 'about', 'what', 'you', ""'ve"", 'tried', 'working', 'on', 'the', 'problem', 'so', 'far', '?']",,26,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+317527,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+317527,0,4,platform,"['Ashley', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '11:36', 'AM', 'Hi', 'Ashley', ':)', 'Welcome', 'back', '!', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317527,0,3,student,['Hi'],39,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317527,0,2,platform,"['How', 'can', 'I', 'help', 'you', '?']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+317527,0,1,student,"['When', 'you', 'want', 'to', 'find', 'the', 'percent', 'of', 'a', 'number', 'like', '6', '%', 'of', 'what', 'number', 'is', '24', '?', 'Do', ""n't"", 'you', 'just', 'divide', '?']",44,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317527,0,0,tutor,"['Yes', ',', 'could', 'you', 'show', 'your', 'work', '?', ':)']",,29,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+317028,0,10,platform,"['Can', 'you', 'tell', 'me', 'how', 'far', 'you', 'have', 'gotten', 'on', 'this', 'problem', '?']",,,x,,,,,,,,,,,,,,,,,,,0,1
+317028,0,9,student,"['do', ""n't"", 'know', 'where', 'to', 'start']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,8,platform,"['No', 'worries', ',', 'we', ""'ll"", 'tackle', 'it', 'together', '.', 'Please', 'give', 'me', 'a', 'moment', ',', 'I', ""'m"", 'working', 'on', 'it', '.']",39,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,7,student,['ok'],32,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,6,platform,"['Thank', 'you', '!', 'When', 'we', 'substitute', 'x=0', 'and', 'y=0', 'what', 'do', 'we', 'get', '?']",91,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,5,student,['dne'],44,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,4,platform,"['Good', '!', 'We', 'get', '0/0', 'which', 'is', 'in', '-', 'determinant', 'form', '.']",33,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,3,student,['ok'],28,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,2,platform,"['By', 'seeing', 'the', 'image', 'you', ""'ve"", 'shared', ',', 'I', 'see', 'that', 'you', ""'re"", 'working', 'on', 'Squeeze', 'theorem', '.']",30,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,1,student,"['yes', '?']",39,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+317028,0,0,tutor,"['Which', 'method', 'you', 'want', 'me', 'to', 'use', 'here', '?']",,68,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+316712,0,10,platform,"['', '👋', 'Norms', '!', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'now', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+316712,0,9,student,"['👍', 'Okay', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,8,platform,"['Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'and', 'I', '’ll', 'send', 'it', 'over', 'to', 'the', 'tutor', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,7,student,"['Yup', '📷', '<url>']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,6,platform,"['SESSION', 'STARTED', 'AT', '4:56', 'PM', 'Hello', ',', 'Norms', '.', ':)', 'Welcome', 'to', 'Yup', '!']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,5,student,"['Hi', 'there']",43,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,4,platform,"['I', ""'ve"", 'reviewed', 'your', 'problem', '.', ':)', 'It', 'seems', 'that', 'this', 'problem', 'does', 'not', 'fall', 'to', 'the', 'topics', 'that', 'we', 'currently', 'covered', '.', 'Unfortunately', ',', 'your', 'problem', 'exceeds', 'the', 'math', 'level', 'we', 'currently', 'support', '.', 'Is', 'there', 'something', 'else', 'I', 'can', 'help', 'you', 'with', '?']",41,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,3,student,"['', 'Statistics', '?']",168,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,2,platform,"['The', 'question', 'is', 'about', 'conditional', 'probability', 'of', 'random', 'variable', ',', 'right', '?']",58,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,1,student,"['I', 'guess', ',', 'I', ""'m"", 'not', 'sure']",16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316712,0,0,tutor,"['Yes', ',', 'it', 'is', '.', 'This', 'is', 'a', 'higher', 'level', 'probability', 'problem', 'and', 'currently', 'we', 'do', ""n't"", 'support', 'this', 'kind', 'of', 'problem', '.', 'I', 'am', 'really', 'sorry', 'about', 'it', '.', 'Is', 'there', 'anything', 'that', 'I', 'can', 'help', 'you', 'with', '?']",,39,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+316691,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+316691,0,6,platform,"['Hi', ',', 'welcome', 'to', 'Yup', '!', '', 'I', ""'m"", 'Mr.', 'Badlato', 'and', 'I', ""'ll"", 'be', 'your', 'tutor', 'for', 'this', 'session', '.', 'Your', 'free', 'trial', 'has', '5', 'mins', 'left', '.', 'After', 'that', ',', 'your', 'plan', 'will', 'be', 'automatically', 'paused', '.', '(', '04:17', 'PM', ')']",39,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316691,0,5,student,"['hello', 'i', 'have', 'no', 'clue', 'regarding', 'this', 'question', '.']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316691,0,4,platform,"['No', 'worries', '!', '', 'We', 'can', 'figure', 'it', 'out', 'together', '!', 'What', 'do', 'you', 'know', 'about', 'solubility', '?', 'Or', 'about', 'electrolytes', '?']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316691,0,3,student,"['electrolytes', 'break', 'down', 'into', 'ions', '.', 'strong', 'dissovles', 'in', 'water', '.']",148,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316691,0,2,platform,"['Exactly', '!', '', 'Very', 'good', '!']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316691,0,1,student,"['weak', 'partially', 'dissolve', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316691,0,0,tutor,"['Exactly', 'right', '.', 'Now', ',', 'it', 'looks', 'like', 'you', 'know', 'the', 'formula', 'for', 'sodium', 'phosphate', ',', 'right', '?']",,13,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+316662,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+316662,0,4,platform,"['Hi', 'Sarah', '!']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316662,0,3,student,"['<url>', 'hi', '!']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316662,0,2,platform,"['Welcome', 'to', 'Yup', '!', 'Please', 'give', 'me', 'a', 'moment', 'to', 'review', 'your', 'problem', '.']",21,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316662,0,1,student,['k'],50,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316662,0,0,tutor,"['I', 'can', 'not', 'see', 'you', 'work', 'properly', 'Can', 'you', 'share', 'that', 'again', '?']",,42,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+316359,0,10,platform,"['Let', 'me', 'try', 'that', 'one', 'more', 'time', '...', 'That', 'looks', 'a', 'little', 'funky', '.', '<url>']",,,x,,,,,,,,,,,,,,,,,,,0,1
+316359,0,9,student,"['But', 'they', 'still', 'share', 'the', 'same', ',', 'pi/6', 'and', '5pi/6']",33,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,8,platform,"['Right', '!', 'So', 'both', 'of', 'these', 'arcs', 'drawn', 'are', 'essentially', '30', 'degrees', 'away', 'from', 'landing', 'on', 'the', 'x', '-', 'axis', '.', 'That', ""'s"", 'where', 'the', '180', '-', '150', 'came', 'in', '.', '', 'We', 'use', 'that', 'to', 'figure', 'out', 'how', 'far', 'away', 'the', 'green', 'arc', 'is', 'from', 'ending', 'on', 'the', 'x', '-', 'axis', '.', 'With', 'me', 'so', 'far', '?']",54,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,7,student,['Yes'],53,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,6,platform,"['Great', '!', 'So', 'in', 'order', 'to', 'find', 'the', 'tangent', 'of', '150', 'degrees', ',', 'we', 'can', 'make', 'an', 'equivalent', 'triangle', 'in', 'the', 'first', 'quadrant', 'by', 'drawing', 'an', 'arc', 'that', 'is', 'also', '30', 'degrees', 'away', 'from', 'the', 'x', '-', 'axis', '.', 'That', 'endpoint', 'of', 'that', 'arc', 'will', 'define', 'where', 'we', 'draw', 'our', 'radius', ',', 'which', 'will', 'serve', 'as', 'the', 'hypotenuse', 'of', 'our', 'right', 'triangle', '.']",147,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,5,student,"['Oh', ',', 'so', 'because', 'if', 'I', 'draw', 'a', 'triangle', 'going', 'to', '90', 'and', '60', 'they', 'would', ""n't"", 'be', 'equal', 'to', 'the', '150']",74,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,4,platform,"['Right', '!', 'Those', 'triangles', 'will', 'have', 'different', 'dimensions', ',', 'causing', 'a', 'different', 'tangent', 'value', '.']",73,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,3,student,"['Ok', ',', 'that', 'makes', 'sense', 'Now', ',', 'does', 'this', 'apply', 'to', 'sin', 'and', 'cos', 'as', 'well', '?', 'Or', 'just', 'tangent', '?']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,2,platform,"['It', 'should', 'apply', 'to', 'all', 'of', 'the', 'trig', 'functions', '.', 'However', ',', 'you', 'have', 'to', 'keep', 'in', 'mind', 'that', 'the', 'signs', 'will', 'change', 'depending', 'on', 'the', 'trig', 'function', 'and', 'quadrant', '.']",118,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,1,student,"['Ok', ',', 'I', 'get', 'it', ',', 'thank', 'you', 'very', 'much']",42,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316359,0,0,tutor,"['For', 'example', ',', 'I', 'could', 'say', 'that', 'sin(210', ')', '=', '-', 'sin(30', ')', ',', 'since', 'the', 'sin', 'is', 'positive', 'in', 'Quad', '1', 'but', 'negative', 'in', 'Quad', '3', '.', 'And', 'no', 'problem', '!', 'Did', 'I', 'answer', 'your', 'question', ',', 'or', 'did', 'you', 'need', 'any', 'additional', 'help', 'on', 'anything', 'else', 'in', 'this', 'topic', '?']",,14,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+316106,0,10,platform,"['Give', 'me', 'a', 'minute', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+316106,0,9,student,"['I', 'can', 'send', 'you', 'if', 'you', 'want']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,8,platform,"['That', 'will', 'be', 'great', '!']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,7,student,"['<url>', '<url>']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,6,platform,"['Anna', ',', 'I', 'went', 'through', 'it', '.']",106,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,5,student,['Okay'],56,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,4,platform,"['The', 'previous', 'tutor', 'was', 'right', '.']",44,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,3,student,"['I', 'am', 'confused', 'because', 'a', '=', 'Fnet', '/', 'm', ',', 'so', 'is', 'nt', 'what', 'i', 'wrote', 'correct']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,2,platform,"['In', 'a', 'way', 'you', 'can', 'say', 'that', 'it', 'depends', 'upon', 'the', 'force', ',', 'but', 'on', 'a', 'more', 'fundamental', 'level', ',', 'if', 'you', 'see', 'it', 'its', 'the', 'coefficient', 'of', 'friction', 'that', 'decides', 'the', 'value', 'of', 'this', 'force', '.', '*', 'it', ""'s""]",30,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,1,student,"['Okay', '.', 'I', 'see', '.', 'I', 'was', 'just', 'following', 'the', 'equation', '.', 'But', 'it', 'would', 'be', 'better', 'to', 'write', 'it', 'depends', 'on', 'the', 'mass', 'and', 'coeffificeng', 'of', 'friction', '?']",35,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+316106,0,0,tutor,"['The', 'frictional', 'force', 'that', 'will', 'act', 'will', 'depend', 'on', 'normal', 'and', 'the', 'coefficient', 'of', 'friction', '.', 'Normal', 'will', 'be', 'decided', 'by', 'the', 'mass', '.', 'Yes', '!', 'You', 'got', 'it', '!', 'Anything', 'else', 'I', 'can', 'help', 'you', 'with', '?']",,24,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315768,0,10,platform,"['That', '’s', 'fine', '!', '😌', 'Your', 'tutor', 'will', 'be', 'ready', 'soon', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315768,0,9,student,"['Alright', '👌']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,8,platform,"['Want', 'the', 'most', 'out', 'of', 'Yup', '?', 'Here', '’s', 'a', 'tip', '!', '⚡', '️', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'All', 'Yup', 'tutors', 'are', 'real', 'people', ',', 'so', 'please', 'treat', 'them', 'with', 'respect', '.', '💙']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,7,student,"['Nice', 'nice', '.', 'How', 'about', 'one', 'more', '?']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,6,platform,"['Sure', '!', 'Remember', 'that', 'you', 'can', 'not', 'learn', 'without', 'making', 'mistakes', '.', 'Do', 'not', 'let', 'failure', 'discourage', 'you', 'from', 'reaching', 'your', 'potential', '!', '💪', 'SESSION', 'STARTED', 'AT', '1:48', 'PM', 'Hi', 'again', ',', 'Zainab', '!', 'I', ""'m"", 'Ms', '.', 'Raman', 'and', 'I', ""'ll"", 'be', 'helping', 'you', 'out', '.']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,5,student,"['Hiiii', 'again', ':)']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,4,platform,"['Let', ""'s"", 'work', 'together', 'on', 'this', 'problem', '.', ':)', 'I', 'see', 'you', ""'ve"", 'made', 'great', 'progress', '!']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,3,student,"['So', 'I', 'was', 'practicing', 'the', 'concept', 'you', 'taught', 'me', 'and', 'I', 'finished', 'solving', 'it', 'however', 'instead', 'of', '7', 'the', 'answer', 'sheet', 'says', 'the', 'x', 'intercept', 'is', '4', '+', '-', 'root', '5', ',', '0', 'Can', 'you', 'help', 'me', 'with', 'this']",46,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,2,platform,"['Just', 'a', 'very', 'minute', 'error', 'here', '-', 'What', 'might', 'the', 'value', 'of', '8', '^', '2', 'be', '?']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,1,student,"['Also', 'can', 'you', 'check', 'the', 'negative', 'exponent', 'part', 'I', 'may', 'have', 'done', 'that', 'wrong', 'Ohhhhh', 'Oops', '64']",10,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315768,0,0,tutor,"['Correct', '!', 'Could', 'you', 'now', 'give', 'it', 'another', 'try', '?']",,3,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315764,0,10,platform,"['Welcome', 'back', '😀', 'Aisha', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315764,0,9,student,"['👍', 'Okay', '!']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,8,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sending', 'too', 'little', 'work', '😊']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,7,student,"['Nope', ',', 'not', 'yet', '!']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,6,platform,"['That', '’s', 'fine', '!', '😌', 'Your', 'tutor', 'will', 'be', 'ready', 'soon', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,5,student,"['Got', 'it', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,4,platform,"['Want', 'the', 'most', 'out', 'of', 'Yup', '?', 'Here', '’s', 'a', 'tip', '!', '⚡', '️', 'Yup', 'tutors', 'will', 'work', 'with', 'you', 'to', 'complete', 'your', 'whole', '📝', 'or', 'just', 'one', 'problem', '.', 'It', ""'s"", 'up', 'to', 'you', '!']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,3,student,"['🙏', 'Thanks', '.', 'Got', 'anymore', '?']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,2,platform,"['Sure', '!', 'Asking', '❓', 'is', 'a', 'great', 'way', 'to', 'make', 'sure', 'you', 'understand', 'what', 'is', 'going', 'on', '.', 'Thanks', 'for', 'your', 'participation', ',', 'now', 'you', '’re', 'better', 'prepared', 'for', 'your', 'session', '.', 'Your', 'tutor', 'is', 'moments', 'away', '😎', 'SESSION', 'STARTED', 'AT', '6:26', 'PM', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Hi', 'Aisha', '!', 'Welcome', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,1,student,"['Hi', ':)', 'I', 'have', 'no', 'idea', 'where', 'to', 'start', 'on', 'the', 'question']",96,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+315764,0,0,tutor,"['Give', 'me', 'a', 'moment', 'to', 'review', 'it', 'Okay', '!', 'Do', 'you', 'know', 'how', 'to', 'find', 'out', 'net', 'uncertainties', 'when', 'you', ""'re"", 'dividing', 'uncertain', 'terms', '?']",,11,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315679,0,10,platform,"['Welcome', 'to', 'Yup', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315679,0,9,student,['Thanks'],6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,8,platform,"['I', ""'ve"", 'reviewed', 'your', 'prob', 'lem', '.', ':)']",19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,7,student,"['How', 'do', 'I', 'do', 'it']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,6,platform,"['We', 'are', 'asked', 'to', 'simplify', 'the', 'given', 'expression', '.']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,5,student,['K'],8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,4,platform,"['In', 'this', 'problem', ',', 'we', 'need', 'to', 'add', 'a', 'negative', 'and', 'a', 'positive', 'number', '.', 'How', 'far', 'have', 'you', 'gotten', 'in', 'solving', 'the', 'problem', '?']",19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,3,student,"['No', 'where', 'I', ""'m"", 'stuck']",29,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,2,platform,"['I', 'see', '.', 'Do', ""n't"", 'worry', '.', 'I', 'am', 'here', 'to', 'help', 'you', '.']",17,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,1,student,['Ok'],9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315679,0,0,tutor,"['Are', 'you', 'familiar', 'with', 'number', 'line', '?']",,5,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315656,0,10,platform,"['Mckayla', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315656,0,9,student,"['Yupppppp', '👍']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,8,platform,"['SESSION', 'STARTED', 'AT', '7:50', 'AM', 'Hello', '!']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,7,student,['Hi'],13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,6,platform,"['Welcome', 'to', 'Yup', '!']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,5,student,[':)'],5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,4,platform,"['This', 'is', 'Sarada', '.', 'I', 'will', 'be', 'your', 'tutor', 'for', 'the', 'session', '.']",17,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,3,student,"['I', 'know']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,2,platform,"['Great', '!']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,1,student,['Ig'],6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315656,0,0,tutor,"['Can', 'you', 'please', 'post', 'your', 'first', 'problem', '?']",,23,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315325,0,10,platform,"['No', 'worries', '!', 'Just', 'a', 'bit', 'longer', 'until', 'the', 'magic', 'happens', '✨']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315325,0,9,student,"['👍', 'Okay', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,8,platform,"['It', '’s', 'tip', 'time', '!', '🎊', 'SESSION', 'STARTED', 'AT', '11:34', 'PM', 'Hi', 'Dani', ',', 'welcome', 'to', 'Yup', '!', 'I', ""'m"", 'Mr', 'Sharma', 'and', 'I', ""'ll"", 'be', 'helping', '', 'you', 'out', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,7,student,"['Hello', '!']",16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,6,platform,"['How', 'are', 'you', 'doing', 'today', '?']",12,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,5,student,"['Very', 'good', 'thank', 'you', '!', 'I', 'was', 'wondering', 'if', 'the', 'work', 'I', 'did', 'is', 'right', 'since', 'the', 'answer', 'is', 'very', 'long']",24,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,4,platform,"['Thanks', 'for', 'sharing', 'the', 'image', '.', 'Give', 'me', 'a', 'moment', 'to', 'look', 'over', 'the', 'work', '.']",21,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,3,student,"['Ok', 'thank', 'you', '!']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,2,platform,"['Excellent', '!']",102,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,1,student,"['Yay', '!', 'Thank', 'you', 'very', 'much', '!']",21,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315325,0,0,tutor,"['Why', 'are', 'you', 'unsure', 'about', 'what', 'you', 'did', '?', 'Are', 'you', 'with', 'me', '?']",,180,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315269,0,10,platform,"['', '👋', 'Nicole', '!', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'now', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315269,0,9,student,"['Sounds', 'like', 'a', 'plan']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,8,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Did', 'you', 'start', 'on', 'the', 'problem', '?', '📷', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'Sending', 'even', 'the', 'tiniest', 'bit', 'of', 'progress', 'will', 'help', 'you', 'reach', 'a', 'solution', 'faster', '💪']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,7,student,"['No', 'thanks', '.']",16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,6,platform,"['SESSION', 'STARTED', 'AT', '7:34', 'PM', '.', 'Hello', 'Nicole', '!', 'Welcome', 'to', 'Yup', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,5,student,['Hi'],13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,4,platform,"['Can', 'you', 'tell', 'me', 'how', 'far', 'you', 'have', 'gotten', 'on', 'this', 'question', '?']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,3,student,"['Need', 'help', 'dividing', 'using', 'base', 'ten', 'blocks', 'Do', ""n't"", 'get', 'it']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,2,platform,"['Okay', ',', 'not', 'a', 'problem', '!', 'Let', '’s', 'get', 'to', 'it', 'then', '.']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,1,student,['228/12'],0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315269,0,0,tutor,"['Do', 'you', 'have', 'any', 'thoughts', 'on', 'what', 'we', 'could', 'try', 'first', '?']",,12,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315266,0,10,platform,"['Welcome', 'Nicole', ',', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'The', 'tutor', 'will', 'look', 'over', 'your', 'problem', 'quickly', 'and', 'then', 'you', 'can', 'get', 'going', '.', '🚀']",,,x,,,,,,,,,,,,,,,,,,,0,1
+315266,0,9,student,"['Got', 'it', '!']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,8,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Tutors', 'need', 'to', 'know', 'how', 'much', 'work', 'you', '’ve', 'done', 'to', 'help', 'you', 'better', '…', 'can', 'you', '📷', '', 'any', 'progress', 'you', '’ve', 'made', '?', 'SESSION', 'STARTED', 'AT', '7:16', 'PM', 'Hi', 'Nicole', '.', 'I', 'am', 'Mr', 'Leslie', '.', 'I', 'will', 'be', 'your', 'tutor', 'for', 'this', 'session', '.']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,7,student,['Hi'],38,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,6,platform,"['Which', 'of', 'these', 'problems', 'would', 'you', 'like', 'help', 'with', '?']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,5,student,"['I', ""'m"", 'trying', 'to', 'divide', 'using', 'base', 'ten', 'blocks', '228/12']",26,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,4,platform,"['Ok', '.']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,3,student,"['And', '216/12']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,2,platform,"['Ok', '.', 'Can', 'you', 'show', 'me', 'what', 'you', 'have', 'tried', 'with', 'them', 'so', 'far', '?']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,1,student,"['<url>', 'We', 'did', 'this', 'at', 'class', 'but', 'I', 'do', ""n't"", 'get', 'why', 'the', 'answer', 'is', '19']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315266,0,0,tutor,"['Ok', ',', 'did', 'you', 'form', '12', 'groups', '?']",,34,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+315074,0,9,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+315074,0,8,platform,"['Hi', 'Dora', '!', 'Nice', 'to', 'see', 'you', 'again', '😀', 'Cool', 'problem', '!', 'Finding', 'you', 'a', 'tutor', 'right', 'now', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,7,student,"['Got', 'it', '!']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,6,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Did', 'you', 'start', 'on', 'the', 'problem', '?', '📷', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'Sending', 'even', 'the', 'tiniest', 'bit', 'of', 'progress', 'will', 'help', 'you', 'reach', 'a', 'solution', 'faster', '💪', 'SESSION', 'STARTED', 'AT', '12:13', 'AM', 'Hello', 'Dora', 'Welcome', 'to', 'Yup', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,5,student,['Hi'],26,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,4,platform,"['Can', 'you', 'tell', 'me', 'how', 'far', 'you', 'have', 'gotten', 'on', 'this', 'question', '?']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,3,student,"['', 'One', 'of', 'the', '', 'teachers', 'almost', 'finished', 'with', 'me', '.', 'But', 'I', 'need', 'to', 'be', 'done', 'with', 'my', 'home', '', 'work']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,2,platform,['Okay'],15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,1,student,"['<url>', 'So']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+315074,0,0,tutor,"['That', '’s', 'correct', '!', 'Perfect', '!', 'Do', 'you', 'have', 'any', 'doubts', 'on', 'this', 'problem', '?']",,13,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314995,0,9,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+314995,0,8,platform,"['', '👋', 'Veah', '!', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'now', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '2:22', 'PM']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,7,student,"['I', 'need', 'help']",46,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,6,platform,"['Hello', 'there', 'Veah', '!', 'YOUR', 'FREE', 'TRIAL', 'HAS', '5', 'MINS', 'LEFT', '.', 'AFTER', 'THAT', ',', 'YOUR', 'UNLIMITED', 'PLAN', 'STARTS', 'AT', '$', '49.99', 'PER', 'MONTH', '.', 'Welcome', 'to', 'Yup', '!', ':)', 'I', ""'ve"", 'reviewed', 'your', 'problem', 'and', 'it', 'is', 'about', 'solving', 'for', 'the', 'system', 'of', 'equations', '.']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,5,student,['Yes'],32,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,4,platform,"['It', 'seems', 'that', 'you', 'already', 'have', 'an', 'answer', '!', 'How', 'did', 'you', 'arrive', 'on', 'that', 'answer', '?']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,3,student,"['Okay', 'I', 'need']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,2,platform,"['Would', 'you', 'mind', 'uploading', 'your', 'work', 'so', 'far', '?']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,1,student,"['I', 'have', 'another', 'problem', '<url>', 'I', 'put', 'yea']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314995,0,0,tutor,"['Oh', 'I', 'see', '.', 'By', 'the', 'way', ',', 'before', 'we', 'move', 'on', 'to', 'the', 'next', 'one', ',', 'can', 'you', 'tell', 'me', 'a', 'little', 'bit', 'more', 'on', 'how', 'you', 'arrived', 'at', 'the', 'solution', '1', ',', '6', ',', 'and', '8', '?']",,25,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314704,0,10,platform,"['Welcome', 'back', '😀', 'Pathma', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+314704,0,9,student,"['🙌', 'Nice']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,8,platform,"['Tutors', 'need', 'to', 'know', 'how', 'much', 'work', 'you', '’ve', 'done', 'to', 'help', 'you', 'better', '…', 'can', 'you', '📷', '', 'any', 'progress', 'you', '’ve', 'made', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,7,student,"['Nope', ',', 'not', 'yet', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,6,platform,"['No', 'worries', '!', 'Just', 'a', 'bit', 'longer', 'until', 'the', 'magic', 'happens', '✨']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,5,student,"['Alright', '👌']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,4,platform,"['SESSION', 'STARTED', 'AT', '7:31', 'PM', 'Hi', 'Pathma', ',', 'I', ""'m"", 'Mr.', 'Villegas', 'welcome', 'to', 'Yup', '!']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,3,student,"['Hi', 'I', 'need', 'help', 'with', 'that', 'problem', '']",37,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,2,platform,"['No', 'problem', '!', 'Just', 'give', 'me', 'one', 'more', 'moment', 'to', 'finish', 'looking', 'it', 'over', '?']",23,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,1,student,['Ok'],5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314704,0,0,tutor,"['Alright', 'Pathma', ',', 'so', 'I', ""'ve"", 'finished', 'looking', 'it', 'over', ',', 'have', 'you', 'managed', 'to', 'get', 'started', 'at', 'all', '?']",,10,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314690,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+314690,0,4,platform,"['Thanks', 'for', 'signing', 'up', 'Ayesha', 'R', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314690,0,3,student,"['Yo', '😎']",20,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314690,0,2,platform,"['SESSION', 'STARTED', 'AT', '6:52', 'PM', 'Hello', 'and', 'welcome', 'to', 'Yup']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314690,0,1,student,"['Hey', 'Can', 'u', 'please', 'help', 'me']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314690,0,0,tutor,"['Of', 'course', ':)', 'Just', 'to', 'clarify', ',', 'is', 'the', 'distance', 'from', 'M', 'to', 'O', '=', '5', '?']",,32,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314649,0,10,platform,"['Is', 'there', 'anything', 'that', 'you', 'would', 'like', 'to', 'know', 'about', 'the', 'app', '?']",,,x,,,,,,,,,,,,,,,,,,,0,1
+314649,0,9,student,"['Can', 'u', 'solve', 'that', 'Yess']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,8,platform,"['Sure', '.', 'Well', ',', 'that', 'would', 'be', 'simply', '50', '.']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,7,student,"['Ohh', 'So', 'u', 'are', 'real', 'person', 'are', 'uu']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,6,platform,"['Yes', ',', 'I', 'am', 'a', 'real', 'person', '.', ':)', 'In', 'fact', ',', 'every', 'tutor', 'here', 'is', 'a', 'real', 'person', '.']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,5,student,"['Wow', 'this', 'app', 'is', 'good', '😃', '😃']",21,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,4,platform,"['Haha', ',', 'it', ""'s"", 'good', 'that', 'you', 'are', 'liking', 'it', 'already', '.', ':']",26,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,3,student,"['how', 'u', 'guys', 'are', 'online']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,2,platform,"['Every', 'tutor', 'is', 'online', 'through', 'a', 'platform', 'developed', 'by', 'Yup', '.']",43,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,1,student,['Ohh'],10,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314649,0,0,tutor,"['So', ',', 'would', 'you', 'like', 'to', 'know', 'anything', 'else', '?', ':)']",,2,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314525,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+314525,0,4,platform,"['Nice', 'to', 'see', 'you', 'again', '.', '😊', '', 'A', 'tutor', 'will', 'be', 'with', 'you', 'any', 'moment', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314525,0,3,student,"['Yupppppp', '👍']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314525,0,2,platform,"['Tutors', 'need', 'to', 'know', 'how', 'much', 'work', 'you', '’ve', 'done', 'to', 'help', 'you', 'better', '…', 'can', 'you', '📷', '', 'any', 'progress', 'you', '’ve', 'made', '?', 'SESSION', 'STARTED', 'AT', '7:06', 'AM', 'HI', 'there', ',', 'how', ""'s"", 'it', 'going', '?']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314525,0,1,student,"['Hi', 'Can', 'you', 'help']",19,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314525,0,0,tutor,"['Sure', '.', '', 'What', 'are', 'you', 'supposed', 'to', 'do', 'with', 'those', 'two', 'equations', '?']",,15,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314447,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+314447,0,4,platform,"['Hello', 'Dhan', '!', 'Welcome', 'to', 'Yup', ':)']",50,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+314447,0,3,student,"['Hello', 'Ms', '.', 'Nguyen', ',', 'i', 'have', 'found', 'one', 'way', 'to', 'express', 'this', 'function', 'already', 'but', 'an', 'struggling', 'with', 'the', 'second', '<url>']",17,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314447,0,2,platform,"['Good', 'job', 'so', 'far', '!']",42,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314447,0,1,student,"['the', 'second', 'way', 'i', 'know', 'of', 'os', 'factored', 'form', ',', 'becuase', 'right', 'now', 'we', 'have', 'standard', 'and', 'vertex', 'is', '*', 'thanks', '!', 'but', 'i', 'm', 'having', 'trouble', 'putting', 'it', 'into', 'factored', 'since', 'its', 'a', 'number', 'which', 'has', 'to', 'add', 'to', 'two', 'and', 'multiply', 'to', '-7']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314447,0,0,tutor,"['Could', 'you', 'please', 'take', 'a', 'full', 'pic', 'of', 'the', 'whole', 'problem', '?', 'There', 'looks', 'like', 'something', 'missing', 'at', 'the', 'end', 'of', 'the', 'instruction', '.']",,47,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+314321,0,10,platform,"['BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'Have', 'you', 'done', 'any', 'work', 'on', 'this', 'problem', '?', 'If', 'so', ',', '📷', 'it', '!', 'Sharing', 'even', 'the', 'tiniest', 'bit', 'of', 'work', 'will', 'help', 'your', 'tutor', 'help', 'you', '.']",,,x,,,,,,,,,,,,,,,,,,,0,1
+314321,0,9,student,['Naw'],15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,8,platform,"['SESSION', 'STARTED', 'AT', '5:33', 'PM', 'Hello', 'Chris', '!', 'Welcome', 'to', 'Yup', '!', ':)']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,7,student,['Hi'],28,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,6,platform,"['How', 'much', 'progress', 'have', 'you', 'made', 'for', 'this', 'one', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,5,student,['None'],10,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,4,platform,"['Let', ""'s"", 'work', 'with', 'this', 'problem', 'together', '.', ':)']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,3,student,"['I', 'think', 'I', 'add', '12', 'to', 'both', 'sides', '.']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,2,platform,"['Great', 'idea', '!', ':)', 'What', 'will', 'be', 'our', 'function', 'then', '?']",34,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,1,student,"['k(x)=6x', '.', ',', 'k(x)=30']",84,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+314321,0,0,tutor,"['That', ""'s"", 'right', '!', ':)', 'Since', 'they', 'are', 'both', 'equal', 'to', 'k(x', ')', ',', 'we', 'can', 'equate', '6x', 'and', '30', 'to', 'each', 'other', '.', 'Does', 'that', 'make', 'sense', '?']",,8,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313874,0,10,platform,"['It', '’s', 'all', 'good', ',', 'just', 'hang', 'for', 'a', 'bit', 'longer', '.', 'Your', 'tutor', 'will', 'work', 'with', 'you', 'to', 'get', 'your', 'problem', 'solved', '!', '💯']",,,x,,,,,,,,,,,,,,,,,,,0,1
+313874,0,9,student,"['Sounds', 'like', 'a', 'plan']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,8,platform,"['It', '’s', 'tip', 'time', '!', '🎊', 'Engaging', 'with', 'your', 'tutor', 'allows', 'you', 'to', 'get', 'the', 'most', 'out', 'of', 'your', 'sessions', '.', '💯']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,7,student,"['Cool', ',', 'how', 'about', 'another', '?']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,6,platform,"['SESSION', 'STARTED', 'AT', '12:40', 'AM']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,5,student,"['Hello', 'sir']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,4,platform,"['Hi', 'Sam', ',', 'welcome', 'to', 'Yup', '!', 'I', 'am', 'Mr.', 'Alexander', 'and', 'I', 'will', 'be', 'your', 'instructor', 'for', 'this', 'session', '.', 'I', 'have', 'reviewed', 'your', 'problem', '.']",6,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,3,student,"['Are', 'my', 'answers', 'correct', 'for', 'this', 'problem', '?']",13,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,2,platform,"['I', 'need', 'another', 'moment', 'to', 'verify', 'it', '.']",22,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,1,student,['Alright'],5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313874,0,0,tutor,"['Okay', ',', 'let', ""'s"", 'begin', 'this', 'problem', '.', 'I', 'reviewed', 'your', 'work', ',', 'can', 'you', 'describe', 'the', 'steps', 'as', 'well', 'please', '?']",,42,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313842,0,3,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+313842,0,2,platform,"['Welcome', 'back', '😀', 'Madison', 'Chancellor', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'ASAP', '.', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '7:57', 'PM', 'Hello', 'Madison', '!', ':)']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313842,0,1,student,"['', 'Hi']",41,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313842,0,0,tutor,"['How', 'much', 'progress', 'have', 'you', 'made', 'for', 'this', 'one', '?']",,18,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313769,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+313769,0,6,platform,"['Hi', 'Tony', 'R', ',', 'welcome', 'to', 'Yup', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '8:16', 'AM', 'Hi', '', 'Tony', 'R', '!', 'I', '’m', 'Mr.', 'Shinde', 'and', '', 'I', '’ll', 'be', 'your', 'tutor', 'for', 'this', 'session', '.', 'I', 'just', 'reviewed', 'your', 'problem', '.', 'Can', 'you', 'tell', 'me', 'more', 'about', 'how', 'much', 'progress', 'you', ""'ve"", 'made', '?']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313769,0,5,student,"['I', 'do', ""n't"", 'know']",74,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+313769,0,4,platform,"['No', 'worries', '!', 'We', 'will', 'work', 'on', 'it', 'together', '.', ':)']",26,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313769,0,3,student,['Okay'],10,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313769,0,2,platform,"['Here', 'we', 'have', 'given', 'the', 'measure', 'of', 'two', 'angles', 'and', 'we', 'have', 'to', 'find', 'the', 'measure', 'of', 'third', 'angle', '.', '', 'First', ',', 'how', 'do', 'you', 'think', 'we', 'could', 'begin', 'the', 'problem', '?']",35,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313769,0,1,student,"['I', 'do', ""n't"", 'really', 'know']",17,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313769,0,0,tutor,"['Okay', '!', 'I', 'will', 'help', 'you', 'to', 'find', 'the', 'solution', '.', 'What', 'have', 'you', 'learned', 'so', 'far', 'about', 'the', 'angle', 'addition', 'postulate', '?', 'Are', 'you', 'there', 'Tony', '?']",,162,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313695,0,10,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sending', 'too', 'little', 'work', '😊', 'SESSION', 'STARTED', 'AT', '5:36', 'PM', 'Hi', 'Lauren', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+313695,0,9,student,"['Hi', '!']",18,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,8,platform,"['I', ""'m"", 'Mr.', 'Villegas', 'welcome', 'to', 'Yup', '!']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,7,student,"['Thank', 'you']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,6,platform,"['I', 'see', 'you', 'uploaded', 'a', 'picture', 'but', 'it', ""'s"", 'a', 'little', 'blurry', ',', 'do', 'you', 'think', 'you', 'can', 'try', 'to', 'take', 'another', '?']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,5,student,"['Yes', 'for', 'sure']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,4,platform,"['Great', 'Thanks', '!']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,3,student,"['<url>', '<url>']",28,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,2,platform,"['Thanks', '!', 'give', 'me', 'a', 'sec', 'to', 'see', 'if', 'I', 'can', 'read', 'these', '?']",68,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,1,student,"['', 'For', 'sure']",48,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+313695,0,0,tutor,"['So', 'I', 'think', 'I', 'was', 'able', 'to', 'make', 'out', 'most', 'of', 'it', ',', 'still', 'blurry', ',', 'but', 'this', 'looks', 'like', 'a', 'chemistry', 'question', 'no', '?']",,42,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313548,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+313548,0,4,platform,"['Emiko', ',', 'I', '’m', 'so', 'excited', 'you', '’re', 'back', '!', 'I', '’ll', 'move', 'you', 'up', 'to', 'the', 'front', 'of', 'the', 'line', '😉', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'BTW', ',', 'the', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313548,0,3,student,"['Got', 'it', '!']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313548,0,2,platform,"['Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'Take', 'a', '', '📷', 'of', 'any', 'work', 'you', '’ve', 'done', 'so', 'the', 'tutor', 'can', 'review', 'it', 'to', 'better', 'help', 'you', '!', 'SESSION', 'STARTED', 'AT', '7:51', 'PM', 'Hi', ',', 'Emiko', '.', ':)', 'Welcome', 'to', 'Yup', '!', 'I', ""'ve"", 'reviewed', 'your', 'problem', '.']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313548,0,1,student,"['I', 'did', ""n't"", 'do', 'any', 'work', 'yet']",44,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313548,0,0,tutor,"['It', 'seems', 'that', 'we', 'are', 'asked', 'to', 'find', 'the', 'value', 'of', 'y.', 'Okay', '!', '', 'What', 'seems', 'confusing', 'about', 'this', 'problem', '?']",,20,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313519,0,5,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+313519,0,4,platform,"['Hi', 'Nayeli', 'N', '!', 'Nice', 'to', 'see', 'you', 'again', '😀', 'Cool', 'problem', '!', 'Finding', 'you', 'a', 'tutor', 'right', 'now', '.']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313519,0,3,student,"['Sounds', 'good', '👍']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313519,0,2,platform,"['TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sending', 'too', 'little', 'work', '😊']",0,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313519,0,1,student,"['Not', 'now']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313519,0,0,tutor,"['It', '’s', 'all', 'good', ',', 'just', 'hang', 'for', 'a', 'bit', 'longer', '.', 'Your', 'tutor', 'will', 'work', 'with', 'you', 'to', 'get', 'your', 'problem', 'solved', '!', '💯', 'SESSION', 'STARTED', 'AT', '5:15', 'PM', 'Hi', 'Nayeli', 'N', '!', 'I', '’m', 'Mr.', 'Shinde', 'and', 'I', '’ll', 'be', 'helping', 'you', 'out', '.', 'HEADS', 'UP', '!', 'OUT', 'OF', 'MINUTES', 'IN', '5', 'MINS', '.', 'I', ""'ve"", 'taken', 'a', 'moment', 'to', 'look', 'over', 'your', 'problem', '.', 'Let', ""'s"", 'figure', 'out', 'where', 'you', ""'re"", 'stuck', '.', 'How', 'much', 'progress', 'have', 'you', 'made', 'so', 'far', '?']",,35,l,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313435,0,10,platform,"['Tutors', 'need', 'to', 'know', 'how', 'much', 'work', 'you', '’ve', 'done', 'to', 'help', 'you', 'better', '…', 'can', 'you', '📷', '', 'any', 'progress', 'you', '’ve', 'made', '?']",,,x,,,,,,,,,,,,,,,,,,,0,1
+313435,0,9,student,"['No', 'picture']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,8,platform,"['It', '’s', 'all', 'good', ',', 'your', 'tutor', 'can', 'start', 'at', 'the', 'beginning', '😄']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,7,student,"['Sounds', 'like', 'a', 'plan']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,6,platform,"['Well', '…', '.', 'while', 'we', 'wait', ',', 'here', '’s', 'a', 'tip', 'to', 'make', 'your', 'Yup', 'experience', 'even', 'better', '🏆', 'Relax', '😌', '...', 'As', 'long', 'as', 'you', 'are', 'willing', 'to', 'participate', ',', 'your', 'tutor', 'will', 'help', 'you', 'arrive', 'at', 'a', 'solution', '.']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,5,student,"['Any', 'other', 'tips', '?']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,4,platform,"['Sure', '!', 'Hello', 'David', '!', 'Welcome', 'to', 'Yup', '!', ':)', 'Asking', '❓', 'is', 'a', 'great', 'way', 'to', 'make', 'sure', 'you', 'understand', 'what', 'is', 'going', 'on', '.', 'SESSION', 'STARTED', 'AT', '3:48', 'PM']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,3,student,"['Hi', 'Hi']",15,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,2,platform,"['We', 'need', 'to', 'find', 'the', 'sum', 'of', '1', '+', '1', ',', 'what', 'do', 'you', 'think', 'will', 'be', 'their', 'sum', '?']",55,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,1,student,"['I', 'do', ""n't"", 'know', '.', '4', 'I', ""'m"", '4']",14,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313435,0,0,tutor,"['It', ""'s"", 'okay', '!', ':)', 'Do', 'you', 'already', 'know', 'the', 'counting', 'numbers', 'like', '1,2,34,5', ',', 'and', 'so', 'on', '?']",,17,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+313395,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+313395,0,6,platform,"['Hi', 'Avery', ',', 'welcome', 'to', 'Yup', '😀', '.', 'I', ""'m"", 'finding', 'you', 'a', 'tutor', 'now', '.', 'I', '’m', 'here', 'to', 'help', 'you', 'prepare', 'for', 'your', 'tutoring', 'session', '.', 'You', 'can', 'talk', 'to', 'me', 'by', 'tapping', 'the', 'orange', 'button', 'that', 'appears', 'at', 'the', 'bottom', '👇']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313395,0,5,student,"['Hey', 'there']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313395,0,4,platform,"['The', 'tutor', 'will', 'spend', 'a', 'minute', 'reviewing', 'your', 'problem', 'so', 'when', 'the', 'session', 'begins', ',', 'you', 'can', 'start', 'solving', 'right', 'away', '!', 'Tutors', 'care', 'just', 'as', 'much', 'about', 'learning', 'as', 'finding', 'the', 'answer', 'so', 'be', 'sure', 'to', 'participate', ',', 'and', 'ask', 'questions', 'if', 'you', 'are', 'n’t', 'following', 'along', '✅', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'SESSION', 'STARTED', 'AT', '11:46', 'AM', 'Hello', 'Avery', '!', 'Welcome', 'to', 'Yup', '!', 'Please', 'give', 'me', 'a', 'moment', 'to', 'review', 'your', 'problem', '.']",11,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+313395,0,3,student,['Ok'],48,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+313395,0,2,platform,"['I', '’m', 'sorry', ',', 'your', 'image', 'is', 'unclear', '.', 'Could', 'you', 'please', 'try', 'uploading', 'it', 'again', 'or', 'clarifying', 'what', 'it', 'says', '?']",25,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313395,0,1,student,['12a-4(5a-1)=2(3a+6)-4a'],44,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+313395,0,0,tutor,"['Great', '!', 'Can', 'you', 'tell', 'me', 'how', 'far', 'you', 'have', 'gotten', 'on', 'this', 'question', '?']",,19,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+312983,0,4,platform,"['Hello', 'Nicole', '!', 'Welcome', 'to', 'Yup', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+312983,0,3,student,['<url>'],1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312983,0,2,platform,"['Session', 'started']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312983,0,1,student,"['Hi', '<url>', 'For', 'number', '2', 'is', 'this', 'work', 'correct']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312983,0,0,tutor,"['Please', 'give', 'me', 'a', 'moment', 'to', 'review', 'your', 'problem', '.', 'Great!Do', 'you', 'have', 'any', 'thoughts', 'on', 'what', 'we', 'could', 'try', 'first', '?']",,64,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+312705,0,10,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', '?', '📷', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'Sending', 'even', 'the', 'tiniest', 'bit', 'of', 'progress', 'will', 'help', 'you', 'reach', 'a', 'solution', 'faster', '💪']",,,x,,,,,,,,,,,,,,,,,,,0,1
+312705,0,9,student,"['Yup', '📷', '<url>']",16,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,8,platform,"['👍', '👍', 'It', '’s', 'sent', '!', 'You', '’ll', 'be', 'done', 'with', 'your', 'homework', 'in', 'no', 'time', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,7,student,"['👍', 'Okay', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,6,platform,"['Want', 'the', 'most', 'out', 'of', 'Yup', '?', 'Here', '’s', 'a', 'tip', '!', '⚡', '️', 'Engaging', 'with', 'your', 'tutor', 'allows', 'you', 'to', 'get', 'the', 'most', 'out', 'of', 'your', 'sessions', '.', '💯']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,5,student,"['Nice', 'nice', '.', 'How', 'about', 'one', 'more', '?']",8,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,4,platform,"['Sure', '!', 'Sending', 'a', '📷', 'of', 'the', 'progress', 'you', '’ve', 'made', 'helps', 'you', 'arrive', 'at', 'a', 'solution', 'faster', '.', '🏃', 'SESSION', 'STARTED', 'AT', '11:25', 'AM', 'Hi', 'Boysandgirl1y', '!', 'I', ""'m"", 'Ms', '.', 'Raman', 'and', 'I', ""'ll"", 'be', 'helping', 'you', 'out', '.', 'Let', ""'s"", 'work', 'together', 'on', 'this', 'problem', '.', 'How', 'far', 'have', 'you', 'progressed', 'in', 'solving', 'it', '?']",4,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,3,student,"['Have', ""n't"", 'started']",53,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,2,platform,"['Do', 'you', 'have', 'any', 'thoughts', 'on', 'how', 'we', 'should', 'start', '?']",30,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,1,student,"['Do', 'I', 'add', '?', 'You']",103,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+312705,0,0,tutor,"['Good', 'thought', '!', 'Which', 'quantities', 'might', 'we', 'add', '?']",,40,m,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+312631,0,10,platform,"['Hey', 'Emma', '!', '-', 'welcome', 'back', '😀', 'You', 'are', 'being', 'connected', 'to', 'a', 'tutor', 'right', 'now', '!']",,,x,,,,,,,,,,,,,,,,,,,0,1
+312631,0,9,student,"['Sounds', 'like', 'a', 'plan']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,8,platform,"['Did', 'you', 'start', 'on', 'the', 'problem', ',', 'even', 'just', 'a', 'little', '?', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'AT', 'NO', 'CHARGE', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'so', 'I', 'can', 'send', 'it', 'to', 'the', 'tutor', '.', 'There', '’s', 'no', 'such', 'thing', 'as', 'sending', 'too', 'little', 'work', '😊', 'SESSION', 'STARTED', 'AT', '5:35', 'PM', 'Hello', 'Emma', '!', 'Welcome', 'to', 'Yup', '!', 'Great', '!', 'Can', 'you', 'tell', 'me', 'how', 'far', 'you', 'have', 'gotten', 'on', 'this', 'question', '?']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,7,student,"['You', 'know', 'that', 'student', 'that', 'you', 'were', 'teaching', 'earlier', 'with', 'the', 'like', 'the', 'modes', 'the', 'medians', 'and', 'I', 'mean', 'that', 'was', 'me', 'Means', 'That', 'was', 'me']",82,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,6,platform,"['Yes', '!', 'Great', '!']",20,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,5,student,"['So', 'now', 'I', 'need', 'help', 'with', 'this', 'problem', 'I', 'would', 'catch', 'you', 'but', 'I', 'had', 'to', 'go', 'because', 'my', 'brother', 'needed', 'me']",30,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,4,platform,"['Do', 'you', 'have', 'any', 'thoughts', 'on', 'what', 'we', 'could', 'try', 'first', '?']",27,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,3,student,"['<url>', 'I', 'tried', 'that', 'but', 'then', 'would', 'I', 'add', 'the', 'zeros']",171,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,2,platform,"['Good', 'try', '!']",86,,x,large>45+ seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,1,student,"['Need', 'to', 'finish', 'my', 'homework', 'very', 'soon', 'so', 'please', 'help', 'me', 'I', 'need', 'to', '😭', '😭']",7,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312631,0,0,tutor,"['Okay', 'sure', '!', 'I', 'see', 'that', 'you', 'got', '630/60', '=', '63/6', 'first', 'right', '?']",,3,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
+312543,0,7,student,['<url>'],,,x,,,,,,,,,,,,,,,,,,,0,1
+312543,0,6,platform,"['Madeline', ',', 'it', '’s', 'good', 'to', 'see', 'you', '.', 'TUTOR', 'FOUND', ',', 'NOW', 'REVIEWING', 'PROBLEM', 'I', ""'m"", 'connecting', 'you', 'with', 'a', 'tutor', 'immediately', '.', '😎']",2,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312543,0,5,student,"['Sounds', 'good', '👍']",5,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312543,0,4,platform,"['Have', 'you', 'started', 'working', 'on', 'your', 'problem', '?', 'If', 'so', ',', 'take', 'a', '📷', 'of', 'your', 'work', 'and', 'I', '’ll', 'send', 'it', 'over', 'to', 'the', 'tutor', '.', 'SESSION', 'STARTED', 'AT', '10:55', 'PM', 'Hey', 'Madeline', '!', '', 'Welcome', 'to', 'Yup', '!']",3,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312543,0,3,student,"['Hello', '!']",23,,x,medium(15-45) seconds,,,,,,,,,,,,,,,,,,0,1
+312543,0,2,platform,"['How', 'are', 'we', 'doing', 'this', 'evening', '?']",1,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312543,0,1,student,"['I', 'am', 'doing', 'fairly', 'well', '.']",9,,x,short<15 seconds,,,,,,,,,,,,,,,,,,0,1
+312543,0,0,tutor,"['Well', 'that', ""'s"", 'fairly', 'good', 'to', 'hear', 'then', '!', 'Do', 'you', 'want', 'me', 'to', 'check', 'your', 'answer', 'for', '#', '3', '?']",,1,s,Rater Guess in the Next Column,,,,,,,,,,,,,,,,,,1,1
