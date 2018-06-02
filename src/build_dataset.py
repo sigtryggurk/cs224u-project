@@ -10,6 +10,7 @@ from collections import defaultdict
 from config import Config
 from console import log_info, log_warning
 from enum import Enum
+from multiprocessing import Pool
 from pathlib import Path
 from stanfordcorenlp import StanfordCoreNLP
 
@@ -77,35 +78,41 @@ def build_question_and_duration(split="tiny"):
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_duration_sec": question_durations_sec, "response_time_sec": response_times_sec})
     return dataset
 
+NLP = StanfordCoreNLP(Config.CORE_NLP_DIR)
+def get_mean_sentiment(text):
+    try:
+        annotated = NLP._request(annotators="sentiment", data=text)
+    except:
+        log_warning("Sentiment annotation failed. Defaulting to neutral sentiment")
+        print("\t" + text)
+        return 2
+    return np.mean([int(sentence["sentimentValue"]) for sentence in annotated["sentences"]])
 
+def process_session(session):
+    res = defaultdict(list)
+    for question, response in session.iter_question_and_response():
+        res["questions"].append(question.row.text)
+        res["response_times_sec"].append((response.row.created_at - question.row.created_at).seconds)
+        res["session_ids"].append(session.id)
+        sentiment = get_mean_sentiment(" ".join(question.row.text))
+        res["sentiments"].append(sentiment)
+    return res
 
 def build_question_and_sentiment(split="tiny"):
-    nlp = StanfordCoreNLP(Config.CORE_NLP_DIR)
-    def get_mean_sentiment(text):
-        try:
-            annotated = nlp._request(annotators="sentiment", data=text)
-        except:
-            log_warning("Sentiment annotation failed. Defaulting to neutral sentiment")
-            print("\t" + text)
-            return 2
-        return np.mean([int(sentence["sentimentValue"]) for sentence in annotated["sentences"]])
-
     data = data_readers.read_corpus(split)
-    questions = []
-    sentiments = []
-    response_times_sec = []
-    session_ids = []
 
+    pool = Pool(12)
     sessions = data_util.get_sessions(data)
-    for session in progressbar.progressbar(sessions):
-        for question, response in session.iter_question_and_response():
-            questions.append(question.row.text)
-            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
-            session_ids.append(session.id)
-            sentiment = get_mean_sentiment(" ".join(question.row.text))
-            sentiments.append(sentiment)
 
-    nlp.close()
+    combined_results = defaultdict(list)
+    for session_result in progressbar.progressbar(pool.imap(process_session, sessions)):
+        for k, v in session_result.items():
+            combined_results[k].extend(v)
+    session_ids = combined_results["session_ids"]
+    questions = combined_results["questions"]
+    sentiments = combined_results["sentiments"]
+    response_times_sec = combined_results["response_times_sec"]
+
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_sentiment": sentiments, "response_time_sec": response_times_sec})
     return dataset
 
@@ -188,7 +195,7 @@ if __name__ == "__main__":
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
 
-    for split in ["tiny"]:# Config.SPLITS:
+    for split in Config.SPLITS:
         log_info("Building %s" % split)
         dataset = builders[args.dataset](split)
         print("\tExtracted %s samples" % dataset.shape[0])
