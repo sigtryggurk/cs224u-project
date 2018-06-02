@@ -1,6 +1,7 @@
 import argparse
 import data_readers
 import data_util
+import numpy as np
 import os
 import pandas as pd
 import progressbar
@@ -10,6 +11,7 @@ from config import Config
 from console import log_info
 from enum import Enum
 from pathlib import Path
+from stanfordcorenlp import StanfordCoreNLP
 
 class Dataset(Enum):
     QUESTION_ONLY = 1
@@ -18,6 +20,7 @@ class Dataset(Enum):
     QUESTION_AND_INDEX = 6
     QUESTION_AND_DURATION= 7
     QUESTION_AND_NEWLINES = 8
+    QUESTION_AND_SENTIMENT = 9
 
 def build_question_only(split="tiny", concatenator=None):
     data = data_readers.read_corpus(split)
@@ -72,6 +75,30 @@ def build_question_and_duration(split="tiny"):
             session_ids.append(session.id)
 
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_duration_sec": question_durations_sec, "response_time_sec": response_times_sec})
+    return dataset
+
+def build_question_and_sentiment(split="tiny"):
+    nlp = StanfordCoreNLP(Config.CORE_NLP_FILE)
+
+    data = data_readers.read_corpus(split)
+    questions = []
+    sentiments = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.row.text)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+            session_ids.append(session.id)
+
+            annotated = nlp._request(annotators="sentiment", data=" ".join(question.row.text))
+            sentiment = np.mean([int(sentence["sentimentValue"]) for sentence in annotated["sentences"]])
+            sentiments.append(sentiment)
+
+    nlp.close()
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_sentiment": sentiments, "response_time_sec": response_times_sec})
     return dataset
 
 def build_question_with_context_window(split="tiny", window_size=0):
@@ -146,6 +173,7 @@ if __name__ == "__main__":
     builders = {Dataset.QUESTION_ONLY: build_question_only,
                 Dataset.QUESTION_AND_INDEX: build_question_and_index,
                 Dataset.QUESTION_AND_DURATION: build_question_and_duration,
+                Dataset.QUESTION_AND_SENTIMENT: build_question_and_sentiment,
                 Dataset.QUESTION_AND_NEWLINES: lambda split: build_question_only(split, concatenator="\n"),
                 Dataset.QUESTION_AND_CONTEXT_WINDOW: lambda split: build_question_with_context_window(split, window_size=Config.MAX_CONTEXT_WINDOW_SIZE),
                 Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
