@@ -80,7 +80,7 @@ def build_question_and_duration(split="tiny"):
 
 
 def build_question_and_sentiment(split="tiny"):
-    nlp = StanfordCoreNLP(Config.CORE_NLP_FILE)
+    nlp = StanfordCoreNLP(Config.CORE_NLP_DIR)
     def get_mean_sentiment(text):
         try:
             annotated = nlp._request(annotators="sentiment", data=text)
@@ -188,7 +188,7 @@ if __name__ == "__main__":
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
 
-    for split in Config.SPLITS:
+    for split in ["tiny"]:# Config.SPLITS:
         log_info("Building %s" % split)
         dataset = builders[args.dataset](split)
         print("\tExtracted %s samples" % dataset.shape[0])

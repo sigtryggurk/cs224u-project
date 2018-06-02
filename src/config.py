@@ -4,7 +4,7 @@ class Config:
     BASE_DIR = realpath(join(dirname(realpath(__file__)), '..'))
     DATA_DIR = join(BASE_DIR, "data")
     CORPUS_FILE = join(DATA_DIR, "yup_messages_preprocessed.csv")
-    CORE_NLP_FILE = join(DATA_DIR, "stanford-corenlp-full-2018-02-27")
+    CORE_NLP_DIR = join(BASE_DIR, "stanford-corenlp-full-2018-02-27")
     BASELINE_PREDS_FILE = join(DATA_DIR, "dev_baseline_predictions_logreg.csv")
     SPLITS = ["tiny", "train", "dev", "test"]
 
