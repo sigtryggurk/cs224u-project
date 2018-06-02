@@ -5,3 +5,5 @@ progressbar2==3.37.1
 spacy==2.0.11
 colorama==0.3.9
 stanfordcorenlp==3.9.1.1
+more_itertools==4.2.0
+flexible-dotdict==0.2.1
