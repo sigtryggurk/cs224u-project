@@ -92,8 +92,8 @@ def multi_text_pipe(texts, clf):
         ('clf', clf)
         ])
 
-log_params = {'clf__C': np.logspace(-4, 4, 100), 'clf__penalty': ['l2', 'l1']}
-svm_params = {'clf__C': np.logspace(-4,4,100), 'clf__loss': ['hinge', 'squared_hinge']}
+log_params = {'clf__C': np.logspace(-1,4,100), 'clf__penalty': ['l2', 'l1']}
+svm_params = {'clf__C': np.logspace(-1,4,100), 'clf__loss': ['squared_hinge']}
 rf_params = {'clf__n_estimators': range(5,20), 'clf__criterion': ['gini', 'entropy'], 'clf__max_features':['auto', 'sqrt','log2', None], 'clf__n_jobs':[4]}
 
 Logistic = SklearnModel("logistic", text_pipe(LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)

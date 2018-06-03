@@ -39,6 +39,8 @@ class SklearnTrainer(object):
             clf.fit(X_train, y_train)
             preds = clf.predict(X_dev)
             f1 = f1_score(y_dev, preds, average='weighted')
+            print("\tTrain F1: %.2f" % f1_score(y_train, clf.predict(X_train), average='weighted'))
+            print("\tDev F1: %.2f" % f1)
             if f1 > best_f1:
                 best_f1 = f1
                 self.best_clf = clf
@@ -74,19 +76,19 @@ class SklearnTrainer(object):
 
 if __name__ == '__main__':
 
-    #data = read_dataset_splits(reader=data_readers.read_question_only_data)
-    #trainer = SklearnTrainer(models.RandomForest, data_name="question_only", n_samples=2)
-    #trainer.train(data.train, data.dev)
+    data = read_dataset_splits(reader=data_readers.read_question_and_newlines_data)
+    trainer = SklearnTrainer(models.SVM, data_name="question_and_newlines", n_samples=5)
+    trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.NB, data_name="question_only", n_samples=1)
     #trainer.train(data.train, data.dev)
 
 
-    data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
-    for window_size in [1,3,5]:
-        texts = ["turn_text-%d" % i for i in range(1, window_size+1)]
-        model = models.MultiTextSVM(texts)
-        trainer = SklearnTrainer(model, data_name="question_and_context_%d" % window_size, n_samples=5)
-        trainer.train(data.train, data.dev)
+    #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
+    #for window_size in [1,3,5]:
+    #    texts = ["turn_text-%d" % i for i in range(1, window_size+1)]
+    #    model = models.MultiTextSVM(texts)
+    #    trainer = SklearnTrainer(model, data_name="question_and_context_%d" % window_size, n_samples=5)
+    #    trainer.train(data.train, data.dev)
 
     #trainer = SklearnTrainer(models.SVM, data_name="question_only", n_samples=10)
     #trainer.train(data.train, data.dev)
