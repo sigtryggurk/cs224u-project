@@ -1,18 +1,19 @@
 from os.path import dirname, realpath, join
+from pathlib import Path
 
 class Config:
-    BASE_DIR = realpath(join(dirname(realpath(__file__)), '..'))
-    RUNS_DIR = join(BASE_DIR, "runs")
-    DATA_DIR = join(BASE_DIR, "data")
-    CORPUS_FILE = join(DATA_DIR, "yup_messages_preprocessed.csv")
-    CORE_NLP_DIR = join(BASE_DIR, "stanford-corenlp-full-2018-02-27")
-    BASELINE_PREDS_FILE = join(DATA_DIR, "dev_baseline_predictions_logreg.csv")
+    BASE_DIR = Path(realpath(join(dirname(realpath(__file__)), '..')))
+    RUNS_DIR = Path(join(BASE_DIR, "runs"))
+    DATA_DIR = Path(join(BASE_DIR, "data"))
+    CORPUS_FILE = Path(join(DATA_DIR, "yup_messages_preprocessed.csv"))
+    CORE_NLP_DIR = Path(join(BASE_DIR, "stanford-corenlp-full-2018-02-27"))
+    BASELINE_PREDS_FILE = Path(join(DATA_DIR, "dev_baseline_predictions_logreg.csv"))
     SPLITS = ["tiny", "train", "dev", "test"]
 
     def _lift_split_file(fmt):
         def split_file(split):
             assert split in Config.SPLITS
-            return join(Config.DATA_DIR, fmt % split)
+            return Path(join(Config.DATA_DIR, fmt % split))
         return split_file
 
     CORPUS_SPLIT_FILE = _lift_split_file("%s_yup_messages_preprocessed.csv")
@@ -28,7 +29,7 @@ class Config:
 
     EMPTY_TAG = "<empty>"
     URL_TAG = "<url>"
-    REMOVED_ROWS_FILE = join(DATA_DIR, "removed_rows.csv")
+    REMOVED_ROWS_FILE = Path(join(DATA_DIR, "removed_rows.csv"))
 
     STUDENT_SPEAKERS = ["student"]
     TUTOR_SPEAKERS = ["tutor"]
