@@ -43,6 +43,13 @@ class SklearnModel(object):
         self.pipe = pipe
         self.params_range = params_range
 
+def text_selector_pipe(key):
+    return Pipeline([
+             ('select', ItemSelector(key=key)),
+             ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
+             ('tfidf', TfidfTransformer())
+             ])
+
 def text_pipe(clf):
     return Pipeline([
              ('select', ItemSelector(key="question")),
@@ -64,16 +71,23 @@ def text_and_scalar_pipe(scalar, clf):
     return Pipeline([
         ('union', FeatureUnion(
             transformer_list=[
-                ('text', Pipeline([
-                    ('select', ItemSelector(key="question")),
-                    ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
-                    ('tfidf', TfidfTransformer()),
-                    ])),
+                ('text', text_selector_pipe('question')),
                 ('scalar', Pipeline([
                     ('select', ItemSelector(key=scalar)),
                     ('reshape', Reshape()),
                     ]))
                 ]
+            )),
+        ('clf', clf)
+        ])
+
+def multi_text_pipe(texts, clf):
+    transformer_list = [('question', text_selector_pipe('question'))]
+    for text in texts:
+        transformer_list.append((text, text_selector_pipe(text)))
+    return Pipeline([
+        ('union', FeatureUnion(
+            transformer_list = transformer_list
             )),
         ('clf', clf)
         ])
@@ -90,3 +104,5 @@ NB = SklearnModel("nb", text_dense_pipe(GaussianNB()), {})
 
 LogisticWithScalar = lambda s: SklearnModel("logistic", text_and_scalar_pipe(s, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
 SVMWithScalar = lambda s: SklearnModel("svm", text_and_scalar_pipe(s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+
+MultiTextSVM = lambda texts: SklearnModel("svm", multi_text_pipe(texts, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
