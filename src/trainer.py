@@ -1,16 +1,24 @@
+import data_readers
 import models
 import numpy as np
 import os
 import random
 
 from config import Config
-from data_readers import read_question_only_data, read_dataset_splits
+from data_readers import read_dataset_splits
+from model_utils import get_response_time_label
 from pathlib import Path
 from progressbar import progressbar
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support, f1_score
 from sklearn.model_selection import ParameterSampler
 
 random.seed(Config.SEED)
+
+def prepare_data(data):
+    y = data.response_time_sec.apply(get_response_time_label).values
+    X = data.drop(columns="response_time_sec").to_dict(orient="list")
+    return X, y
+
 class SklearnTrainer(object):
     def __init__(self, model, data_name,  n_samples):
         self.pipe = model.pipe
@@ -19,8 +27,8 @@ class SklearnTrainer(object):
         self.params_sampler = ParameterSampler(model.params_range, n_iter=n_samples, random_state=Config.SEED)
 
     def train(self, train_data, dev_data):
-        X_train, y_train  = train_data
-        X_dev, y_dev  = dev_data
+        X_train, y_train  = prepare_data(train_data)
+        X_dev, y_dev  = prepare_data(dev_data)
 
         self.best_clf = None
         self.best_params = None
@@ -65,7 +73,7 @@ class SklearnTrainer(object):
             print(self.best_params, file=params_file)
 
 if __name__ == '__main__':
-    data = read_dataset_splits(reader=read_question_only_data, prepare=True)
-    trainer = SklearnTrainer(models.Dummy, data_name="question_only", n_samples=1)
+    data = read_dataset_splits(reader=data_readers.read_question_and_index_data, splits=["tiny"])
+    trainer = SklearnTrainer(models.SVMWithScalar("question_index"), data_name="question_and_index", n_samples=5)
 
-    trainer.train(data.train, data.dev)
+    trainer.train(data.tiny, data.tiny)
