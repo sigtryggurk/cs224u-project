@@ -36,14 +36,16 @@ def add_classes(data):
             get_response_time_label(row['response_time_sec']), axis=1)
 
     return data
-
-def add_question_text(data):
+            
+def add_question_length(data):
     '''
-        Add question text by joining tokens with spaces, if necessary.
+        Add question length as a feature.
     '''
     for key, value in data.items():
-        value['question_text'] = value.apply(lambda row:
-            ' '.join(row['question']), axis=1)
+        value['question_length'] = value.apply(lambda row:
+            len(row['question']), axis=1)
+    
+    return data
 
 _punctuation_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 
