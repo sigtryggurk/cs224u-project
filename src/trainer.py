@@ -1,50 +1,33 @@
+import models
 import numpy as np
 import os
 import random
 
 from config import Config
 from data_readers import read_question_only_data, read_dataset_splits
-from model_utils import dummy_tokenizer
 from pathlib import Path
 from progressbar import progressbar
-from sklearn.base import TransformerMixin
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support, f1_score
 from sklearn.model_selection import ParameterSampler
-from sklearn.naive_bayes import GaussianNB
-from sklearn.pipeline import Pipeline
 
 random.seed(Config.SEED)
-
-
-class DenseTransformer(TransformerMixin):
-    def transform(self, X, y=None, **fit_params):
-        return X.todense()
-
-    def fit_transform(self, X, y=None, **fit_params):
-        self.fit(X, y, **fit_params)
-        return self.transform(X)
-
-    def fit(self, X, y=None, **fit_params):
-        return self
-
 class SklearnTrainer(object):
-    def __init__(self, model, params_range, n_samples, model_name, data_name):
-        self.model = model
-        self.params_sampler = ParameterSampler(params_range, n_iter=n_samples, random_state=Config.SEED)
-        self.directory = Path(os.path.join(Config.RUNS_DIR, data_name, model_name))
+    def __init__(self, model, data_name,  n_samples):
+        self.pipe = model.pipe
+        self.directory = Path(os.path.join(Config.RUNS_DIR, data_name, model.name))
         self.directory.mkdir(parents=True, exist_ok=True)
+        self.params_sampler = ParameterSampler(model.params_range, n_iter=n_samples, random_state=Config.SEED)
 
     def train(self, train_data, dev_data):
-        X_train, y_train = train_data
-        X_dev, y_dev = dev_data
+        X_train, y_train  = train_data
+        X_dev, y_dev  = dev_data
+
         self.best_clf = None
         self.best_params = None
         best_f1 = 0
 
         for params in progressbar(self.params_sampler):
-            clf = self.model.set_params(**params)
+            clf = self.pipe.set_params(**params)
             clf.fit(X_train, y_train)
             preds = clf.predict(X_dev)
             f1 = f1_score(y_dev, preds, average='weighted')
@@ -57,6 +40,8 @@ class SklearnTrainer(object):
         self.eval(X_dev, y_dev, split="dev")
 
     def eval(self, X, y, split="tiny"):
+        assert self.best_clf is not None
+
         split_dir = self.directory.joinpath(split)
         split_dir.mkdir(parents=True, exist_ok=True)
 
@@ -80,15 +65,7 @@ class SklearnTrainer(object):
             print(self.best_params, file=params_file)
 
 if __name__ == '__main__':
-    params = {}#{'clf__C': np.logspace(-4, 4, 100), 'clf__penalty': ['l2', 'l1']}
-
-    model = Pipeline([
-            ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
-            ('tfidf', TfidfTransformer()),
-            ('to_dense', DenseTransformer()),
-            ('clf', GaussianNB())
-    ])
     data = read_dataset_splits(reader=read_question_only_data, prepare=True)
-    trainer = SklearnTrainer(model, params, 1, "nb", "question_only")
+    trainer = SklearnTrainer(models.Dummy, data_name="question_only", n_samples=1)
 
     trainer.train(data.train, data.dev)
