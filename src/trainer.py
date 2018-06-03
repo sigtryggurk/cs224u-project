@@ -79,9 +79,9 @@ if __name__ == '__main__':
     data = read_dataset_splits(reader=data_readers.read_question_only_data)
     data = add_question_length(data)
     trainer = SklearnTrainer(models.LogisticWithScalar("question_length"), data_name="question_and_length", n_samples=5)
-    trainer.train(data.tiny, data.tiny)
+    trainer.train(data.train, data.dev)
     trainer = SklearnTrainer(models.SVMWithScalar("question_length"), data_name="question_and_length", n_samples=5)
-    trainer.train(data.tiny, data.tiny)
+    trainer.train(data.train, data.dev)
     
     #data = read_dataset_splits(reader=data_readers.read_question_and_sentiment_data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
