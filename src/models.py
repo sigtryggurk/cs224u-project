@@ -7,6 +7,7 @@ from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import FeatureUnion, Pipeline
 
@@ -84,7 +85,8 @@ rf_params = {'clf__n_estimators': range(5,20), 'clf___criterion': ['gini', 'entr
 Logistic = SklearnModel("logistic", text_pipe(LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
 SVM = SklearnModel("svm", text_pipe(LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
 Dummy = SklearnModel("dummy", text_pipe(DummyClassifier(random_state=Config.SEED)), {})
-RandomForest = SklearnModel("random_forest", text_pipe(RandomForestClassifier(random_state=Config.SEED)), rf_params)
+RandomForest = SklearnModel("random_forest", text_dense_pipe(RandomForestClassifier(random_state=Config.SEED)), rf_params)
+NB = SklearnModel("nb", text_dense_pipe(GaussianNB()), {})
 
 LogisticWithScalar = lambda s: SklearnModel("logistic", text_and_scalar_pipe(s, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
 SVMWithScalar = lambda s: SklearnModel("svm", text_and_scalar_pipe(s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
