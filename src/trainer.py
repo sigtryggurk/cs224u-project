@@ -77,6 +77,8 @@ if __name__ == '__main__':
     data = read_dataset_splits(reader=data_readers.read_question_only_data)
     trainer = SklearnTrainer(models.RandomForest, data_name="question_only", n_samples=10)
     trainer.train(data.train, data.dev)
+    trainer = SklearnTrainer(models.NB, data_name="question_only", n_samples=1)
+    trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVM, data_name="question_only", n_samples=10)
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.Dummy, data_name="question_only", n_samples=1)

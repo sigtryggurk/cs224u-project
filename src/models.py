@@ -80,7 +80,7 @@ def text_and_scalar_pipe(scalar, clf):
 
 log_params = {'clf__C': np.logspace(-4, 4, 100), 'clf__penalty': ['l2', 'l1']}
 svm_params = {'clf__C': np.logspace(-4,4,100), 'clf__loss': ['hinge', 'squared_hinge']}
-rf_params = {'clf__n_estimators': range(5,20), 'clf___criterion': ['gini', 'entropy'], 'clf__max_features':['int', 'float', 'auto', 'sqrt','log2', None], 'clf___n_jobs': 4}
+rf_params = {'clf__n_estimators': range(5,20), 'clf__criterion': ['gini', 'entropy'], 'clf__max_features':['auto', 'sqrt','log2', None], 'clf__n_jobs':[4]}
 
 Logistic = SklearnModel("logistic", text_pipe(LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
 SVM = SklearnModel("svm", text_pipe(LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
