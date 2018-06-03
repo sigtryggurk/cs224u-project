@@ -75,10 +75,16 @@ class SklearnTrainer(object):
             print(self.best_params, file=params_file)
 
 if __name__ == '__main__':
-
-    data = read_dataset_splits(reader=data_readers.read_question_and_newlines_data)
-    trainer = SklearnTrainer(models.SVM, data_name="question_and_newlines", n_samples=5)
+    
+    data = read_dataset_splits(reader=data_readers.read_question_and_sentiment_data)
+    trainer = SklearnTrainer(models.LogisticWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
+    trainer.train(data.train, data.test)
+    trainer = SklearnTrainer(models.SVMWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
     trainer.train(data.train, data.dev)
+
+    #data = read_dataset_splits(reader=data_readers.read_question_and_newlines_data)
+    #trainer = SklearnTrainer(models.SVM, data_name="question_and_newlines", n_samples=5)
+    #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.NB, data_name="question_only", n_samples=1)
     #trainer.train(data.train, data.dev)
 
