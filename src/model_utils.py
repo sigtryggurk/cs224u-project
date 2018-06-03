@@ -15,6 +15,8 @@ import re
 from unicodedata import normalize
 from config import Config
 from scipy import stats
+from scipy.spatial.distance import cosine
+from spacy.lang.en.stop_words import STOP_WORDS
 
 SEED = Config.SEED
 random.seed(SEED)
@@ -47,6 +49,34 @@ def add_question_length(data):
     
     return data
 
+def calc_cosine_similarity(row):
+    odd_text = []
+    even_text = []
+    for i in range(1,10,2):
+        odd_text += row['turn_text-' + str(i)]
+        even_text += row['turn_text-' + str(i+1)]
+        
+    odd_total = [item for sublist in odd_text for item in sublist]
+    even_total = [item for sublist in even_text for item in sublist]
+    
+    odd_vector = [odd_total.count(w) for w in STOP_WORDS] 
+    even_vector = [even_total.count(w) for w in STOP_WORDS]
+    
+    if np.linalg.norm(odd_vector) == 0 or np.linalg.norm(even_vector) == 0:
+        return 0
+    else:
+        return 1 - cosine(odd_vector, even_vector) #Cosine similarity as cos(theta)  
+    
+def add_cosine_similarity(data):
+    '''
+        Add cosine distance for stop word vectors as a feature.
+    '''
+    for key, value in data.items():
+        value['cosine_similarity'] = value.apply(lambda row:
+            calc_cosine_similarity(row), axis=1)
+    
+    return data
+        
 _punctuation_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 
 def slugify(text, delim='-'):

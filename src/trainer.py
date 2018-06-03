@@ -6,7 +6,7 @@ import random
 
 from config import Config
 from data_readers import read_dataset_splits
-from model_utils import get_response_time_label, add_question_length
+from model_utils import get_response_time_label, add_question_length, add_cosine_similarity
 from pathlib import Path
 from progressbar import progressbar
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support, f1_score
@@ -76,16 +76,24 @@ class SklearnTrainer(object):
 
 if __name__ == '__main__':
     
-    data = read_dataset_splits(reader=data_readers.read_question_only_data)
-    data = add_question_length(data)
-    trainer = SklearnTrainer(models.LogisticWithScalar("question_length"), data_name="question_and_length", n_samples=5)
+    data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
+    data = add_cosine_similarity(data)
+    trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
     trainer.train(data.train, data.dev)
-    trainer = SklearnTrainer(models.SVMWithScalar("question_length"), data_name="question_and_length", n_samples=5)
+    trainer = SklearnTrainer(models.SVMWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
     trainer.train(data.train, data.dev)
+
+    
+    #data = read_dataset_splits(reader=data_readers.read_question_only_data)
+    #data = add_question_length(data)
+    #trainer = SklearnTrainer(models.LogisticWithScalar("question_length"), data_name="question_and_length", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #trainer = SklearnTrainer(models.SVMWithScalar("question_length"), data_name="question_and_length", n_samples=5)
+    #trainer.train(data.train, data.dev)
     
     #data = read_dataset_splits(reader=data_readers.read_question_and_sentiment_data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
-    #trainer.train(data.train, data.test)
+    #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
     #trainer.train(data.train, data.dev)
 
