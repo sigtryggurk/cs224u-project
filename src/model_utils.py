@@ -49,7 +49,7 @@ def add_question_length(data):
     
     return data
 
-def calc_cosine_similarity(row):
+def calc_cosine_similarity(row, stopwords=STOP_WORDS):
     odd_text = []
     even_text = []
     for i in range(1,10,2):
@@ -59,21 +59,21 @@ def calc_cosine_similarity(row):
     odd_total = [item for sublist in odd_text for item in sublist]
     even_total = [item for sublist in even_text for item in sublist]
     
-    odd_vector = [odd_total.count(w) for w in STOP_WORDS] 
-    even_vector = [even_total.count(w) for w in STOP_WORDS]
+    odd_vector = [odd_total.count(w) for w in stopwords] 
+    even_vector = [even_total.count(w) for w in stopwords]
     
     if np.linalg.norm(odd_vector) == 0 or np.linalg.norm(even_vector) == 0:
         return 0
     else:
         return 1 - cosine(odd_vector, even_vector) #Cosine similarity as cos(theta)  
     
-def add_cosine_similarity(data):
+def add_cosine_similarity(data, stopwords=STOP_WORDS):
     '''
         Add cosine distance for stop word vectors as a feature.
     '''
     for key, value in data.items():
         value['cosine_similarity'] = value.apply(lambda row:
-            calc_cosine_similarity(row), axis=1)
+            calc_cosine_similarity(row, stopwords=stopwords), axis=1)
     
     return data
         
