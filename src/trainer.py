@@ -9,6 +9,7 @@ from data_readers import read_dataset_splits
 from model_utils import get_response_time_label
 from pathlib import Path
 from progressbar import progressbar
+from sklearn.externals import joblib
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support, f1_score
 from sklearn.model_selection import ParameterSampler
 
@@ -46,6 +47,7 @@ class SklearnTrainer(object):
                 self.best_clf = clf
                 self.best_params = params
 
+        joblib.dump(self.best_clf, self.directory.joinpath('clf.pkl'))
         self.eval(X_train, y_train, split="train")
         self.eval(X_dev, y_dev, split="dev")
 
@@ -76,8 +78,8 @@ class SklearnTrainer(object):
 
 if __name__ == '__main__':
 
-    data = read_dataset_splits(reader=data_readers.read_question_and_newlines_data)
-    trainer = SklearnTrainer(models.SVM, data_name="question_and_newlines", n_samples=5)
+    data = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
+    trainer = SklearnTrainer(models.SVMWithScalar("question_duration_sec"), data_name="question_and_duration", n_samples=10)
     trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.NB, data_name="question_only", n_samples=1)
     #trainer.train(data.train, data.dev)

@@ -53,7 +53,7 @@ def read_question_and_duration_data(split="tiny"):
     log_info("read %s data with %d rows" % (path.stem, data.shape[0]))
     return data
 
-def read_question_text_and_response_text_data(split="tiny"):
+def read_question_and_response_data(split="tiny"):
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
     converters = {"question": ast.literal_eval, "response": ast.literal_eval}
     path = Config.QUESTION_TEXT_AND_RESPONSE_TEXT_DATASET_FILE(split)
