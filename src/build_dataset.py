@@ -10,6 +10,7 @@ from collections import defaultdict
 from config import Config
 from console import log_info, log_warning
 from enum import Enum
+from model_utils import get_response_time_label
 from multiprocessing import Pool
 from pathlib import Path
 from stanfordcorenlp import StanfordCoreNLP
@@ -22,6 +23,7 @@ class Dataset(Enum):
     QUESTION_AND_DURATION= 7
     QUESTION_AND_NEWLINES = 8
     QUESTION_AND_SENTIMENT = 9
+    LABEL_COUNTS = 10
 
 def build_question_only(split="tiny", concatenator=None):
     data = data_readers.read_corpus(split)
@@ -172,6 +174,26 @@ def build_question_text_and_response_text(split="tiny"):
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "response": responses, "response_time_sec": response_times_sec})
     return dataset
 
+def build_label_counts(split="tiny"):
+    data = data_readers.read_corpus(split)
+    label_counts = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        counts = defaultdict(int)
+        for question, response in session.iter_question_and_response():
+            response_time_sec = (response.row.created_at - question.row.created_at).seconds
+            response_times_sec.append(response_time_sec)
+            label_counts.append(tuple(counts[label] for label in Config.LABELS))
+            session_ids.append(session.id)
+
+            counts[get_response_time_label(response_time_sec)] += 1
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids,  "response_time_sec": response_times_sec, "label_counts": label_counts})
+    return dataset
+
 def get_dest_name(split="tiny"):
     destname = "%s_%s_dataset.csv" % (split, args.dataset.name.lower())
     dest = os.path.join(Config.DATA_DIR, destname)
@@ -191,7 +213,8 @@ if __name__ == "__main__":
                 Dataset.QUESTION_AND_SENTIMENT: build_question_and_sentiment,
                 Dataset.QUESTION_AND_NEWLINES: lambda split: build_question_only(split, concatenator="\n"),
                 Dataset.QUESTION_AND_CONTEXT_WINDOW: lambda split: build_question_with_context_window(split, window_size=Config.MAX_CONTEXT_WINDOW_SIZE),
-                Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text}
+                Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text,
+                Dataset.LABEL_COUNTS: build_label_counts}
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
 

@@ -23,6 +23,7 @@ class Config:
     QUESTION_AND_NEWLINES_DATASET_FILE = _lift_split_file("%s_question_and_newlines_dataset.csv")
     QUESTION_TEXT_AND_RESPONSE_TEXT_DATASET_FILE = _lift_split_file("%s_question_text_and_response_text_dataset.csv")
     QUESTION_AND_SENTIMENT_DATASET_FILE = _lift_split_file("%s_question_and_sentiment_dataset.csv")
+    LABEL_COUNTS_DATASET_FILE = _lift_split_file("%s_label_counts_dataset.csv")
 
     MAX_CONTEXT_WINDOW_SIZE = 10
     QUESTION_AND_CONTEXT_WINDOW_DATASET_FILE = _lift_split_file("%s_question_and_context_window_dataset.csv")

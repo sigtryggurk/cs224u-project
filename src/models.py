@@ -58,6 +58,12 @@ def text_pipe(clf):
              ('clf', clf)
              ])
 
+def vector_pipe(vector, clf):
+    return Pipeline([
+             ('select', ItemSelector(key=vector)),
+             ('clf', clf)
+             ])
+
 def text_dense_pipe(clf):
     return Pipeline([
              ('select', ItemSelector(key="question")),
@@ -67,16 +73,29 @@ def text_dense_pipe(clf):
              ('clf', clf)
              ])
 
+def scalar_selector_pipe(key):
+    return Pipeline([
+                    ('select', ItemSelector(key=key)),
+                    ('reshape', Reshape()),
+                    ])
+
 def text_and_scalar_pipe(scalar, clf):
     return Pipeline([
         ('union', FeatureUnion(
             transformer_list=[
                 ('text', text_selector_pipe('question')),
-                ('scalar', Pipeline([
-                    ('select', ItemSelector(key=scalar)),
-                    ('reshape', Reshape()),
-                    ]))
-                ]
+                ('scalar', scalar_selector_pipe(scalar))
+                ])),
+        ('clf', clf)
+        ])
+
+def text_and_scalars_pipe(scalars, clf):
+    transformer_list = [ ('question', text_selector_pipe('question'))]
+    for scalar in scalars:
+        transformer_list.append((scalar, scalar_selector_pipe(scalar)))
+    return Pipeline([
+        ('union', FeatureUnion(
+            transformer_list = transformer_list
             )),
         ('clf', clf)
         ])
@@ -93,7 +112,7 @@ def multi_text_pipe(texts, clf):
         ])
 
 log_params = {'clf__C': np.logspace(-4,2,100), 'clf__penalty': ['l2', 'l1']}
-svm_params = {'clf__C': np.logspace(-2,1,100), 'clf__loss': ['squared_hinge']}
+svm_params = {'clf__C': np.logspace(-2,2,100), 'clf__loss': ['squared_hinge']}
 rf_params = {'clf__n_estimators': range(5,20), 'clf__criterion': ['gini', 'entropy'], 'clf__max_features':['auto', 'sqrt','log2', None], 'clf__n_jobs':[4]}
 
 Logistic = SklearnModel("logistic", text_pipe(LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
@@ -106,3 +125,7 @@ LogisticWithScalar = lambda s: SklearnModel("logistic", text_and_scalar_pipe(s, 
 SVMWithScalar = lambda s: SklearnModel("svm", text_and_scalar_pipe(s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
 
 MultiTextSVM = lambda texts: SklearnModel("svm", multi_text_pipe(texts, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+
+SVMWithScalars = lambda s: SklearnModel("svm", text_and_scalars_pipe(s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+
+SVMVector = lambda v: SklearnModel("svm", vector_pipe(v, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
