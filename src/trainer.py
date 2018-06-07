@@ -7,7 +7,7 @@ import random
 from collections import Counter
 from config import Config
 from data_readers import read_dataset_splits, read_corpus
-from model_utils import get_response_time_label, add_cosine_similarity
+from model_utils import get_response_time_label, add_cosine_similarity, add_question_length
 from pathlib import Path
 from progressbar import progressbar
 from sklearn.externals import joblib
@@ -73,39 +73,46 @@ class SklearnTrainer(object):
         cm = confusion_matrix(y, preds)
         with split_dir.joinpath("confusion_matrix").open(mode='w') as cm_file:
             np.savetxt(cm_file, cm, fmt="%d")
-
+        
+        plot_cm(cm, os.path.join(split_dir, "cm.png"))
+        
         with split_dir.joinpath("params").open(mode='w') as params_file:
-            print(self.best_params, file=params_file)
+            print(self.best_params, file=params_file)   
 
 if __name__ == '__main__':
 
-    #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
-    #data = add_cosine_similarity(data)
-    #trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
-    #trainer.train(data.train, data.dev)
-    #trainer = SklearnTrainer(models.SVMWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
-    #trainer.train(data.train, data.dev)
+    data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
+    data = add_cosine_similarity(data)
+    trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
+    trainer.train(data.train, data.dev)
+    trainer = SklearnTrainer(models.SVMWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
+    trainer.train(data.train, data.dev)
+    
     df = read_corpus(split='train')
     all_words = [item for sublist in df.text for item in sublist]
-    top_words = [item[0] for item in Counter(all_words).most_common(25)]
+    for N_words in [25, 50, 100]:
+        top_words = [item[0] for item in Counter(all_words).most_common(N_words)]
+        print(len(top_words))
+        data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
+        data = add_cosine_similarity(data, stopwords=top_words)
+        trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity_top" + str(N_words), n_samples=5)
+        trainer.train(data.train, data.dev)
+        trainer = SklearnTrainer(models.SVMWithScalar("cosine_similarity"), data_name="question_and_similarity_top" + str(N_words), n_samples=5)
+        trainer.train(data.train, data.dev)
 
-    data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
-    data = add_cosine_similarity(data, stopwords=top_words)
-    trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity_top25", n_samples=5)
+
+    data = read_dataset_splits(reader=data_readers.read_question_only_data)
+    data = add_question_length(data)
+    trainer = SklearnTrainer(models.LogisticWithScalar("question_length"), data_name="question_and_length", n_samples=5)
+    trainer.train(data.train, data.dev)
+    trainer = SklearnTrainer(models.SVMWithScalar("question_length"), data_name="question_and_length", n_samples=5)
     trainer.train(data.train, data.dev)
 
-    #data = read_dataset_splits(reader=data_readers.read_question_only_data)
-    #data = add_question_length(data)
-    #trainer = SklearnTrainer(models.LogisticWithScalar("question_length"), data_name="question_and_length", n_samples=5)
-    #trainer.train(data.train, data.dev)
-    #trainer = SklearnTrainer(models.SVMWithScalar("question_length"), data_name="question_and_length", n_samples=5)
-    #trainer.train(data.train, data.dev)
-
-    #data = read_dataset_splits(reader=data_readers.read_question_and_sentiment_data)
-    #trainer = SklearnTrainer(models.LogisticWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
-    #trainer.train(data.train, data.dev)
-    #trainer = SklearnTrainer(models.SVMWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
-    #trainer.train(data.train, data.dev)
+    data = read_dataset_splits(reader=data_readers.read_question_and_sentiment_data)
+    trainer = SklearnTrainer(models.LogisticWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
+    trainer.train(data.train, data.dev)
+    trainer = SklearnTrainer(models.SVMWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
+    trainer.train(data.train, data.dev)
 
     #data = read_dataset_splits(reader=data_readers.read_question_and_newlines_data)
     #trainer = SklearnTrainer(models.SVM, data_name="question_and_newlines", n_samples=5)
@@ -114,12 +121,12 @@ if __name__ == '__main__':
     #trainer.train(data.train, data.dev)
 
 
-    data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
-    for window_size in [1,3,5]:
-        texts = ["turn_text-%d" % i for i in range(1, window_size+1)]
-        model = models.MultiTextSVM(texts)
-        trainer = SklearnTrainer(model, data_name="question_and_context_text_%d" % window_size, n_samples=5)
-        trainer.train(data.train, data.dev)
+    #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
+    #for window_size in [1,3,5]:
+    #    texts = ["turn_text-%d" % i for i in range(1, window_size+1)]
+    #    model = models.MultiTextSVM(texts)
+    #    trainer = SklearnTrainer(model, data_name="question_and_context_text_%d" % window_size, n_samples=5)
+    #    trainer.train(data.train, data.dev)
 
     #data = read_dataset_splits(reader=data_readers.read_label_counts_data)
     #model = models.SVMVector("label_counts")
