@@ -136,4 +136,3 @@ if __name__ == '__main__':
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("question_index"), data_name="question_and_index", n_samples=10)
     #trainer.train(data.train, data.dev)
-
