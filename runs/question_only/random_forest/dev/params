@@ -1,0 +1,1 @@
+{'clf__n_jobs': 4, 'clf__n_estimators': 19, 'clf__max_features': 'log2', 'clf__criterion': 'gini'}
