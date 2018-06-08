@@ -76,25 +76,8 @@ def add_cosine_similarity(data, stopwords=STOP_WORDS):
             calc_cosine_similarity(row, stopwords=stopwords), axis=1)
     
     return data
-        
-_punctuation_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 
-def slugify(text, delim='-'):
-    """
-    Generate an ASCII-only slug.
-    """
-    result = []
-    for word in _punctuation_re.split(text.lower()):
-        word = normalize('NFKD', word) \
-               .encode('ascii', 'ignore') \
-               .decode('utf-8')
-
-        if word:
-            result.append(word)
-
-    return delim.join(result)
-
-def plot_cm(cm, title="Confusion Matrix"):
+def plot_cm(cm, filename):
     '''
         Takes in a confusion matrix and saves it as a PNG image.
     '''
@@ -104,7 +87,6 @@ def plot_cm(cm, title="Confusion Matrix"):
     plt.xlabel('Predicted label', fontsize=6)
     plt.xticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
     plt.yticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
-    plt.title(title, fontsize=8)
 
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
@@ -112,7 +94,7 @@ def plot_cm(cm, title="Confusion Matrix"):
                  horizontalalignment="center",
                  color="white" if cm[i, j] > thresh else "black")
 
-    plt.savefig("cm_{}.png".format(slugify(title)), dpi=300)
+    plt.savefig(filename, dpi=300)
     plt.close()
 
 def dummy_tokenizer(tokens):
