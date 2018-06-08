@@ -92,7 +92,6 @@ if __name__ == '__main__':
     all_words = [item for sublist in df.text for item in sublist]
     for N_words in [25, 50, 100]:
         top_words = [item[0] for item in Counter(all_words).most_common(N_words)]
-        print(len(top_words))
         data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
         data = add_cosine_similarity(data, stopwords=top_words)
         trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity_top" + str(N_words), n_samples=5)
