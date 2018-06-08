@@ -135,13 +135,15 @@ def build_question_with_context_window(split="tiny", window_size=0):
             response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
             session_ids.append(session.id)
 
-            times = defaultdict(lambda: None)
+            times = defaultdict(lambda: 0)
             texts = defaultdict(lambda: [])
             speakers = defaultdict(lambda: Config.EMPTY_TAG)
+            prev = question.row.created_at
             for i, turn in enumerate(session.iter_turns(start_row=question.index, num_turns=window_size+1, direction=-1)):
                 texts[i] = turn.text
                 speakers[i] = turn.sent_from
-                times[i] = int((question.row.created_at - turn.created_at).seconds)
+                times[i] = int((prev - turn.created_at).seconds)
+                prev = turn.created_at
 
             for i in range(1, window_size+1):
                 turn_texts["turn_text-%d" % i].append(texts[i])
