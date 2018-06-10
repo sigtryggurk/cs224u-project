@@ -4,8 +4,10 @@ import os
 import pickle
 import random
 
+from collections import defaultdict
 from config import Config
 from data_readers import read_dataset_splits
+from keras.callbacks import Callback
 from keras.layers import Dense, Embedding, Input, LSTM, Bidirectional
 from keras.models import Model
 from keras.preprocessing.text import Tokenizer
@@ -22,6 +24,18 @@ BATCH_SIZE = 128
 
 LABEL_TO_INDEX = {Config.LABEL_SHORT: 0, Config.LABEL_MEDIUM: 1, Config.LABEL_LONG: 2}
 INDEX_TO_LABEL = {v:k for k,v in LABEL_TO_INDEX.items()}
+
+class F1_Score(Callback):
+    def on_train_begin(self, logs={}):
+        self.val_f1s = []
+
+    def on_epoch_end(self, epoch, logs={}):
+        val_predict = np.argmax(self.model.predict(self.validation_data[0]), axis=1)
+        val_targ = self.validation_data[1]
+        _val_f1 = f1_score(val_targ, val_predict, average='weighted')
+        self.val_f1s.append(_val_f1)
+        print(" — val_f1: %.4f" % _val_f1)
+        return
 
 def prepare_data(data):
     y = data.response_time_sec.apply(get_response_time_label).apply(lambda label: LABEL_TO_INDEX[label]).values
@@ -70,7 +84,7 @@ def getFastTextEmbeddings(word_index):
 def f1(y_true, y_pred):
     return f1_score(y_true, y_pred, average='weighted')
 
-def simpleRNN(embeddings, hidden_dim=100):
+def simpleRNN(embeddings, hidden_dim=100, dropout=0.1, recurrent_dropout=0.1):
     inputs = Input(shape=(MAX_QUESTION_LEN, ), dtype='int32')
 
     input_dim, output_dim = embeddings.shape
@@ -78,7 +92,7 @@ def simpleRNN(embeddings, hidden_dim=100):
                   weights = [embeddings],
                   input_length=MAX_QUESTION_LEN,
                   trainable=True)(inputs)
-    x = Bidirectional(LSTM(hidden_dim))(x)
+    x = Bidirectional(LSTM(hidden_dim, activation="relu", dropout=dropout, recurrent_dropout=recurrent_dropout))(x)
     preds = Dense(len(Config.LABELS), activation='sigmoid')(x)
 
     model = Model(inputs, preds)
@@ -109,7 +123,7 @@ def evaluate(y_true, y_pred, name="tiny"):
 
 
 if __name__ == "__main__":
-    data = read_dataset_splits(reader=data_readers.read_question_only_data, splits=["train", "dev"])
+    data = read_dataset_splits(reader=data_readers.read_question_only_data, splits=["tiny", "train", "dev"])
     X_train, y_train = prepare_data(data.train)
     X_dev, y_dev = prepare_data(data.dev)
 
@@ -126,7 +140,14 @@ if __name__ == "__main__":
     X_train = pad_sequences(X_train, maxlen=MAX_QUESTION_LEN)
     X_dev = pad_sequences(X_dev, maxlen=MAX_QUESTION_LEN)
 
-    model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=NUM_EPOCHS, validation_data=(X_dev, y_dev))
+    class_weight = defaultdict(int)
+    for label in y_train:
+        class_weight[label] += 1
+    tot = sum(class_weight.values())
+    for c in class_weight.keys():
+        class_weight[c] /= tot
+
+    model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=NUM_EPOCHS, validation_data=(X_dev, y_dev), class_weight=class_weight, callbacks=[F1_Score()])
     model.save("model.h5")
 
     train_preds = np.argmax(model.predict(X_train, batch_size=BATCH_SIZE), axis=1)
