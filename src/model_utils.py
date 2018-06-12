@@ -15,8 +15,9 @@ import re
 from unicodedata import normalize
 from config import Config
 from scipy import stats
-from scipy.spatial.distance import cosine
 from spacy.lang.en.stop_words import STOP_WORDS
+from scipy.spatial.distance import cosine
+from scipy.stats import entropy
 
 SEED = Config.SEED
 random.seed(SEED)
@@ -49,7 +50,7 @@ def add_question_length(data):
     
     return data
 
-def calc_cosine_similarity(row, stopwords=STOP_WORDS):
+def calc_distance_metric(row, stopwords=STOP_WORDS, metric='cosine_sim'):
     odd_text = []
     even_text = []
     for i in range(1,10,2):
@@ -62,18 +63,41 @@ def calc_cosine_similarity(row, stopwords=STOP_WORDS):
     odd_vector = [odd_total.count(w) for w in stopwords] 
     even_vector = [even_total.count(w) for w in stopwords]
     
+    if metric == 'cosine_sim':
+        return cosine_sim(odd_vector, even_vector)
+    elif metric == 'jensen_shannon':
+        return jensen_shannon(odd_vector, even_vector)
+    
+def cosine_sim(odd_vector, even_vector):
     if np.linalg.norm(odd_vector) == 0 or np.linalg.norm(even_vector) == 0:
         return 0
     else:
         return 1 - cosine(odd_vector, even_vector) #Cosine similarity as cos(theta)  
     
+def jensen_shannon(odd_vector, even_vector):
+    if np.linalg.norm(odd_vector) == 0 or np.linalg.norm(even_vector) == 0:
+        return 1
+    else:
+        m = [2.*(x+y) for x, y in zip(odd_vector, even_vector)]
+        return 0.5 * entropy(odd_vector, m, base=2) + 0.5 * entropy(even_vector, m, base=2)
+    
 def add_cosine_similarity(data, stopwords=STOP_WORDS):
     '''
-        Add cosine distance for stop word vectors as a feature.
+        Add cosine similarity for stop word vectors as a feature.
     '''
     for key, value in data.items():
         value['cosine_similarity'] = value.apply(lambda row:
-            calc_cosine_similarity(row, stopwords=stopwords), axis=1)
+            calc_distance_metric(row, stopwords=stopwords, metric='cosine_sim'), axis=1)
+    
+    return data
+
+def add_jensen_shannon(data, stopwords=STOP_WORDS):
+    '''
+        Add Jensen Shannon distance for stop word vectors as a feature.
+    '''
+    for key, value in data.items():
+        value['jensen_shannon'] = value.apply(lambda row:
+            calc_distance_metric(row, stopwords=stopwords, metric='jensen_shannon'), axis=1)
     
     return data
 
