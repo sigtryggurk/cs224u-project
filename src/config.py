@@ -7,6 +7,7 @@ class Config:
     DATA_DIR = Path(join(BASE_DIR, "data"))
     FASTTEXT_FILE = Path(join(DATA_DIR, "fasttext", "wiki.en.vec"))
     CORPUS_FILE = Path(join(DATA_DIR, "yup_messages_preprocessed.csv"))
+    FASTTEXT_FILE = Path(join(DATA_DIR, "fasttext", "wiki.en.vec")) 
     CORE_NLP_DIR = join(BASE_DIR, "stanford-corenlp-full-2018-02-27")
     BASELINE_PREDS_FILE = Path(join(DATA_DIR, "dev_baseline_predictions_logreg.csv"))
     SPLITS = ["tiny", "train", "dev", "test"]

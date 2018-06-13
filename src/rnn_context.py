@@ -17,10 +17,11 @@ from pathlib import Path
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support, f1_score
 
 MAX_NUM_WORDS = 40000
-MAX_QUESTION_LEN = 128
+MAX_CONV_LEN = 256
 EMBEDDING_DIM = 300
 NUM_EPOCHS = 5
 BATCH_SIZE = 128
+WINDOW_SIZE = 5
 
 LABEL_TO_INDEX = {Config.LABEL_SHORT: 0, Config.LABEL_MEDIUM: 1, Config.LABEL_LONG: 2}
 INDEX_TO_LABEL = {v:k for k,v in LABEL_TO_INDEX.items()}
@@ -37,9 +38,29 @@ class F1_Score(Callback):
         print(" — val_f1: %.4f" % _val_f1)
         return
 
+def tag_of(speaker):
+    assert speaker != Config.EMPTY_TAG
+    return "<%s>" % speaker
+
+def concat_context(row):
+    conv = []
+    for i in range(WINDOW_SIZE, 0, -1):
+        speaker = row["turn_speaker-%d" % i]
+        if speaker == Config.EMPTY_TAG:
+            continue
+        conv.append(tag_of(speaker))
+        conv.extend(row["turn_text-%d" % i])
+      
+    conv.append(tag_of("platform"))
+    conv.append("<q>")
+    conv.extend(row.question)
+    return " ".join(conv)
+    
+
 def prepare_data(data):
     y = data.response_time_sec.apply(get_response_time_label).apply(lambda label: LABEL_TO_INDEX[label]).values
-    X = data.question.apply(lambda sent: " ".join(sent)).values #drop(columns="response_time_sec").to_dict(orient="list")
+    
+    X = data.apply(concat_context, axis="columns").values 
     return X, y
 
 def randvec(w, n=50, lower=-1.0, upper=1.0):
@@ -84,15 +105,15 @@ def getFastTextEmbeddings(word_index):
 def f1(y_true, y_pred):
     return f1_score(y_true, y_pred, average='weighted')
 
-def simpleRNN(embeddings, hidden_dim=100, dropout=0.1, recurrent_dropout=0.1):
-    inputs = Input(shape=(MAX_QUESTION_LEN, ), dtype='int32')
+def simpleRNN(embeddings, hidden_dim=100):
+    inputs = Input(shape=(MAX_CONV_LEN, ), dtype='int32')
 
     input_dim, output_dim = embeddings.shape
     x = Embedding(input_dim, output_dim,
                   weights = [embeddings],
-                  input_length=MAX_QUESTION_LEN,
+                  input_length=MAX_CONV_LEN,
                   trainable=True)(inputs)
-    x = Bidirectional(LSTM(hidden_dim, activation="relu", dropout=dropout, recurrent_dropout=recurrent_dropout))(x)
+    x = Bidirectional(LSTM(hidden_dim, activation="relu"))(x)
     preds = Dense(len(Config.LABELS), activation='sigmoid')(x)
 
     model = Model(inputs, preds)
@@ -104,7 +125,7 @@ def simpleRNN(embeddings, hidden_dim=100, dropout=0.1, recurrent_dropout=0.1):
 def evaluate(y_true, y_pred, name="tiny"):
     precision, recall, f1, support = precision_recall_fscore_support(y_true, y_pred, average='weighted')
 
-    directory = Path(os.path.join(Config.RUNS_DIR, "question_only", "simple_rnn", name))
+    directory = Path(os.path.join(Config.RUNS_DIR, "question_and_context_text_%d" % WINDOW_SIZE, "simple_rnn", name))
     directory.mkdir(parents=True, exist_ok=True)
 
     with directory.joinpath("results").open(mode='w') as results_file:
@@ -123,9 +144,9 @@ def evaluate(y_true, y_pred, name="tiny"):
 
 
 if __name__ == "__main__":
-    data = read_dataset_splits(reader=data_readers.read_question_only_data, splits=["tiny", "train", "dev"])
-    X_train, y_train = prepare_data(data.train)
-    X_dev, y_dev = prepare_data(data.dev)
+    data = read_dataset_splits(reader=data_readers.read_question_and_context_data, splits=["tiny"], window_size=WINDOW_SIZE, include_question_text=True, include_context_text=True, include_context_speaker=True, include_context_times=False)
+    X_train, y_train = prepare_data(data.tiny)
+    X_dev, y_dev = prepare_data(data.tiny)
 
     tokenizer = Tokenizer(num_words=MAX_NUM_WORDS, oov_token="<UNK>", split=' ', lower=True)
     tokenizer.fit_on_texts(X_train)
@@ -137,8 +158,8 @@ if __name__ == "__main__":
     X_train = tokenizer.texts_to_sequences(X_train)
     X_dev = tokenizer.texts_to_sequences(X_dev)
 
-    X_train = pad_sequences(X_train, maxlen=MAX_QUESTION_LEN)
-    X_dev = pad_sequences(X_dev, maxlen=MAX_QUESTION_LEN)
+    X_train = pad_sequences(X_train, maxlen=MAX_CONV_LEN)
+    X_dev = pad_sequences(X_dev, maxlen=MAX_CONV_LEN)
 
     class_weight = defaultdict(int)
     for label in y_train:
@@ -148,7 +169,7 @@ if __name__ == "__main__":
         class_weight[c] /= tot
 
     model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=NUM_EPOCHS, validation_data=(X_dev, y_dev), class_weight=class_weight, callbacks=[F1_Score()])
-    model.save("model.h5")
+    model.save("model_context_%d.h5" % WINDOW_SIZE)
 
     train_preds = np.argmax(model.predict(X_train, batch_size=BATCH_SIZE), axis=1)
     dev_preds = np.argmax(model.predict(X_dev, batch_size=BATCH_SIZE), axis=1)
