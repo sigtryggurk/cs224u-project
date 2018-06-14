@@ -1,4 +1,3 @@
-import argparse
 import data_readers
 import models
 import numpy as np
@@ -74,11 +73,11 @@ class SklearnTrainer(object):
         cm = confusion_matrix(y, preds)
         with split_dir.joinpath("confusion_matrix").open(mode='w') as cm_file:
             np.savetxt(cm_file, cm, fmt="%d")
-
-        #plot_cm(cm, os.path.join(split_dir, "cm.png"))
-
+        
+        plot_cm(cm, os.path.join(split_dir, "cm.png"))
+        
         with split_dir.joinpath("params").open(mode='w') as params_file:
-            print(self.best_params, file=params_file)
+            print(self.best_params, file=params_file)   
 
 if __name__ == '__main__':
     data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
@@ -87,7 +86,7 @@ if __name__ == '__main__':
     trainer.train(data.train, data.dev)
     trainer = SklearnTrainer(models.SVMWithScalar("jensen_shannon"), data_name="question_and_js", n_samples=5)
     trainer.train(data.train, data.dev)
-
+    
     df = read_corpus(split='train')
     all_words = [item for sublist in df.text for item in sublist]
     for N_words in [25, 50, 100]:
@@ -98,14 +97,14 @@ if __name__ == '__main__':
         trainer.train(data.train, data.dev)
         trainer = SklearnTrainer(models.SVMWithScalar("jensen_shannon"), data_name="question_and_js_top" + str(N_words), n_samples=5)
         trainer.train(data.train, data.dev)
-
+     
     #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
     #data = add_cosine_similarity(data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
     #trainer.train(data.train, data.dev)
-
+    
     #df = read_corpus(split='train')
     #all_words = [item for sublist in df.text for item in sublist]
     #for N_words in [25, 50, 100]:
