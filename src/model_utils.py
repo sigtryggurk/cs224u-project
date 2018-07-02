@@ -23,10 +23,15 @@ SEED = Config.SEED
 random.seed(SEED)
 
 def get_response_time_label(time):
-    if time < Config.THRESHOLD_SHORT:
+#    if time < Config.THRESHOLD_SHORT:
+#        return Config.LABEL_SHORT
+#    elif time < Config.THRESHOLD_MEDIUM:
+#       return Config.LABEL_MEDIUM
+#    else:
+#       return Config.LABEL_LONG
+    
+    if time < Config.THRESHOLD:
         return Config.LABEL_SHORT
-    elif time < Config.THRESHOLD_MEDIUM:
-        return Config.LABEL_MEDIUM
     else:
         return Config.LABEL_LONG
 
