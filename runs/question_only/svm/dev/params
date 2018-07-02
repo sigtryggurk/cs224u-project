@@ -1,1 +1,1 @@
-{'clf__loss': 'squared_hinge', 'clf__C': 0.005994842503189409}
+{'clf__loss': 'squared_hinge', 'clf__C': 0.04037017258596556}
