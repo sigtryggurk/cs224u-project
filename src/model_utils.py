@@ -117,7 +117,7 @@ def plot_cm(cm, filename):
     plt.xticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
     plt.yticks(np.arange(len(Config.LABELS)), Config.LABELS, fontsize=8)
 
-    thresh = cm.max() / 2.
+    thresh = cm.max() * 0.75
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, format(cm[i, j], 'd'),
                  horizontalalignment="center",

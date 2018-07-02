@@ -45,7 +45,7 @@ class Config:
     LABELS = [LABEL_SHORT, LABEL_LONG]
     #THRESHOLD_SHORT = 15
     #THRESHOLD_MEDIUM = 45
-    THRESHOLD = 25
+    THRESHOLD = 21
 
     SEED = 42 #For reproducibility
 
