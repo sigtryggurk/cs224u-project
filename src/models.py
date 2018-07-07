@@ -125,7 +125,10 @@ LogisticWithScalar = lambda s: SklearnModel("logistic", text_and_scalar_pipe(s, 
 SVMWithScalar = lambda s: SklearnModel("svm", text_and_scalar_pipe(s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
 
 MultiTextSVM = lambda texts: SklearnModel("svm", multi_text_pipe(texts, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+MultiTextLogistic = lambda texts: SklearnModel("logistic", multi_text_pipe(texts, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
 
 SVMWithScalars = lambda s: SklearnModel("svm", text_and_scalars_pipe(s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+LogisticWithScalars = lambda s: SklearnModel("logistic", text_and_scalars_pipe(s, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
 
 SVMVector = lambda v: SklearnModel("svm", vector_pipe(v, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+LogisticVector = lambda v: SklearnModel("logistic", vector_pipe(v, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)

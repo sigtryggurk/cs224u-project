@@ -80,6 +80,44 @@ class SklearnTrainer(object):
             print(self.best_params, file=params_file)   
 
 if __name__ == '__main__':
+    #These models still need to evaluated (binary dev results)
+    #If you finish running them, please move them to the block after the 
+    #next comment.
+    
+    #data = read_dataset_splits(reader=data_readers.read_label_counts_data)
+    #model = models.SVMVector("label_counts")
+    #trainer = SklearnTrainer(model, data_name="label_counts", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #model = models.LogisticVector("label_counts")
+    #trainer = SklearnTrainer(model, data_name="label_counts", n_samples=5)
+    #trainer.train(data.train, data.dev)
+
+
+    ##########################################################################
+    #Anything following this has been run already (binary dev results):
+    
+    #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
+    #for window_size in [1,3,5]:
+    #    texts = ["turn_text-%d" % i for i in range(1, window_size+1)]
+    #    model = models.MultiTextSVM(texts)
+    #    trainer = SklearnTrainer(model, data_name="question_and_context_text_%d" % window_size, n_samples=5)
+    #    trainer.train(data.train, data.dev)
+    #    model = models.MultiTextLogistic(texts)
+    #    trainer = SklearnTrainer(model, data_name="question_and_context_text_%d" % window_size, n_samples=5)
+    #    trainer.train(data.train, data.dev)
+
+    
+    #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=False, include_context_speaker=False, include_context_times=True)
+    #for window_size in [1,3,5]:
+    #    times = ["turn_time-%d" % i for i in range(1, window_size+1)]
+    #    model = models.SVMWithScalars(times)
+    #    trainer = SklearnTrainer(model, data_name="question_and_context_time_%d" % window_size, n_samples=5)
+    #    trainer.train(data.train, data.dev)
+    #    model = models.LogisticWithScalars(times)
+    #    trainer = SklearnTrainer(model, data_name="question_and_context_time_%d" % window_size, n_samples=5)
+    #    trainer.train(data.train, data.dev)
+
+    
     #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
     #data = add_jensen_shannon(data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("jensen_shannon"), data_name="question_and_js", n_samples=5)
@@ -142,17 +180,18 @@ if __name__ == '__main__':
     #    trainer = SklearnTrainer(model, data_name="question_and_context_text_%d" % window_size, n_samples=5)
     #    trainer.train(data.train, data.dev)
 
-    data = read_dataset_splits(reader=data_readers.read_label_counts_data)
-    model = models.SVMVector("label_counts")
-    trainer = SklearnTrainer(model, data_name="label_counts", n_samples=5)
-    trainer.train(data.train, data.dev)
-
+    #data = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
+    #trainer = SklearnTrainer(models.LogisticWithScalar("question_duration_sec"), data_name="question_and_duration", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #trainer = SklearnTrainer(models.SVMWithScalar("question_duration_sec"), data_name="question_and_duration", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    
     #data = read_dataset_splits(reader=data_readers.read_question_and_index_data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("question_index"), data_name="question_and_index", n_samples=5)
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("question_index"), data_name="question_and_index", n_samples=5)
     #trainer.train(data.train, data.dev)
-    
+
     #data = read_dataset_splits(reader=data_readers.read_question_only_data)
     #trainer = SklearnTrainer(models.Logistic, data_name="question_only", n_samples=5)
     #trainer.train(data.train, data.dev)
