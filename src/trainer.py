@@ -86,35 +86,56 @@ if __name__ == '__main__':
     #These models still need to evaluated (binary dev results)
     #If you finish running them, please move them to the block after the 
     #next comment.
-    data = DotDict()
-    q_length = read_dataset_splits(reader=data_readers.read_question_only_data)
-    q_length = add_question_length(q_length)
-    q_duration = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
-    q_context = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=True)
-    for key in Config.SPLITS:
-        arr = [q_length[key], q_duration[key], q_context[key]]
-        data[key] = reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True), arr)
     
-    window_size = 5
-    texts = ["turn_text-%d" % i for i in range(1, window_size+1)]    
-    scalars = ["turn_time-%d" % i for i in range(1, window_size+1)]
-    scalars += ["question_length", "question_duration_sec"]
-    model = models.MultiTextSVMWithScalars(texts, scalars)
-    trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
-    trainer.train(data.train, data.dev)
-    model = models.MultiTextLogisticWithScalars(texts, scalars)
-    trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
-    trainer.train(data.train, data.dev)
-    
-    model = models.SVMWithScalars(scalars)
-    trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime", n_samples=5)
-    trainer.train(data.train, data.dev)
-    model = models.LogisticWithScalars(scalars)
-    trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime", n_samples=5)
-    trainer.train(data.train, data.dev)
-
     ##########################################################################
     #Anything following this has been run already (binary dev results):
+        
+    #data = read_dataset_splits(reader=data_readers.read_question_and_response_data)
+    #texts = ['response']
+    #model = models.MultiTextSVM(texts)
+    #trainer = SklearnTrainer(model, data_name="question_and_response", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #model = models.MultiTextLogistic(texts)
+    #trainer = SklearnTrainer(model, data_name="question_and_response", n_samples=5)
+    #trainer.train(data.train, data.dev)
+
+    
+    #data = DotDict()
+    #q_length = read_dataset_splits(reader=data_readers.read_question_only_data)
+    #q_length = add_question_length(q_length)
+    #q_duration = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
+    #q_context = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=True)
+    #for key in Config.SPLITS:
+    #    arr = [q_length[key], q_duration[key], q_context[key]]
+    #    data[key] = reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True), arr)
+    
+    #window_size = 5
+    #texts = ["turn_text-%d" % i for i in range(1, window_size+1)]    
+    #scalars = ["turn_time-%d" % i for i in range(1, window_size+1)]
+    #scalars += ["question_length", "question_duration_sec"]
+    #model = models.MultiTextSVMWithScalars(texts, scalars)
+    #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #model = models.MultiTextLogisticWithScalars(texts, scalars)
+    #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    
+    #model = models.SVMWithScalars(scalars)
+    #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #model = models.LogisticWithScalars(scalars)
+    #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime", n_samples=5)
+    #trainer.train(data.train, data.dev)
+
+    #scalars = ["turn_time-%d" % i for i in range(1, window_size+1)]
+    #scalars += ["question_length"]
+    #model = models.SVMWithScalars(scalars)
+    #trainer = SklearnTrainer(model, data_name="combined_length_ctime", n_samples=5)
+    #trainer.train(data.train, data.dev)
+    #model = models.LogisticWithScalars(scalars)
+    #trainer = SklearnTrainer(model, data_name="combined_length_ctime", n_samples=5)
+    #trainer.train(data.train, data.dev)
+
     
     #data = read_dataset_splits(reader=data_readers.read_label_counts_data)
     #model = models.SVMVector("label_counts")
@@ -154,6 +175,7 @@ if __name__ == '__main__':
     #trainer = SklearnTrainer(models.SVMWithScalar("jensen_shannon"), data_name="question_and_js", n_samples=5)
     #trainer.train(data.train, data.dev)
     
+    
     #df = read_corpus(split='train')
     #all_words = [item for sublist in df.text for item in sublist]
     #for N_words in [25, 50, 100]:
@@ -165,12 +187,14 @@ if __name__ == '__main__':
     #    trainer = SklearnTrainer(models.SVMWithScalar("jensen_shannon"), data_name="question_and_js_top" + str(N_words), n_samples=5)
     #    trainer.train(data.train, data.dev)
      
+    
     #data = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=10, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=False)
     #data = add_cosine_similarity(data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("cosine_similarity"), data_name="question_and_similarity", n_samples=5)
     #trainer.train(data.train, data.dev)
+    
     
     #df = read_corpus(split='train')
     #all_words = [item for sublist in df.text for item in sublist]
@@ -190,12 +214,14 @@ if __name__ == '__main__':
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("question_length"), data_name="question_and_length", n_samples=5)
     #trainer.train(data.train, data.dev)
+    
 
     #data = read_dataset_splits(reader=data_readers.read_question_and_sentiment_data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("question_sentiment"), data_name="question_and_sentiment", n_samples=5)
     #trainer.train(data.train, data.dev)
+    
 
     #data = read_dataset_splits(reader=data_readers.read_question_and_newlines_data)
     #trainer = SklearnTrainer(models.SVM, data_name="question_and_newlines", n_samples=5)
@@ -208,6 +234,7 @@ if __name__ == '__main__':
     #    model = models.MultiTextSVM(texts)
     #    trainer = SklearnTrainer(model, data_name="question_and_context_text_%d" % window_size, n_samples=5)
     #    trainer.train(data.train, data.dev)
+    
 
     #data = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("question_duration_sec"), data_name="question_and_duration", n_samples=5)
@@ -215,11 +242,13 @@ if __name__ == '__main__':
     #trainer = SklearnTrainer(models.SVMWithScalar("question_duration_sec"), data_name="question_and_duration", n_samples=5)
     #trainer.train(data.train, data.dev)
     
+    
     #data = read_dataset_splits(reader=data_readers.read_question_and_index_data)
     #trainer = SklearnTrainer(models.LogisticWithScalar("question_index"), data_name="question_and_index", n_samples=5)
     #trainer.train(data.train, data.dev)
     #trainer = SklearnTrainer(models.SVMWithScalar("question_index"), data_name="question_and_index", n_samples=5)
     #trainer.train(data.train, data.dev)
+    
 
     #data = read_dataset_splits(reader=data_readers.read_question_only_data)
     #trainer = SklearnTrainer(models.Logistic, data_name="question_only", n_samples=5)
