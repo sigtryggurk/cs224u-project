@@ -111,6 +111,20 @@ def multi_text_pipe(texts, clf):
         ('clf', clf)
         ])
 
+def multi_text_and_scalars_pipe(texts, scalars, clf):
+    transformer_list = [('question', text_selector_pipe('question'))]
+    for text in texts:
+        transformer_list.append((text, text_selector_pipe(text)))
+    for scalar in scalars:
+        transformer_list.append((scalar, scalar_selector_pipe(scalar)))
+    return Pipeline([
+        ('union', FeatureUnion(
+            transformer_list = transformer_list
+            )),
+        ('clf', clf)
+        ])
+
+
 log_params = {'clf__C': np.logspace(-3,0,100), 'clf__penalty': ['l2']}
 svm_params = {'clf__C': np.logspace(-3,0,100), 'clf__loss': ['squared_hinge']}
 rf_params = {'clf__n_estimators': range(5,20), 'clf__criterion': ['gini', 'entropy'], 'clf__max_features':['auto', 'sqrt','log2', None], 'clf__n_jobs':[4]}
@@ -132,3 +146,6 @@ LogisticWithScalars = lambda s: SklearnModel("logistic", text_and_scalars_pipe(s
 
 SVMVector = lambda v: SklearnModel("svm", vector_pipe(v, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
 LogisticVector = lambda v: SklearnModel("logistic", vector_pipe(v, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
+
+MultiTextSVMWithScalars = lambda texts, s: SklearnModel("svm", multi_text_and_scalars_pipe(texts, s, LinearSVC(class_weight='balanced', random_state=Config.SEED)), svm_params)
+MultiTextLogisticWithScalars = lambda texts, s: SklearnModel("logistic", multi_text_and_scalars_pipe(texts, s, LogisticRegression(class_weight='balanced', random_state=Config.SEED)), log_params)
