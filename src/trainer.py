@@ -83,6 +83,7 @@ class SklearnTrainer(object):
             print(self.best_params, file=params_file)   
 
 if __name__ == '__main__':
+    print('All models done!\n')
     #These models still need to evaluated (binary dev results)
     #If you finish running them, please move them to the block after the 
     #next comment.
