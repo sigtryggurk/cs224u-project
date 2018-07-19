@@ -2,14 +2,18 @@ import data_readers
 import numpy as np
 import os
 import pickle
+import matplotlib
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
 import random
 
 from collections import defaultdict
 from config import Config
 from data_readers import read_dataset_splits
-from keras.callbacks import Callback
-from keras.layers import Dense, Embedding, Input, LSTM, Bidirectional
+from keras.callbacks import Callback, ModelCheckpoint
+from keras.layers import Dense, Embedding, Input, LSTM, Bidirectional, Dropout
 from keras.models import Model
+from keras.optimizers import Adam
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from model_utils import get_response_time_label
@@ -21,16 +25,28 @@ MAX_QUESTION_LEN = 128
 EMBEDDING_DIM = 300
 NUM_EPOCHS = 5
 BATCH_SIZE = 128
+LEARNING_RATE = 0.001
+DECAY = LEARNING_RATE / NUM_EPOCHS
 
-LABEL_TO_INDEX = {Config.LABEL_SHORT: 0, Config.LABEL_MEDIUM: 1, Config.LABEL_LONG: 2}
-INDEX_TO_LABEL = {v:k for k,v in LABEL_TO_INDEX.items()}
+LABEL_TO_INDEX = {Config.LABEL_SHORT: 0, Config.LABEL_LONG: 1}
 
 class F1_Score(Callback):
+    def __init__(self, training_data):
+        self.training_data = training_data
+        super().__init__() 
+
     def on_train_begin(self, logs={}):
+        self.train_f1s = []
         self.val_f1s = []
 
     def on_epoch_end(self, epoch, logs={}):
-        val_predict = np.argmax(self.model.predict(self.validation_data[0]), axis=1)
+        train_predict = np.rint(self.model.predict(self.training_data[0]))
+        train_targ = self.training_data[1]
+        _train_f1 = f1_score(train_targ, train_predict, average='weighted')
+        self.train_f1s.append(_train_f1)
+        print(" — train_f1: %.4f" % _train_f1)
+        
+        val_predict = np.rint(self.model.predict(self.validation_data[0]))
         val_targ = self.validation_data[1]
         _val_f1 = f1_score(val_targ, val_predict, average='weighted')
         self.val_f1s.append(_val_f1)
@@ -84,7 +100,10 @@ def getFastTextEmbeddings(word_index):
 def f1(y_true, y_pred):
     return f1_score(y_true, y_pred, average='weighted')
 
-def simpleRNN(embeddings, hidden_dim=100, dropout=0.1, recurrent_dropout=0.1):
+def simpleRNN(embeddings, hidden_dim=100, dropout=0.1, recurrent_dropout=0.0):
+
+
+
     inputs = Input(shape=(MAX_QUESTION_LEN, ), dtype='int32')
 
     input_dim, output_dim = embeddings.shape
@@ -92,11 +111,15 @@ def simpleRNN(embeddings, hidden_dim=100, dropout=0.1, recurrent_dropout=0.1):
                   weights = [embeddings],
                   input_length=MAX_QUESTION_LEN,
                   trainable=True)(inputs)
-    x = Bidirectional(LSTM(hidden_dim, activation="relu", dropout=dropout, recurrent_dropout=recurrent_dropout))(x)
-    preds = Dense(len(Config.LABELS), activation='sigmoid')(x)
+    x = LSTM(hidden_dim,activation="sigmoid", recurrent_activation="hard_sigmoid", return_sequences=True)(x)
+    x = Dropout(dropout)(x)
+    x = LSTM(hidden_dim,activation="sigmoid", recurrent_activation="hard_sigmoid")(x)
+    preds = Dense(1, activation='sigmoid')(x)
 
     model = Model(inputs, preds)
-    model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=["accuracy"])
+
+    opt = Adam(lr=LEARNING_RATE, decay=DECAY)  
+    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=["accuracy"])
 
     print(model.summary())
     return model
@@ -140,18 +163,33 @@ if __name__ == "__main__":
     X_train = pad_sequences(X_train, maxlen=MAX_QUESTION_LEN)
     X_dev = pad_sequences(X_dev, maxlen=MAX_QUESTION_LEN)
 
-    class_weight = defaultdict(int)
-    for label in y_train:
-        class_weight[label] += 1
-    tot = sum(class_weight.values())
-    for c in class_weight.keys():
-        class_weight[c] /= tot
+#    class_weight = defaultdict(int)
+#    for label in y_train:
+#        class_weight[label] += 1
+#    tot = sum(class_weight.values())
+#    for c in class_weight.keys():
+#        class_weight[c] /= tot
 
-    model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=NUM_EPOCHS, validation_data=(X_dev, y_dev), class_weight=class_weight, callbacks=[F1_Score()])
-    model.save("model.h5")
+    callbacks = [F1_Score((X_train, y_train)),
+                 ModelCheckpoint("model.{epoch:02d}-{val_loss:.2f}.h5", monitor="val_loss", save_best_only=False, period=1)]
+    
 
-    train_preds = np.argmax(model.predict(X_train, batch_size=BATCH_SIZE), axis=1)
-    dev_preds = np.argmax(model.predict(X_dev, batch_size=BATCH_SIZE), axis=1)
+    res = model.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=NUM_EPOCHS, validation_data=(X_dev, y_dev), callbacks=callbacks)
+
+    with open("history.pkl", "wb") as history:
+        pickle.dump(res.history, history)
+
+    # summarize history for loss
+    plt.plot(res.history['loss'])
+    plt.plot(res.history['val_loss'])
+    plt.title('Model Loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'dev'], loc='upper left')
+    plt.savefig('loss.png')
+ 
+    train_preds = np.rint(model.predict(X_train, batch_size=BATCH_SIZE))
+    dev_preds = np.rint(model.predict(X_dev, batch_size=BATCH_SIZE))
 
     evaluate(y_train, train_preds, name="train")
     evaluate(y_dev, dev_preds, name="dev")
