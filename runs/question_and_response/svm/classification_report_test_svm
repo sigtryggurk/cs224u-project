@@ -1,7 +1,0 @@
-             precision    recall  f1-score   support
-
-       long     0.6778    0.6935    0.6855     18859
-      short     0.6584    0.6418    0.6500     17358
-
-avg / total     0.6685    0.6687    0.6685     36217
-

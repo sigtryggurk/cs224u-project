@@ -1,17 +1,17 @@
-# CS224U Final Project - Question Response Time Analysis and Prediction
+# Modeling Student Response Times: Towards Efficient One-on-one Tutoring Dialogues 
 
 ## Setup
-1. Create a virtual environment called cs224u:
+1. Create a virtual environment called `rt`:
 ```
-conda create -n cs224u python=3.6 anaconda
+conda create -n rt python=3.6 anaconda
 ```
 To enter the environment run
 ```
-source activate cs224u
+source activate rt
 ```
 To exit the environment run
 ```
-source deactivate cs224u
+source deactivate rt
 ```
 
 2. Enter the newly created virtual environment
