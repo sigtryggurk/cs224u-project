@@ -1,9 +1,10 @@
 # Modeling Student Response Times: Towards Efficient One-on-one Tutoring Dialogues 
 
-This repository contains the code for all experiments described in the following paper:
-Modeling Student Response Times: Towards Efficient One-on-one Tutoring Dialogues
-Luciana Benotti, Jayadev Bhaskaran, Sigtryggur Kjartansson, David Lang
-EMNLP Workshop on Noisy User Generated Text (W-NUT) at EMNLP 2018, Brussels, Belgium.
+This repository contains the code for all experiments described in the following paper:  
+
+Modeling Student Response Times: Towards Efficient One-on-one Tutoring Dialogues  
+Luciana Benotti, Jayadev Bhaskaran, Sigtryggur Kjartansson, David Lang  
+EMNLP Workshop on Noisy User Generated Text (W-NUT) at EMNLP 2018, Brussels, Belgium.  
 
 The paper can be found [here](http://noisy-text.github.io/2018/pdf/W-NUT201817.pdf).
 
