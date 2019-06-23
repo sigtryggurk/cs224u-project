@@ -22,6 +22,7 @@ class Config:
     QUESTION_AND_INDEX_DATASET_FILE = _lift_split_file("%s_question_and_index_dataset.csv")
     QUESTION_AND_DURATION_DATASET_FILE = _lift_split_file("%s_question_and_duration_dataset.csv")
     QUESTION_AND_NEWLINES_DATASET_FILE = _lift_split_file("%s_question_and_newlines_dataset.csv")
+    QUESTION_AND_PERPLEXITIES_DATASET_FILE = _lift_split_file("%s_question_and_perplexities_dataset.csv")
     QUESTION_TEXT_AND_RESPONSE_TEXT_DATASET_FILE = _lift_split_file("%s_question_text_and_response_text_dataset.csv")
     QUESTION_AND_SENTIMENT_DATASET_FILE = _lift_split_file("%s_question_and_sentiment_dataset.csv")
     LABEL_COUNTS_DATASET_FILE = _lift_split_file("%s_label_counts_dataset.csv")

@@ -53,6 +53,16 @@ def read_question_and_duration_data(split="tiny"):
     log_info("read %s data with %d rows" % (path.stem, data.shape[0]))
     return data
 
+def read_question_and_perplexities(split="tiny"):
+    dtypes = {"response_time_sec": np.int32, "session_id": np.int32, "question_duration_sec": np.int32,
+              "lemma_ppl": np.float, "pos_ppl": np.float}
+
+    converters = {"question": ast.literal_eval}
+    path = Config.QUESTION_AND_PERPLEXITIES_DATASET_FILE(split)
+    data = pd.read_csv(path, sep=",", header=0, dtype=dtypes, converters=converters)
+    log_info("read %s data with %d rows" % (path.stem, data.shape[0]))
+    return data
+
 def read_question_and_response_data(split="tiny"):
     dtypes = {"response_time_sec": np.int32, "session_id": np.int32}
     converters = {"question": ast.literal_eval, "response": ast.literal_eval}

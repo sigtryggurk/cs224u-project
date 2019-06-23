@@ -1,17 +1,19 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.pipeline import Pipeline
+from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.model_selection import ParameterGrid
 from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.dummy import DummyClassifier
 
-from data_readers import read_question_only_data, read_dataset_splits
+from data_readers import read_question_only_data, read_dataset_splits, read_question_and_perplexities
 from config import Config
 from model_utils import get_response_time_label, add_classes, plot_cm, dummy_tokenizer
 
 import random
 import copy
+
+from models import text_and_scalars_pipe
 
 SEED = Config.SEED
 random.seed(SEED)
@@ -37,14 +39,20 @@ def run_baselines(data):
     #Logistic regression
     params = dict([
         ('clf__C', [0.1]),
-        #('clf__penalty', ['l2', 'l1']),
+        ('clf__penalty', ['l2', 'l1']),
     ])
 
+    '''
     pipe = Pipeline([
             ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
-            ('tfidf', TfidfTransformer()),
+            #('tfidf', TfidfTransformer()),
+             'tfidf_perplexities', FeatureUnion([("tfidf", TfidfTransformer()), ("perplexities", selection)]),
             ('clf', LogisticRegression(class_weight='balanced', random_state=SEED))
     ])
+    '''
+    scalars = ['lemma_ppl', 'pos_ppl'] 
+    classifier = LogisticRegression(class_weight='balanced', random_state=SEED)
+    pipe = text_and_scalars_pipe(scalars, classifier)
 
     best_f1 = 0
     best_grid = {}
@@ -52,8 +60,8 @@ def run_baselines(data):
     cm = []
     for g in ParameterGrid(params):
         pipe.set_params(**g)
-        pipe.fit(train['question'], train['question_class'])
-        preds = pipe.predict(dev['question'])
+        pipe.fit(train, train['question_class'])
+        preds = pipe.predict(dev)
         p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')
         print(g)
         print(f)
@@ -66,20 +74,25 @@ def run_baselines(data):
     print("Logistic Regression: ")
     print(best_grid)
     print(report)
-    plot_cm(cm, title="Logistic Regression")
+    plot_cm(cm, filename="Logistic Regression")
     models['Logistic Regression'] = best_grid
 
 #    #Linear SVM
     params = dict([
-        ('clf__C', [0.01]),
+        ('clf__C', [0.05, 0.02]),
         #('clf__loss', ['hinge', 'squared_hinge']),
     ])
 
+    '''
     pipe = Pipeline([
             ('vect', CountVectorizer(tokenizer=dummy_tokenizer, lowercase=False)),
             ('tfidf', TfidfTransformer()),
             ('clf', LinearSVC(class_weight='balanced', random_state=SEED))
     ])
+    '''
+    scalars = ['lemma_ppl', 'pos_ppl']
+    classifier = LinearSVC(class_weight='balanced', random_state=SEED)
+    pipe = text_and_scalars_pipe(scalars, classifier)
 
     best_f1 = 0
     best_grid = {}
@@ -87,8 +100,8 @@ def run_baselines(data):
     cm = []
     for g in ParameterGrid(params):
         pipe.set_params(**g)
-        pipe.fit(train['question'], train['question_class'])
-        preds = pipe.predict(dev['question'])
+        pipe.fit(train, train['question_class'])
+        preds = pipe.predict(dev)
         p, r, f, s = precision_recall_fscore_support(dev['question_class'], preds, average='weighted')
         print(g)
         print(f)
@@ -101,7 +114,7 @@ def run_baselines(data):
     print("Linear SVM: ")
     print(best_grid)
     print(report)
-    plot_cm(cm, title="Linear SVM")
+    plot_cm(cm, filename="Linear SVM")
     models['Linear SVM'] = best_grid
 
     #Dummy
@@ -117,12 +130,12 @@ def run_baselines(data):
     report = classification_report(dev['question_class'], preds)
     print(report)
     cm = confusion_matrix(dev['question_class'], preds)
-    plot_cm(cm, title="Dummy Classifier")
+    plot_cm(cm, filename="Dummy Classifier")
 
     return models
 
 if __name__ == '__main__':
-    data = read_dataset_splits(reader=read_question_only_data)
+    data = read_dataset_splits(reader=read_question_and_perplexities)
     data = add_classes(data)
     models = run_baselines(data)
 

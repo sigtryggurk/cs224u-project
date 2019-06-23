@@ -24,6 +24,7 @@ class Dataset(Enum):
     QUESTION_AND_NEWLINES = 8
     QUESTION_AND_SENTIMENT = 9
     LABEL_COUNTS = 10
+    QUESTION_AND_PERPLEXITIES = 11
 
 def build_question_only(split="tiny", concatenator=None):
     data = data_readers.read_corpus(split)
@@ -78,6 +79,95 @@ def build_question_and_duration(split="tiny"):
             session_ids.append(session.id)
 
     dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_duration_sec": question_durations_sec, "response_time_sec": response_times_sec})
+    return dataset
+
+# has: duration, prev turns, 
+def build_question_and_all_features(split="tiny"):
+    data = data_readers.read_corpus(split)
+    questions = []
+    question_durations_sec = []
+    response_times_sec = []
+    session_ids = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.row.text)
+            question_durations_sec.append(question.duration)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+            session_ids.append(session.id)
+
+    dataset = pd.DataFrame.from_dict({"session_id": session_ids, "question": questions, "question_duration_sec": question_durations_sec, "response_time_sec": response_times_sec})
+    return dataset
+
+
+# TODO: a better place for this?
+# load frequency information
+import pickle
+import spacy
+pos_bigrams = pickle.load(open('pos_bigrams.p', 'rb'))
+lemma_word = pickle.load(open('lemma_word.p', 'rb'))
+sp = spacy.load('en_core_web_sm')
+from math import log2, exp
+
+
+def lemmappl(text):
+    # filter empty strings
+    text = [t for t in text if t != '']
+    annotations = sp.tokenizer.tokens_from_list(text)
+    lemmas = [a.lemma_ for a in annotations]
+
+    ppl = 0.0
+    N = 0.0
+    for lemma, word in zip(lemmas, text):
+        if lemma in lemma_word and word in lemma_word[lemma]:
+            ppl += lemma_word[lemma][word] * log2(lemma_word[lemma][word])
+            N += 1.0
+
+    ppl = pow(2.0, (-1.0 / N) * ppl)
+    return ppl
+
+
+def posppl(text):
+
+    text = [t for t in text if t != '']
+    tokens = sp.tokenizer.tokens_from_list(text)
+    pos = sp.tagger(tokens)
+    pos = ['bos'] + [t.pos_ for t in pos] + ['eos']
+
+    ppl = 0.0
+    N = 0.0
+    for pos_bigram in zip(pos, pos[1:]):
+        if pos_bigram in pos_bigrams:
+            ppl += pos_bigrams[pos_bigram] * log2(pos_bigrams[pos_bigram])
+            N += 1
+
+    ppl = pow(2.0, (-1.0 / N) * ppl)
+    return ppl
+
+def build_question_and_perplexities(split="tiny"):
+    data = data_readers.read_corpus(split)
+    questions = []
+    lemma_ppl = []
+    pos_ppl = []
+    session_ids = []
+    response_times_sec = []
+
+    sessions = data_util.get_sessions(data)
+    for session in progressbar.progressbar(sessions):
+        for question, response in session.iter_question_and_response():
+            questions.append(question.row.text)
+            # perplexities
+            lemma_ppl.append(lemmappl(question.row.text))
+            pos_ppl.append(posppl(question.row.text))
+            session_ids.append(session.id)
+            response_times_sec.append((response.row.created_at - question.row.created_at).seconds)
+
+    dataset = pd.DataFrame.from_dict(
+        {"session_id": session_ids, "question": questions,
+         "response_time_sec": response_times_sec,
+         "lemma_ppl": lemma_ppl,
+         "pos_ppl": pos_ppl})
     return dataset
 
 NLP = StanfordCoreNLP(Config.CORE_NLP_DIR)
@@ -216,7 +306,8 @@ if __name__ == "__main__":
                 Dataset.QUESTION_AND_NEWLINES: lambda split: build_question_only(split, concatenator="\n"),
                 Dataset.QUESTION_AND_CONTEXT_WINDOW: lambda split: build_question_with_context_window(split, window_size=Config.MAX_CONTEXT_WINDOW_SIZE),
                 Dataset.QUESTION_TEXT_AND_RESPONSE_TEXT: build_question_text_and_response_text,
-                Dataset.LABEL_COUNTS: build_label_counts}
+                Dataset.LABEL_COUNTS: build_label_counts,
+                Dataset.QUESTION_AND_PERPLEXITIES: build_question_and_perplexities}
 
     log_info("Building the %s dataset" % args.dataset.name.lower())
 

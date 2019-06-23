@@ -100,26 +100,25 @@ if __name__ == '__main__':
     #trainer = SklearnTrainer(model, data_name="question_and_response", n_samples=5)
     #trainer.train(data.train, data.dev)
 
+    data = DotDict()
+    q_length = read_dataset_splits(reader=data_readers.read_question_and_perplexities)
+    q_length = add_question_length(q_length)
+    q_duration = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
+    q_context = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=True)
+    for key in Config.SPLITS:
+        arr = [q_length[key], q_duration[key], q_context[key]]
+        data[key] = reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True), arr)
     
-    #data = DotDict()
-    #q_length = read_dataset_splits(reader=data_readers.read_question_only_data)
-    #q_length = add_question_length(q_length)
-    #q_duration = read_dataset_splits(reader=data_readers.read_question_and_duration_data)
-    #q_context = read_dataset_splits(reader=data_readers.read_question_and_context_data, window_size=5, include_question_text=True, include_context_text=True, include_context_speaker=False, include_context_times=True)
-    #for key in Config.SPLITS:
-    #    arr = [q_length[key], q_duration[key], q_context[key]]
-    #    data[key] = reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True), arr)
-    
-    #window_size = 5
-    #texts = ["turn_text-%d" % i for i in range(1, window_size+1)]    
-    #scalars = ["turn_time-%d" % i for i in range(1, window_size+1)]
-    #scalars += ["question_length", "question_duration_sec"]
-    #model = models.MultiTextSVMWithScalars(texts, scalars)
-    #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
-    #trainer.train(data.train, data.dev)
-    #model = models.MultiTextLogisticWithScalars(texts, scalars)
-    #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
-    #trainer.train(data.train, data.dev)
+    window_size = 5
+    texts = ["turn_text-%d" % i for i in range(1, window_size+1)]    
+    scalars = ["turn_time-%d" % i for i in range(1, window_size+1)]
+    scalars += ["question_length", "question_duration_sec", 'lemma_ppl', 'pos_ppl']
+    model = models.MultiTextSVMWithScalars(texts, scalars)
+    trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
+    trainer.train(data.train, data.dev)
+    model = models.MultiTextLogisticWithScalars(texts, scalars)
+    trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime_ctext", n_samples=5)
+    trainer.train(data.train, data.dev)
     
     #model = models.SVMWithScalars(scalars)
     #trainer = SklearnTrainer(model, data_name="combined_length_duration_ctime", n_samples=5)
